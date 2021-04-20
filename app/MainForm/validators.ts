@@ -1,4 +1,4 @@
-import { FieldError, FieldInfo, FieldValue } from "./interface";
+import { FieldError, FieldInfo, FieldValue, FieldType } from "./interface";
 import { Errors, Values } from "./MainForm";
 
 export const requiredValidator = (
@@ -16,7 +16,7 @@ export const emailValidator = (
   { type }: FieldInfo,
   value: FieldValue
 ): FieldError | undefined => {
-  if (type === "email") {
+  if (type === FieldType.email) {
     const emailRegexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!emailRegexp.test(String(value).toLowerCase())) {
       return {
@@ -31,7 +31,7 @@ export const phoneValidator = (
   { type }: FieldInfo,
   value: FieldValue
 ): FieldError | undefined => {
-  if (type === "phone") {
+  if (type === FieldType.phone) {
     const phoneRegexp = /\+\d-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/;
     if (!phoneRegexp.test(String(value).toLowerCase())) {
       return {
@@ -42,7 +42,27 @@ export const phoneValidator = (
   }
 };
 
-export const validators = [requiredValidator, emailValidator, phoneValidator];
+export const offerValidator = (
+  { type }: FieldInfo,
+  value: FieldValue
+): FieldError | undefined => {
+  if (type === FieldType.offer) {
+    if (!value) {
+      return {
+        isInvalid: true,
+        text:
+          "Пожалуйста, согласитесь с правилами обработки персональных данных",
+      };
+    }
+  }
+};
+
+export const validators = [
+  requiredValidator,
+  emailValidator,
+  phoneValidator,
+  offerValidator,
+];
 
 export const validate = (fieldInfo: FieldInfo, value: FieldValue) =>
   validators.map((validator) => validator(fieldInfo, value)).find((v) => v);

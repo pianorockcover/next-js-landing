@@ -54,6 +54,18 @@ const Index: React.FC = () => {
                   name: "tariff",
                   required: true,
                   options: ["Тариф 1", "Тариф 2", "Тариф 3"],
+                  optionParams: {
+                    "Тариф 1": {
+                      price: 3000,
+                    },
+                    "Тариф 2": {
+                      hit: true,
+                      price: 2300,
+                    },
+                    "Тариф 3": {
+                      price: 2300,
+                    },
+                  },
                 },
               ],
               [

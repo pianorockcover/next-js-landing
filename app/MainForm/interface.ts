@@ -3,12 +3,13 @@ export enum FieldType {
   email = "email",
   phone = "phone",
   select = "select",
+  offer = "offer",
 }
 
 export type FieldInfo = {
   type: FieldType;
   defaultValue?: FieldValue;
-  label: string;
+  label?: string;
   placeholder?: string;
   required?: boolean;
   name: string;
@@ -16,6 +17,14 @@ export type FieldInfo = {
 
 export interface SelectFieldInfo {
   options?: string[];
+  optionParams?: {
+    [key: string]: SelectFieldParams;
+  };
+}
+
+export interface SelectFieldParams {
+  price?: number;
+  hit?: boolean;
 }
 
 export type FieldValue = number | string | boolean;

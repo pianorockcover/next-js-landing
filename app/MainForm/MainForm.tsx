@@ -1,14 +1,27 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Form, Row, Col } from "react-bootstrap";
 import { SubmitButton } from "../Buttons/SubmitButton";
 import { EmailField } from "./Fields/EmailField";
 import { PhoneField } from "./Fields/PhoneField";
 import { SelectField } from "./Fields/SelectField";
 import { TextField } from "./Fields/TextField";
-import { FieldError, FieldInfo, FieldProps, FieldValue } from "./interface";
+import {
+  FieldError,
+  FieldInfo,
+  FieldProps,
+  FieldType,
+  FieldValue,
+} from "./interface";
 import { validateForm } from "./validators";
 import styled from "styled-components";
 import { Loader } from "../Loader";
+import { OfferField } from "./Fields/OfferField";
 
 const Wrapper = styled.div`
   position: relative;
@@ -21,6 +34,7 @@ const fieldControls: { [key: string]: React.FC<FieldInfo & FieldProps> } = {
   text: TextField,
   email: EmailField,
   phone: PhoneField,
+  offer: OfferField,
   select: SelectField,
 };
 
@@ -36,12 +50,25 @@ interface MainFormConfig {
 }
 
 export const MainForm: React.FC<MainFormConfig> = ({
-  fields,
   defaultValues,
+  ...props
 }) => {
   const [errors, setErrors] = useState<Errors>({});
   const [values, setValues] = useState<Values>(defaultValues || {});
   const [loader, setLoader] = useState<boolean>();
+
+  const fields: FieldInfo[][] = useMemo(
+    () => [
+      ...props.fields,
+      [
+        {
+          name: "offer",
+          type: FieldType.offer,
+        },
+      ],
+    ],
+    []
+  );
 
   const onChangeValidation = useRef(false);
 
@@ -68,6 +95,8 @@ export const MainForm: React.FC<MainFormConfig> = ({
     }
   }, [values]);
 
+  console.log(errors);
+
   return (
     <Wrapper>
       <Loader show={loader} />
@@ -79,10 +108,12 @@ export const MainForm: React.FC<MainFormConfig> = ({
               return (
                 <Col key={j}>
                   <Group>
-                    <Label>
-                      {field.label}
-                      {field.required ? " *" : ""}
-                    </Label>
+                    {field.label && (
+                      <Label>
+                        {field.label}
+                        {field.required ? " *" : ""}
+                      </Label>
+                    )}
                     <Component
                       {...field}
                       value={values[field.name]}
@@ -90,7 +121,11 @@ export const MainForm: React.FC<MainFormConfig> = ({
                       onChange={onChange(field.name)}
                     />
                     {errors[field.name] && (
-                      <Form.Control.Feedback type="invalid" tooltip={false}>
+                      <Form.Control.Feedback
+                        type="invalid"
+                        tooltip={false}
+                        style={{ display: "block" }}
+                      >
                         {errors[field.name].text}
                       </Form.Control.Feedback>
                     )}
