@@ -4,7 +4,6 @@ import { X as CloseIcon } from "react-bootstrap-icons";
 import styled, { createGlobalStyle } from "styled-components";
 
 const Wrapper = styled.div`
-  padding: 15px;
   padding-top: 25px;
   padding-bottom: 20px;
   position: relative;
@@ -40,7 +39,7 @@ const ModalStyles = createGlobalStyle`
     .custom-modal-content {
         border: 0;
         border-radius: 0;
-        box-shadow: 5px 5px 10px 1px #464343;
+        box-shadow: 5px 5px 10px 1px #46434369;
     }
     .custom-modal-backdrop.show {
         opacity: .7;

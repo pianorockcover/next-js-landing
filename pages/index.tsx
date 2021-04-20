@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import { ModalWindow } from "../app/ModalWindow";
 import { GlobalStyles } from "../app/GlobalStyles";
 import { content } from "../content";
+import { MainForm } from "../app/MainForm/MainForm";
+import { FieldType } from "../app/MainForm/interface";
 
 const Header = styled.div`
   height: 100vh;
@@ -28,7 +29,47 @@ const Index: React.FC = () => {
           title={content.modalTitle}
           onClose={closeModal}
         >
-          Тут всякий контент
+          <MainForm
+            fields={[
+              [
+                {
+                  type: FieldType.text,
+                  label: "Ваше имя",
+                  required: true,
+                  name: "name",
+                },
+              ],
+              [
+                {
+                  type: FieldType.email,
+                  label: "Email",
+                  required: true,
+                  name: "email",
+                },
+              ],
+              [
+                {
+                  type: FieldType.select,
+                  label: "Тариф",
+                  name: "tariff",
+                  required: true,
+                  options: ["Тариф 1", "Тариф 2", "Тариф 3"],
+                },
+              ],
+              [
+                {
+                  type: FieldType.phone,
+                  label: "Телефон",
+                  required: true,
+                  name: "phone",
+                },
+              ],
+            ]}
+            defaultValues={{
+              tariff: "Тариф 1",
+              phone: "+7",
+            }}
+          />
         </ModalWindow>
       </Header>
     </>
