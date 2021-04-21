@@ -47,9 +47,7 @@ const MainFormStyle = createGlobalStyle`
         margin-bottom: 10px;
     }
 
-    .custom-form-control {
-        background: #fbfbfb;
-    }
+    .custom-form-control {}
 `;
 
 const Wrapper = styled.div`
