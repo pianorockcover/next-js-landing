@@ -137,4 +137,16 @@ export const GlobalStyles = createGlobalStyle`
         min-width: 320px;
         font-family: 'Roboto';
     }
+
+    *::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    *::-webkit-scrollbar-track {
+        background-color: #808080;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        background-color: #c7c7c7;
+    }
 `;

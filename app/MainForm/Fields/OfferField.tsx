@@ -1,22 +1,24 @@
 import React, { useCallback } from "react";
-import { Form } from "react-bootstrap";
 import { Anchor } from "../../Anchor";
 import { FieldInfo, FieldProps } from "../interface";
 import styled, { createGlobalStyle } from "styled-components";
 import { Check } from "react-bootstrap-icons";
+import { clsx } from "../../utils/clsx";
 
 const Label = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
   user-select: none;
+  padding-top: 7px;
+  padding-bottom: 7px;
 `;
 
 const CheckboxIcon = styled.div`
   width: 20px;
   height: 20px;
   background: #cecece;
-  margin-right: 5px;
+  margin-right: 10px;
   border-radius: 2px;
   position: relative;
 `;
@@ -27,10 +29,13 @@ const CheckboxStyles = createGlobalStyle`
         transition: opacity .1s linear;
         width: 100%;
         height: 100%;
+        color: #ffffff;
     }
 `;
 
-const LabelText = styled.div``;
+const LabelText = styled.div`
+  font-size: 14px;
+`;
 
 export const OfferField: React.FC<FieldInfo & FieldProps> = ({
   placeholder,
@@ -44,7 +49,7 @@ export const OfferField: React.FC<FieldInfo & FieldProps> = ({
     <>
       <CheckboxStyles />
       <Label onClick={onChange}>
-        <CheckboxIcon>
+        <CheckboxIcon className={clsx([["bg-primary", !!value]])}>
           <Check
             className="custom-checkbox-icon"
             style={{ opacity: !value ? 0 : 1 }}

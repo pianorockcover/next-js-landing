@@ -12,10 +12,12 @@ const Wrapper = styled.div`
 
 const Title = styled.h3`
   text-align: center;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
   margin-bottom: 30px;
   font-weight: 400;
+  text-transform: uppercase;
+  font-size: 24px;
 `;
 
 const Close = styled.div`
@@ -35,10 +37,10 @@ const Close = styled.div`
   }
 `;
 
-const ModalStyles = createGlobalStyle`
+export const ModalStyles = createGlobalStyle`
     .custom-modal-content {
         border: 0;
-        border-radius: 0;
+        border-radius: 5px;
         box-shadow: 5px 5px 10px 1px #46434369;
     }
     .custom-modal-backdrop.show {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import { ModalWindow } from "../app/ModalWindow";
@@ -6,6 +6,12 @@ import { GlobalStyles } from "../app/GlobalStyles";
 import { content } from "../content";
 import { MainForm } from "../app/MainForm/MainForm";
 import { FieldType } from "../app/MainForm/interface";
+import {
+  AlertWindow,
+  AlertWindowContext,
+  AlertWindowProps,
+} from "../app/AlertWindow";
+import { useAlert } from "../app/utils/useAlert";
 
 const Header = styled.div`
   height: 100vh;
@@ -13,12 +19,14 @@ const Header = styled.div`
 `;
 
 const Index: React.FC = () => {
+  const { alert, openAlert } = useAlert();
+
   const [modal, setModal] = useState<boolean>();
   const openModal = () => setModal(true);
   const closeModal = () => setModal(false);
 
   return (
-    <>
+    <AlertWindowContext.Provider value={{ openAlert }}>
       <GlobalStyles />
       <Header>
         <Button variant="primary" onClick={openModal}>
@@ -30,6 +38,7 @@ const Index: React.FC = () => {
           onClose={closeModal}
         >
           <MainForm
+            onRequestDone={closeModal}
             fields={[
               [
                 {
@@ -57,13 +66,16 @@ const Index: React.FC = () => {
                   optionParams: {
                     "Тариф 1": {
                       price: 3000,
+                      image: "1.jpg",
                     },
                     "Тариф 2": {
                       hit: true,
                       price: 2300,
+                      image: "2.jpg",
                     },
                     "Тариф 3": {
                       price: 2300,
+                      image: "3.jpg",
                     },
                   },
                 },
@@ -84,7 +96,8 @@ const Index: React.FC = () => {
           />
         </ModalWindow>
       </Header>
-    </>
+      <AlertWindow {...alert} />
+    </AlertWindowContext.Provider>
   );
 };
 

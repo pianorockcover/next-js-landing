@@ -21,6 +21,7 @@ export const TextField: React.FC<FieldInfo & FieldProps> = ({
       value={String(value || "")}
       onChange={onChange}
       type="text"
+      className="custom-form-control"
       placeholder={placeholder}
     />
   );

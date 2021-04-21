@@ -25,6 +25,7 @@ export interface SelectFieldInfo {
 export interface SelectFieldParams {
   price?: number;
   hit?: boolean;
+  image?: string;
 }
 
 export type FieldValue = number | string | boolean;

@@ -25,6 +25,7 @@ export const PhoneField: React.FC<FieldInfo & FieldProps> = ({
       mask="+9-(999)-999-99-99"
       type="tel"
       placeholder={placeholder}
+      className="custom-form-control"
     />
   );
 };

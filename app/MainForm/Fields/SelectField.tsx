@@ -8,7 +8,7 @@ import {
 } from "../interface";
 import styled, { createGlobalStyle } from "styled-components";
 import { content } from "../../../content";
-import { formatPrice } from "../../formatPrice";
+import { formatPrice } from "../../utils/formatPrice";
 
 const SelectStyles = createGlobalStyle`
     .custom-select-btn,
@@ -22,6 +22,8 @@ const SelectStyles = createGlobalStyle`
         justify-content: space-between;
         background: transparent;
         border-color: #ced4da;
+
+        .custom-form-control;
     }
 
     .custom-select-btn:hover {
@@ -36,17 +38,35 @@ const SelectStyles = createGlobalStyle`
 const OptionWrapper = styled.div`
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center;
 `;
+
+const OptionContent = styled.div`
+  flex: 1;
+`;
+
 const HitLabel = styled.div`
   position: absolute;
   right: 0px;
   top: 0px;
 `;
+
 const Price = styled.div`
   font-size: 13px;
 `;
+
 const Label = styled.div`
   font-weight: 500;
+  max-width: 100%;
+  white-space: normal;
+  padding-right: 20px;
+`;
+
+const Image = styled.img`
+  width: 40px;
+  max-height: 45px;
+  margin-right: 10px;
 `;
 
 const { Toggle, Menu, Item } = Dropdown;
@@ -75,7 +95,10 @@ export const SelectField: React.FC<FieldInfo & FieldProps> = ({
     <>
       <SelectStyles />
       <Dropdown>
-        <Toggle variant="default" className="custom-select-btn">
+        <Toggle
+          variant="default"
+          className="custom-select-btn custom-form-control"
+        >
           <Option
             text={String(value)}
             {...getOptionParams(value, optionParams)}
@@ -100,12 +123,15 @@ type OptionProps = {
   text?: string;
 } & SelectFieldParams;
 
-const Option: React.FC<OptionProps> = ({ text, price, hit }) => (
+const Option: React.FC<OptionProps> = ({ text, price, hit, image }) => (
   <OptionWrapper>
-    <Label>{text}</Label>
-    <Price>
-      {formatPrice(price)} {content.currency}
-    </Price>
+    {image && <Image src={`/images/tariffs/${image}`} />}
+    <OptionContent>
+      <Label>{text}</Label>
+      <Price>
+        {formatPrice(price)} {content.currency}
+      </Price>
+    </OptionContent>
     {hit && (
       <HitLabel>
         <Badge pill variant="warning">

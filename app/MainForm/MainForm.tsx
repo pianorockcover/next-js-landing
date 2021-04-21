@@ -1,5 +1,6 @@
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -19,9 +20,37 @@ import {
   FieldValue,
 } from "./interface";
 import { validateForm } from "./validators";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { Loader } from "../Loader";
 import { OfferField } from "./Fields/OfferField";
+import { clsx } from "../utils/clsx";
+import {
+  AlertWindow,
+  AlertWindowContext,
+  AlertWindowProps,
+} from "../AlertWindow";
+import { content } from "../../content";
+import { request } from "../service";
+
+const MainFormStyle = createGlobalStyle`
+    .custom-label {
+        color: #6f6f6f;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .blured-form {
+        filter: blur(2px);
+    }
+
+    .custom-form {
+        margin-bottom: 10px;
+    }
+
+    .custom-form-control {
+        background: #fbfbfb;
+    }
+`;
 
 const Wrapper = styled.div`
   position: relative;
@@ -47,15 +76,17 @@ export type Values = {
 interface MainFormConfig {
   fields: FieldInfo[][];
   defaultValues?: Values;
+  onRequestDone?: () => void;
 }
 
 export const MainForm: React.FC<MainFormConfig> = ({
   defaultValues,
+  onRequestDone,
   ...props
 }) => {
   const [errors, setErrors] = useState<Errors>({});
   const [values, setValues] = useState<Values>(defaultValues || {});
-  const [loader, setLoader] = useState<boolean>();
+  const [loader, setLoader] = useState<boolean>(false);
 
   const fields: FieldInfo[][] = useMemo(
     () => [
@@ -78,6 +109,8 @@ export const MainForm: React.FC<MainFormConfig> = ({
     [values]
   );
 
+  const { openAlert } = useContext(AlertWindowContext);
+
   const onSubmit = useCallback(() => {
     const { validation, hasErrors } = validateForm(fields, values);
     setErrors(validation);
@@ -86,8 +119,32 @@ export const MainForm: React.FC<MainFormConfig> = ({
       onChangeValidation.current = true;
     } else {
       setLoader(true);
+
+      request().then((res) => {
+        setLoader(false);
+
+        if (onRequestDone) {
+          onRequestDone();
+        }
+
+        setTimeout(
+          () =>
+            openAlert(
+              res
+                ? {
+                    type: "success",
+                    ...content.alert.success,
+                  }
+                : {
+                    type: "error",
+                    ...content.alert.error,
+                  }
+            ),
+          100
+        );
+      });
     }
-  }, [values]);
+  }, [values, onRequestDone]);
 
   useEffect(() => {
     if (onChangeValidation.current) {
@@ -95,48 +152,59 @@ export const MainForm: React.FC<MainFormConfig> = ({
     }
   }, [values]);
 
-  console.log(errors);
-
   return (
-    <Wrapper>
-      <Loader show={loader} />
-      <Form>
-        {fields.map((row, i) => (
-          <Row key={i}>
-            {row.map((field, j) => {
-              const Component = fieldControls[field.type];
-              return (
-                <Col key={j}>
-                  <Group>
-                    {field.label && (
-                      <Label>
-                        {field.label}
-                        {field.required ? " *" : ""}
-                      </Label>
-                    )}
-                    <Component
-                      {...field}
-                      value={values[field.name]}
-                      error={errors[field.name]}
-                      onChange={onChange(field.name)}
-                    />
-                    {errors[field.name] && (
-                      <Form.Control.Feedback
-                        type="invalid"
-                        tooltip={false}
-                        style={{ display: "block" }}
-                      >
-                        {errors[field.name].text}
-                      </Form.Control.Feedback>
-                    )}
-                  </Group>
-                </Col>
-              );
-            })}
-          </Row>
-        ))}
-      </Form>
-      <SubmitButton onClick={onSubmit}>Отправить</SubmitButton>
-    </Wrapper>
+    <>
+      <MainFormStyle />
+      <Wrapper>
+        <Loader show={loader} />
+        <div className={clsx([["blured-form", loader]])}>
+          <Form className="custom-form">
+            {fields.map((row, i) => (
+              <Row key={i}>
+                {row.map((field, j) => {
+                  const Component = fieldControls[field.type];
+                  return (
+                    <Col key={j}>
+                      <Group>
+                        {field.label && (
+                          <Label className="custom-label">
+                            {field.label}
+                            {field.required ? (
+                              <span className="text-danger"> *</span>
+                            ) : null}
+                          </Label>
+                        )}
+                        <Component
+                          {...field}
+                          value={values[field.name]}
+                          error={errors[field.name]}
+                          onChange={onChange(field.name)}
+                        />
+                        {errors[field.name] && (
+                          <Form.Control.Feedback
+                            type="invalid"
+                            tooltip={false}
+                            style={{ display: "block" }}
+                          >
+                            {errors[field.name].text}
+                          </Form.Control.Feedback>
+                        )}
+                      </Group>
+                    </Col>
+                  );
+                })}
+              </Row>
+            ))}
+          </Form>
+          <SubmitButton
+            icon="Bucket"
+            onClick={onSubmit}
+            gradient="primary-success"
+          >
+            Отправить
+          </SubmitButton>
+        </div>
+      </Wrapper>
+    </>
   );
 };
