@@ -31,7 +31,7 @@ const SubmitButtonStyles = createGlobalStyle`
 
 interface SubmitButtonProps {
   onClick: () => void;
-  gradient?: "primary-success" | "danger-warning";
+  gradient?: string;
   icon?: string;
 }
 

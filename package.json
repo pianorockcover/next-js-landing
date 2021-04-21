@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "blobs": "^2.2.0",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
     "next": "^10.1.3",

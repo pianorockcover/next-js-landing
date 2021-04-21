@@ -11,6 +11,10 @@ const AlertStyles = createGlobalStyle`
     .custom-alert-modal-dialog {
         max-width: 400px;
     }
+
+    .custom-alert-modal-content {
+        overflow: inherit !important;
+    }
 `;
 
 const Wrapper = styled.div`
@@ -85,10 +89,6 @@ export const AlertWindow: React.FC<AlertWindowProps> = ({
   text,
   type,
 }) => {
-  const [key, setKey] = useState<number>(+new Date());
-
-  useEffect(() => setKey(+new Date()), [visible]);
-
   const Icon = useMemo(() => (type === "error" ? icons["X"] : icons["Check"]), [
     type,
   ]);
@@ -98,12 +98,11 @@ export const AlertWindow: React.FC<AlertWindowProps> = ({
       <AlertStyles />
       <ModalStyles />
       <Modal
-        key={key}
         onHide={onClose}
         show={visible}
         centered={true}
         dialogClassName="custom-alert-modal-dialog"
-        contentClassName="custom-modal-content"
+        contentClassName="custom-modal-content custom-alert-modal-content"
         backdropClassName="custom-modal-backdrop"
         backdrop="static"
         keyboard={false}

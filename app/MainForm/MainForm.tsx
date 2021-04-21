@@ -53,6 +53,8 @@ const MainFormStyle = createGlobalStyle`
 const Wrapper = styled.div`
   position: relative;
   padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 const { Label, Group } = Form;

@@ -4,7 +4,6 @@ import { X as CloseIcon } from "react-bootstrap-icons";
 import styled, { createGlobalStyle } from "styled-components";
 
 const Wrapper = styled.div`
-  padding-top: 25px;
   padding-bottom: 20px;
   position: relative;
   min-width: 300px;
@@ -14,10 +13,15 @@ const Title = styled.h3`
   text-align: center;
   padding-left: 50px;
   padding-right: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-weight: 400;
   text-transform: uppercase;
   font-size: 24px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
 `;
 
 const Close = styled.div`
@@ -42,6 +46,7 @@ export const ModalStyles = createGlobalStyle`
         border: 0;
         border-radius: 5px;
         box-shadow: 5px 5px 10px 1px #46434369;
+        overflow: hidden;
     }
     .custom-modal-backdrop.show {
         opacity: .7;
@@ -76,7 +81,7 @@ export const ModalWindow: React.FC<ModalWindowProps> = ({
           <Close onClick={onClose}>
             <CloseIcon />
           </Close>
-          <Title>{title}</Title>
+          <Title className="bg-gradient-primary-to-transparent">{title}</Title>
           {children}
         </Wrapper>
       </Modal>
