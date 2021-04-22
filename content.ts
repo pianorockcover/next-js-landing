@@ -1,6 +1,7 @@
 import { FieldType } from "./app/MainForm/interface";
 
 export const content = {
+  cash: `?v=1`,
   currency: "руб.",
   siteTitle: "Подключите виджет вовлекающих квиз-опросов за 10 минут  ",
   modalTitle: "Оставьте заявку",
@@ -15,10 +16,10 @@ export const content = {
     },
   },
   headerBlob: {
-    seed: 0.16117663534521936935,
-    extraPoints: 10,
-    randomness: 30,
-    size: 1000,
+    seed: 75.342342342342,
+    extraPoints: 5,
+    randomness: 10,
+    size: 1300,
   },
   feedbackForm: {
     fields: [

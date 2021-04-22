@@ -1,6 +1,6 @@
 /* Bootstrap Coloring */
 
-$primary: #b03dfc;
+$primary: #2196F3;
 $secondary: #6c757d;
 $success: #41ec86;
 $info: #0dcaf0;
@@ -9,31 +9,6 @@ $danger: #fa7496;
 $light: #f8f9fa;
 $dark: #212529;
 
+$enableHeaderShapeGradient: false;
+
 /* --- */
-
-.bg-gradient-primary-success {
-    background: linear-gradient(to right, $primary, $success);
-}
-
-.bg-header {
-    border-top: 5px solid $primary;
-    background: linear-gradient(-45deg, rgba(darken($primary, 50%), .8), $primary);
-}
-
-.bg-gradient-primary-to-transparent {
-    background: linear-gradient(to right, darken($primary, 10%), rgba($primary, .5));
-}
-
-.bg-gradient-danger-warning {
-    background: linear-gradient(to right, $danger, $warning);
-}
-
-.bg-gradient-warning-success {
-    background: linear-gradient(to right, $success, $warning);
-}
-
-.fill-bubble {
-    fill: darken($primary, 25%);
-}
-
-@import "~bootstrap/scss/bootstrap.scss";

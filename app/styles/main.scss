@@ -1,0 +1,37 @@
+@import "../../theme.scss";
+
+.bg-gradient-primary-success {
+    background: linear-gradient(to right, $primary, $success);
+}
+
+.bg-header {
+    background: linear-gradient(-45deg, lighten($primary, 20%), darken($primary, 20%));
+}
+
+.bg-random-shape {
+    @if $enableHeaderShapeGradient {
+        background: linear-gradient(-45deg, rgba(#444444, .6), rgba($primary, .5));
+    }
+}
+
+.bg-gradient-primary-to-transparent {
+    background: linear-gradient(to right, darken($primary, 10%), rgba($primary, .5));
+}
+
+.bg-gradient-danger-warning {
+    background: linear-gradient(to right, $danger, $warning);
+}
+
+.bg-gradient-warning-success {
+    background: linear-gradient(to right, $success, $warning);
+}
+
+.fill-bubble-1 {
+    fill: lighten($primary, 10%);
+}
+
+.fill-bubble-2 {
+    fill: lighten($primary, 3%);
+}
+
+@import "~bootstrap/scss/bootstrap.scss";

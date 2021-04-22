@@ -16,23 +16,13 @@ const HeaderStyles = createGlobalStyle`
 `;
 
 const SiteHeader = styled.div`
+  color: #ffffff;
   height: 660px;
   width: 100%;
   overflow: hidden;
-  background: url(/images/header-bg.jpg);
-  background-size: cover;
-  background-position-x: center;
-  background-position-y: top;
-  background-repeat: no-repeat;
-`;
-
-const HeaderGradient = styled.div`
-  height: 100%;
 `;
 
 const SiteTitle = styled.div`
-  color: #ffffff;
-  text-shadow: 0 5px 7px rgb(0 0 0 / 44%);
   line-height: 55px;
   font-weight: 600;
   font-size: 45px;
@@ -48,21 +38,18 @@ export const Header: React.FC = () => {
   return (
     <>
       <HeaderStyles />
-      <SiteHeader>
-        <HeaderGradient className="bg-header">
-          <Container className="custom-header-container">
-            <RandomShape />
-            <HeaderContent>
-              <Row>
-                <Col md={7}>
-                  <SiteTitle>{content.siteTitle}</SiteTitle>
-                  <FeedbackForm />
-                </Col>
-                <Col md={5}></Col>
-              </Row>
-            </HeaderContent>
-          </Container>
-        </HeaderGradient>
+      <SiteHeader className="bg-header">
+        <Container className="custom-header-container">
+          <RandomShape />
+          <HeaderContent>
+            <Row>
+              <Col md={7}>
+                <SiteTitle>{content.siteTitle}</SiteTitle>
+                <FeedbackForm />
+              </Col>
+            </Row>
+          </HeaderContent>
+        </Container>
       </SiteHeader>
     </>
   );

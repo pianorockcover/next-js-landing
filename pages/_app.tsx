@@ -1,5 +1,5 @@
 import React from "react";
-import "../theme.scss";
+import "../app/styles/main.scss";
 
 const App = ({ Component, pageProps }) => <Component {...pageProps} />;
 

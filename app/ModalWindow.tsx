@@ -19,7 +19,6 @@ const Title = styled.h3`
   font-size: 24px;
   padding-top: 25px;
   padding-bottom: 25px;
-  color: #fff;
   font-weight: 500;
   letter-spacing: 1px;
 `;
@@ -81,7 +80,7 @@ export const ModalWindow: React.FC<ModalWindowProps> = ({
           <Close onClick={onClose}>
             <CloseIcon />
           </Close>
-          <Title className="bg-gradient-primary-to-transparent">{title}</Title>
+          <Title>{title}</Title>
           {children}
         </Wrapper>
       </Modal>
