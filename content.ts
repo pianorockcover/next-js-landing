@@ -4,6 +4,7 @@ export const content = {
   cash: `?v=1`,
   currency: "руб.",
   headerHeight: 700,
+  headerContentWidth: 7,
   siteTitle: "Подключите виджет вовлекающих квиз-опросов за 10 минут",
   subTitle: "И увеличьте количество <br>заявок с сайта до 1.5 раз",
   headerBubble:
@@ -14,6 +15,20 @@ export const content = {
     text: "Оставить заявку",
     icon: "Cart",
   },
+  headerSocials: [
+    {
+      icon: "InstagramIcon",
+      link: "#",
+    },
+    {
+      icon: "VkIcon",
+      link: "#",
+    },
+    {
+      icon: "YoutubeIcon",
+      link: "#",
+    },
+  ],
   alert: {
     success: {
       title: "Спасибо!",
@@ -25,15 +40,13 @@ export const content = {
     },
   },
   headerBlob: {
-    seed: 753427.988,
+    seed: 2.88,
     extraPoints: 8,
-    randomness: 10,
-    size: 1200,
+    randomness: 3,
+    size: 1000,
     position: {
-      left: "auto",
-      bottom: "auto",
-      top: "-300px",
-      right: "-500px",
+      top: -100,
+      right: -500,
     },
   },
   feedbackForm: {

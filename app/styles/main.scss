@@ -10,7 +10,7 @@
 
 .bg-random-shape {
     @if $enableHeaderShapeGradient {
-        background: linear-gradient(-45deg, rgba(#444444, .6), rgba($primary, .5));
+        background: linear-gradient(-45deg, rgba(#ffffff, .05), rgba($primary, .3));
     }
 }
 
@@ -44,10 +44,6 @@
 
 .border-warning-tr {
     border-color: rgba($warning, .6);
-}
-
-.border-success {
-    border-color: $success;
 }
 
 @import "~bootstrap/scss/bootstrap.scss";

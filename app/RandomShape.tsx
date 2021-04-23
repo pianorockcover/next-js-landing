@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { svgPath } from "blobs/v2";
 import styled from "styled-components";
 import { content } from "../content";
+import { navbarHeight } from "./Navbar/Navbar";
 
 const RandomShapeArea = styled.div`
   position: absolute;
   width: ${content.headerBlob.size}px;
   height: ${content.headerBlob.size}px;
-  top: ${content.headerBlob.position.top};
-  left: ${content.headerBlob.position.left};
-  right: ${content.headerBlob.position.right};
-  bottom: ${content.headerBlob.position.bottom};
+  top: ${content.headerBlob.position.top - navbarHeight}px;
+  left: auto;
+  right: ${content.headerBlob.position.right}px;
+  bottom: auto;
   left: auto;
   z-index: 1;
 `;

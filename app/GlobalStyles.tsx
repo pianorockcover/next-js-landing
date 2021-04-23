@@ -136,6 +136,12 @@ export const GlobalStyles = createGlobalStyle`
     body {
         min-width: 320px;
         font-family: 'Roboto';
+
+        &.modal-open {
+            #__next {
+                filter: blur(3px);
+            }
+        }
     }
 
     *::-webkit-scrollbar {

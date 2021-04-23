@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import styled, { createGlobalStyle } from "styled-components";
 import { content } from "../content";
 import { FeedbackForm } from "./FeedbackForm";
+import { navbarHeight } from "./Navbar/Navbar";
 import { RandomShape } from "./RandomShape";
 
 const HeaderStyles = createGlobalStyle`
@@ -20,6 +21,7 @@ const SiteHeader = styled.div`
   height: ${content.headerHeight}px;
   width: 100%;
   overflow: hidden;
+  padding-top: ${navbarHeight}px;
 `;
 
 const SubHeader = styled.div`
@@ -64,7 +66,8 @@ const SiteTitle = styled.div`
   font-weight: 600;
   font-size: 45px;
   margin-bottom: 25px;
-  text-shadow: 0 5px 7px rgb(0 0 0 / 44%);
+  margin-top: 25px;
+  text-shadow: 0 5px 7px rgb(0 0 0 / 38%);
 `;
 
 const HeaderContent = styled.div`
@@ -108,7 +111,7 @@ export const Header: React.FC = () => {
           <RandomShape />
           <HeaderContent>
             <Row>
-              <Col md={7}>
+              <Col md={content.headerContentWidth}>
                 <SiteTitle
                   dangerouslySetInnerHTML={{ __html: content.siteTitle }}
                 />
