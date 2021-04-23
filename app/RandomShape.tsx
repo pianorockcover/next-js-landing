@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { svgPath } from "blobs/v2";
 import styled from "styled-components";
 import { content } from "../content";
 import { navbarHeight } from "./Navbar/Navbar";
+import * as icons from "react-bootstrap-icons";
 
 const RandomShapeArea = styled.div`
   position: absolute;
@@ -22,7 +23,7 @@ const RandomShapeWrapper = styled.div`
   top: 0px;
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 4;
   background-image: url(/images/header-bg.jpg${content.cash});
   clip-path: url(#headerArtClip);
   background-size: cover;
@@ -64,6 +65,22 @@ const SvgTwo = styled.svg`
   z-index: 2;
 `;
 
+const Icon = styled.div`
+  position: absolute;
+  z-index: 4;
+  color: #ffffff;
+  opacity: 0.4;
+  margin-top: 60%;
+  margin-left: -30px;
+  width: 30px;
+  height: 30px;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 export const RandomShape: React.FC = () => {
   const [path, setPath] = useState<string>();
 
@@ -91,6 +108,14 @@ export const RandomShape: React.FC = () => {
       <RandomShapeWrapper>
         <Gradient className="bg-random-shape" />
       </RandomShapeWrapper>
+      {content.headerBlob.icons.map((icon) => {
+        const IconComponent = useMemo(() => icons[icon.type], []);
+        return (
+          <Icon style={icon["style"]}>
+            <IconComponent />
+          </Icon>
+        );
+      })}
     </RandomShapeArea>
   );
 };

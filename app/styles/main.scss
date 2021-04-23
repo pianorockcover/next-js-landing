@@ -8,6 +8,8 @@
     background: linear-gradient(-45deg, lighten($primary, 20%), darken($primary, 20%));
 }
 
+$enableHeaderShapeGradient: true;
+
 .bg-random-shape {
     @if $enableHeaderShapeGradient {
         background: linear-gradient(-45deg, rgba(#ffffff, .05), rgba($primary, .3));

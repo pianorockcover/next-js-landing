@@ -48,6 +48,28 @@ export const content = {
       top: -100,
       right: -500,
     },
+    icons: [
+      {
+        type: "Box",
+      },
+      {
+        type: "Box",
+        style: {
+          top: 50,
+          left: -20,
+        },
+      },
+      {
+        type: "Box",
+        style: {
+          top: 100,
+          left: 20,
+          width: 50,
+          height: 50,
+          opacity: 0.2,
+        },
+      },
+    ],
   },
   feedbackForm: {
     fields: [
