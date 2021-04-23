@@ -3,10 +3,9 @@ import { Button } from "react-bootstrap";
 import { createGlobalStyle } from "styled-components";
 import * as icons from "react-bootstrap-icons";
 
-const SubmitButtonStyles = createGlobalStyle`
-    .custom-submit-button {
+const ActionButtonStyles = createGlobalStyle`
+    .custom-action-button {
         border: 0px;
-        font-weight: 300;
         letter-spacing: 1px;
         border-radius: 50px;
         padding-left: 30px;
@@ -24,20 +23,18 @@ const SubmitButtonStyles = createGlobalStyle`
         }
 
         &:hover {
-            box-shadow: 0px 3px 10px 0.5px #2525253b;
+            box-shadow: 0px 3px 10px 0.5px #252525ab;
         }
     }
 `;
 
-interface SubmitButtonProps {
+interface ActionButtonProps {
   onClick: () => void;
-  gradient?: string;
   icon?: string;
 }
 
-export const SubmitButton: React.FC<SubmitButtonProps> = ({
+export const ActionButton: React.FC<ActionButtonProps> = ({
   onClick,
-  gradient,
   children,
   icon,
 }) => {
@@ -47,10 +44,12 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
 
   return (
     <>
-      <SubmitButtonStyles />
+      <ActionButtonStyles />
       <Button
+        variant="warning"
+        size="lg"
         onClick={onClick}
-        className={`custom-submit-button bg-gradient-${gradient}`}
+        className="custom-action-button"
       >
         <Icon />
         {children}

@@ -7,8 +7,10 @@ const RandomShapeArea = styled.div`
   position: absolute;
   width: ${content.headerBlob.size}px;
   height: ${content.headerBlob.size}px;
-  top: -300px;
-  right: -500px;
+  top: ${content.headerBlob.position.top};
+  left: ${content.headerBlob.position.left};
+  right: ${content.headerBlob.position.right};
+  bottom: ${content.headerBlob.position.bottom};
   left: auto;
   z-index: 1;
 `;

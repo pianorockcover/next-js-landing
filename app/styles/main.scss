@@ -26,12 +26,28 @@
     background: linear-gradient(to right, $success, $warning);
 }
 
+.bg-darken-tr {
+    background: rgba($dark, .6);
+}
+
+.after-border-darken-tr:after {
+    border-color: rgba($dark, .6);
+}
+
 .fill-bubble-1 {
     fill: lighten($primary, 10%);
 }
 
 .fill-bubble-2 {
     fill: lighten($primary, 3%);
+}
+
+.border-warning-tr {
+    border-color: rgba($warning, .6);
+}
+
+.border-success {
+    border-color: $success;
 }
 
 @import "~bootstrap/scss/bootstrap.scss";

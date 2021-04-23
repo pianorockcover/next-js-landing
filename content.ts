@@ -3,8 +3,17 @@ import { FieldType } from "./app/MainForm/interface";
 export const content = {
   cash: `?v=1`,
   currency: "руб.",
-  siteTitle: "Подключите виджет вовлекающих квиз-опросов за 10 минут  ",
+  headerHeight: 700,
+  siteTitle: "Подключите виджет вовлекающих квиз-опросов за 10 минут",
+  subTitle: "И увеличьте количество <br>заявок с сайта до 1.5 раз",
+  headerBubble:
+    "* Увеличение заявок <b>в 4 раза</b> было в <br> нише <span class='text-warning'>«продажа сувенирных товаров»</span>",
   modalTitle: "Оставьте заявку",
+  pluses: ["Встраивается в любой сайт", "Без дизайнера и программиста"],
+  actionButton: {
+    text: "Оставить заявку",
+    icon: "Cart",
+  },
   alert: {
     success: {
       title: "Спасибо!",
@@ -16,10 +25,16 @@ export const content = {
     },
   },
   headerBlob: {
-    seed: 75.342342342342,
-    extraPoints: 5,
+    seed: 753427.988,
+    extraPoints: 8,
     randomness: 10,
-    size: 1300,
+    size: 1200,
+    position: {
+      left: "auto",
+      bottom: "auto",
+      top: "-300px",
+      right: "-500px",
+    },
   },
   feedbackForm: {
     fields: [

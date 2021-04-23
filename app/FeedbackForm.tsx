@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ModalWindow } from "../app/ModalWindow";
 import { content } from "../content";
 import { MainForm, Values } from "../app/MainForm/MainForm";
-import { SubmitButton } from "./Buttons/SubmitButton";
+import { ActionButton } from "./Buttons/ActionButton";
 
 interface FeedbackFormProps {
   defaultValues?: Values;
@@ -17,9 +17,9 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
 
   return (
     <>
-      <SubmitButton onClick={openModal} gradient="warning-success">
-        {content.modalTitle}
-      </SubmitButton>
+      <ActionButton onClick={openModal} icon={content.actionButton.icon}>
+        <span dangerouslySetInnerHTML={{ __html: content.actionButton.text }} />
+      </ActionButton>
       <ModalWindow
         visible={modal}
         title={content.modalTitle}

@@ -46,6 +46,8 @@ export const ModalStyles = createGlobalStyle`
         border-radius: 5px;
         box-shadow: 5px 5px 10px 1px #46434369;
         overflow: hidden;
+        border-top-width: 4px;
+        border-top-style: solid;
     }
     .custom-modal-backdrop.show {
         opacity: .7;
@@ -71,7 +73,7 @@ export const ModalWindow: React.FC<ModalWindowProps> = ({
         onHide={onClose}
         show={visible}
         centered={true}
-        contentClassName="custom-modal-content"
+        contentClassName="custom-modal-content border-success"
         backdropClassName="custom-modal-backdrop"
         backdrop="static"
         keyboard={false}
