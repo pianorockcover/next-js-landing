@@ -32,6 +32,10 @@ $enableHeaderShapeGradient: true;
     background: rgba($dark, .6);
 }
 
+.bg-primary-darken {
+    background: darken($primary, 5%);
+}
+
 .after-border-darken-tr:after {
     border-color: rgba($dark, .6);
 }

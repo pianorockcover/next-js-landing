@@ -58,7 +58,7 @@ const HeaderBubble = styled.div`
   color: white;
   border-radius: 24px;
   font-size: 15px;
-  padding: 10px 24px 11px;
+  padding: 10px 15px 10px;
   width: fit-content;
   max-width: 100%;
   margin-bottom: 50px;

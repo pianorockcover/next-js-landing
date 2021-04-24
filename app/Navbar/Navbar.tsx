@@ -15,8 +15,11 @@ const NavbarGlobalStyle = createGlobalStyle`
     }
 
     .nav-scrolled {
-        background: #ffffff;
         box-shadow: 0 0 30px 3px #444444;
+
+        .custom-navbar-container {
+            border-bottom: 0px;
+        }
     }
 `;
 
@@ -79,18 +82,20 @@ export const Navbar: React.FC = () => {
     allowRender && (
       <>
         <NavbarGlobalStyle />
-        <NavbarWrapper className={clsx([["nav-scrolled", scrolled]])}>
+        <NavbarWrapper
+          className={clsx([["nav-scrolled bg-primary-darken", scrolled]])}
+        >
           <Container className="custom-navbar-container">
             <Content>
               <LogoWrapper />
               <MenuWrapper>
-                <NavbarLink white={!scrolled} active={true}>
+                <NavbarLink white={true} active={true}>
                   Как работает квиз?
                 </NavbarLink>
-                <NavbarLink white={!scrolled}>Кейсы</NavbarLink>
-                <NavbarLink white={!scrolled}>Возможности</NavbarLink>
-                <NavbarLink white={!scrolled}>Тарифы</NavbarLink>
-                <NavbarLink white={!scrolled}>Блог</NavbarLink>
+                <NavbarLink white={true}>Кейсы</NavbarLink>
+                <NavbarLink white={true}>Возможности</NavbarLink>
+                <NavbarLink white={true}>Тарифы</NavbarLink>
+                <NavbarLink white={true}>Блог</NavbarLink>
               </MenuWrapper>
               <SocialWrapper>
                 {content.headerSocials.map((social, i) => (
