@@ -40,10 +40,10 @@ export const content = {
     },
   },
   headerBlob: {
-    seed: 2.88,
-    extraPoints: 8,
+    seed: 34.88,
+    extraPoints: 6,
     randomness: 3,
-    size: 1000,
+    size: 1100,
     position: {
       top: -100,
       right: -500,
@@ -126,5 +126,11 @@ export const content = {
       tariff: "Тариф 1",
       phone: "+7",
     },
+  },
+  explanation: {
+    title:
+      "Вам надоело, что <b>много посетителей на сайте, но мало продаж?</b>",
+    text:
+      "Вы платите <span>за каждого посетителя,</span> но только <span>1 из 100 покупаету вас?</span>",
   },
 };

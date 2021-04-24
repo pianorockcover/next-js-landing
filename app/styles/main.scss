@@ -48,4 +48,8 @@ $enableHeaderShapeGradient: true;
     border-color: rgba($warning, .6);
 }
 
+.shadow-primary-tr {
+    box-shadow: 0 0 30px 3px rgba($primary, .3);
+}
+
 @import "~bootstrap/scss/bootstrap.scss";

@@ -14,25 +14,19 @@ const Link = styled.a`
   border-bottom-style: solid;
   border-bottom-color: transparent;
   letter-spacing: 0.6px;
-
-  &,
-  &:hover,
-  &:active,
-  &:visited,
-  &:focus {
-    color: #ffffff;
-  }
 `;
 
 interface NavbarLinkProps {
   href?: string;
   active?: boolean;
+  white?: boolean;
 }
 
 export const NavbarLink: React.FC<NavbarLinkProps> = ({
   href,
   children,
   active,
+  white,
 }) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
@@ -45,6 +39,7 @@ export const NavbarLink: React.FC<NavbarLinkProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={clsx([["border-warning", Boolean(active || hovered)]])}
+      style={{ color: white ? "#ffffff" : "#444444" }}
     >
       {children}
     </Link>

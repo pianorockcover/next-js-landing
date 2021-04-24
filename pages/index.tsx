@@ -4,6 +4,7 @@ import { AlertWindow, AlertWindowContext } from "../app/AlertWindow";
 import { useAlert } from "../app/utils/useAlert";
 import { Header } from "../app/Header";
 import { Navbar } from "../app/Navbar/Navbar";
+import { Explanation } from "../app/Explanation";
 
 const Index: React.FC = () => {
   const { alert, openAlert } = useAlert();
@@ -13,6 +14,7 @@ const Index: React.FC = () => {
       <GlobalStyles />
       <Navbar />
       <Header />
+      <Explanation />
       <AlertWindow {...alert} />
     </AlertWindowContext.Provider>
   );

@@ -108,10 +108,10 @@ export const RandomShape: React.FC = () => {
       <RandomShapeWrapper>
         <Gradient className="bg-random-shape" />
       </RandomShapeWrapper>
-      {content.headerBlob.icons.map((icon) => {
+      {content.headerBlob.icons.map((icon, i) => {
         const IconComponent = useMemo(() => icons[icon.type], []);
         return (
-          <Icon style={icon["style"]}>
+          <Icon style={icon["style"]} key={i}>
             <IconComponent />
           </Icon>
         );

@@ -6,6 +6,8 @@ import { FeedbackForm } from "./FeedbackForm";
 import { navbarHeight } from "./Navbar/Navbar";
 import { RandomShape } from "./RandomShape";
 
+const headerBottomPadding = 500;
+
 const HeaderStyles = createGlobalStyle`
     .custom-header-container {
         height: 100%;
@@ -18,10 +20,25 @@ const HeaderStyles = createGlobalStyle`
 
 const SiteHeader = styled.div`
   color: #ffffff;
-  height: ${content.headerHeight}px;
+  height: ${content.headerHeight + headerBottomPadding}px;
   width: 100%;
   overflow: hidden;
   padding-top: ${navbarHeight}px;
+  padding-bottom: ${headerBottomPadding}px;
+  position: relative;
+
+  &:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 85%;
+    left: 0px;
+    width: 100%;
+    background: #ffffff;
+    height: 100vh;
+    transform: skewY(-3deg);
+    box-shadow: 0px 3px 10px 0.5px #25252547;
+  }
 `;
 
 const SubHeader = styled.div`
