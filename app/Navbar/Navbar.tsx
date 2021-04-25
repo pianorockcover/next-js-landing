@@ -89,13 +89,11 @@ export const Navbar: React.FC = () => {
             <Content>
               <LogoWrapper />
               <MenuWrapper>
-                <NavbarLink white={true} active={true}>
-                  Как работает квиз?
-                </NavbarLink>
-                <NavbarLink white={true}>Кейсы</NavbarLink>
-                <NavbarLink white={true}>Возможности</NavbarLink>
-                <NavbarLink white={true}>Тарифы</NavbarLink>
-                <NavbarLink white={true}>Блог</NavbarLink>
+                {content.navLinks.map((link, i) => (
+                  <NavbarLink white={true} href={link.to} active={i === 0}>
+                    {link.name}
+                  </NavbarLink>
+                ))}
               </MenuWrapper>
               <SocialWrapper>
                 {content.headerSocials.map((social, i) => (

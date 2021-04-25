@@ -2,6 +2,24 @@ import { FieldType } from "./app/MainForm/interface";
 
 export const content = {
   cash: `?v=1`,
+  navLinks: [
+    {
+      name: "Тарифы",
+      to: "#tariffs",
+    },
+    {
+      name: "О нас",
+      to: "#about",
+    },
+    {
+      name: "Отзывы",
+      to: "#reviews",
+    },
+    {
+      name: "Контакты",
+      to: "#contacts",
+    },
+  ],
   currency: "руб.",
   headerHeight: 700,
   headerContentWidth: 7,
@@ -132,5 +150,38 @@ export const content = {
       "Вам надоело, что <b>много посетителей на сайте, но мало продаж?</b>",
     text:
       "Вы платите <span>за каждого посетителя,</span> но только <span>1 из 100 покупаету вас?</span>",
+    art: [
+      {
+        path: "1.jpg",
+        diameter: 200,
+        top: 0,
+        left: 0,
+      },
+      {
+        path: "2.png",
+        diameter: 100,
+        top: -40,
+        left: 130,
+      },
+      {
+        path: "3.jpg",
+        diameter: 200,
+        top: 20,
+        left: 150,
+      },
+      {
+        path: "4.jpg",
+        diameter: 100,
+        top: 100,
+        left: 100,
+      },
+      {
+        path: "5.jpeg",
+        diameter: 150,
+        top: 0,
+        left: 300,
+      },
+    ],
+    artWidth: 450,
   },
 };

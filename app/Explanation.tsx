@@ -33,12 +33,43 @@ const Text = styled.div`
   font-size: 22px;
 `;
 
+const ArtContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Art = styled.div`
+  position: relative;
+`;
+
+const ImageContainer = styled.div`
+  position: absolute;
+  border: 1px solid #ececec;
+  box-shadow: 5px 10px 30px 3px rgb(66 66 66 / 10%);
+  padding: 7px;
+  background: #ffffff;
+  border-radius: 100%;
+`;
+
+const Image = styled.div`
+  border: 1px solid #ececec;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-y: top;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+`;
+
 export const Explanation: React.FC = () => (
   <ExplanationWrapper>
     <Container>
       <ExplanationContent className="shadow-primary-tr">
         <Row>
-          <Col md={7}>
+          <Col md={6}>
             <Title
               dangerouslySetInnerHTML={{ __html: content.explanation.title }}
             />
@@ -46,7 +77,33 @@ export const Explanation: React.FC = () => (
               dangerouslySetInnerHTML={{ __html: content.explanation.text }}
             />
           </Col>
-          <Col md={5}></Col>
+          <Col md={6}>
+            {content.explanation.art && (
+              <ArtContainer>
+                <Art style={{ width: content.explanation.artWidth }}>
+                  {content.explanation.art.map(
+                    ({ path, diameter, ...style }, i) => (
+                      <ImageContainer
+                        key={i}
+                        style={{
+                          ...style,
+                          width: diameter,
+                          height: diameter,
+                          zIndex: i + 1,
+                        }}
+                      >
+                        <Image
+                          style={{
+                            backgroundImage: `url(/images/explanation/${path}${content.cash})`,
+                          }}
+                        />
+                      </ImageContainer>
+                    )
+                  )}
+                </Art>
+              </ArtContainer>
+            )}
+          </Col>
         </Row>
       </ExplanationContent>
     </Container>
