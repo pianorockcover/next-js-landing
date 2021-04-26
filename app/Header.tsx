@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useCallback, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled, { createGlobalStyle } from "styled-components";
 import { content } from "../content";
-import { FeedbackForm } from "./FeedbackForm";
+import { ActionButton } from "./Buttons/ActionButton";
+import { FeedbackForm, FeedbackFormContext } from "./FeedbackForm";
 import { navbarHeight } from "./Navbar/Navbar";
 import { RandomShape } from "./RandomShape";
 
@@ -120,6 +121,9 @@ const Plus = styled.div`
 `;
 
 export const Header: React.FC = () => {
+  const { toggleFeedback } = useContext(FeedbackFormContext);
+  const openFeedback = useCallback(() => toggleFeedback({ visible: true }), []);
+
   return (
     <>
       <HeaderStyles />
@@ -145,7 +149,17 @@ export const Header: React.FC = () => {
                     <Plus key={i}>{plus}</Plus>
                   ))}
                 </PlusesWrapper>
-                <FeedbackForm />
+
+                <ActionButton
+                  onClick={openFeedback}
+                  icon={content.actionButton.icon}
+                >
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: content.actionButton.text,
+                    }}
+                  />
+                </ActionButton>
               </Col>
             </Row>
           </HeaderContent>

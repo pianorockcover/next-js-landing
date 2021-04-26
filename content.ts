@@ -1,4 +1,5 @@
 import { FieldType } from "./app/MainForm/interface";
+import { ProductProps } from "./app/Product/Product";
 
 export const content = {
   cash: `?v=1`,
@@ -111,7 +112,7 @@ export const content = {
         {
           type: FieldType.select,
           label: "Тариф",
-          name: "tariff",
+          name: "product",
           required: true,
           options: ["Тариф 1", "Тариф 2", "Тариф 3"],
           optionParams: {
@@ -183,5 +184,52 @@ export const content = {
       },
     ],
     artWidth: 450,
+  },
+  products: [
+    {
+      id: 1,
+      name: "Мокрые кроссы",
+      pluses: ["Не промыкают", "А могут и промокать"],
+      price: 2000,
+      subName: "Капают капают с неба",
+      image: "1.png",
+      labels: [
+        {
+          text: "Выбор посетителей",
+          color: "success",
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Мокрые кроссы",
+      pluses: ["Не промыкают", "А могут и промокать"],
+      price: 5400,
+      subName: "Капают капают с неба",
+      image: "2.jpg",
+      labels: [
+        {
+          text: "Хит продаж",
+          color: "warning",
+        },
+        {
+          text: "Скидка 10%",
+          color: "danger",
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: "Мокрые кроссы",
+      pluses: ["Не промыкают", "А могут и промокать"],
+      minuses: ["А вот этого в тарифе нема"],
+      price: 5400,
+      subName: "Капают капают с неба",
+      image: "3.jpg",
+    },
+  ] as ProductProps[],
+  productBuyBtn: {
+    text: "Заказать",
+    icon: "Cart",
   },
 };

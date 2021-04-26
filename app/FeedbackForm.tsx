@@ -1,39 +1,37 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { ModalWindow } from "../app/ModalWindow";
 import { content } from "../content";
 import { MainForm, Values } from "../app/MainForm/MainForm";
-import { ActionButton } from "./Buttons/ActionButton";
 
-interface FeedbackFormProps {
+export interface FeedbackFormProps {
   defaultValues?: Values;
+  visible?: boolean;
+  onClose?: () => void;
 }
+
+export interface FeedbackContextProps {
+  toggleFeedback: (props: FeedbackFormProps) => void;
+}
+
+export const FeedbackFormContext = createContext<FeedbackContextProps>({
+  toggleFeedback: () => null,
+});
 
 export const FeedbackForm: React.FC<FeedbackFormProps> = ({
   defaultValues,
+  visible,
+  onClose,
 }) => {
-  const [modal, setModal] = useState<boolean>();
-  const openModal = () => setModal(true);
-  const closeModal = () => setModal(false);
-
   return (
-    <>
-      <ActionButton onClick={openModal} icon={content.actionButton.icon}>
-        <span dangerouslySetInnerHTML={{ __html: content.actionButton.text }} />
-      </ActionButton>
-      <ModalWindow
-        visible={modal}
-        title={content.modalTitle}
-        onClose={closeModal}
-      >
-        <MainForm
-          onRequestDone={closeModal}
-          fields={content.feedbackForm.fields}
-          defaultValues={{
-            ...content.feedbackForm.defaultValues,
-            ...(defaultValues ? defaultValues : {}),
-          }}
-        />
-      </ModalWindow>
-    </>
+    <ModalWindow visible={visible} title={content.modalTitle} onClose={onClose}>
+      <MainForm
+        onRequestDone={onClose}
+        fields={content.feedbackForm.fields}
+        defaultValues={{
+          ...content.feedbackForm.defaultValues,
+          ...(defaultValues ? defaultValues : {}),
+        }}
+      />
+    </ModalWindow>
   );
 };
