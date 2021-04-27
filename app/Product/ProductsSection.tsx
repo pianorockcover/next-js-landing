@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
 import { content } from "../../content";
-import { Product } from "./Product";
+import { ProductElement } from "./ProductElement";
 
 const ProductsSectionWrapper = styled.div`
   background: #eee;
@@ -20,7 +20,7 @@ export const ProductsSection: React.FC = () => (
     <Container>
       <ProductContent>
         {content.products.map((product, i) => (
-          <Product {...product} key={i} />
+          <ProductElement {...product} key={i} />
         ))}
       </ProductContent>
     </Container>

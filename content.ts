@@ -190,9 +190,10 @@ export const content = {
       id: 1,
       name: "Мокрые кроссы",
       pluses: ["Не промыкают", "А могут и промокать"],
+      minuses: ["Не промыкают", "А могут и промокать"],
       price: 2000,
       subName: "Капают капают с неба",
-      image: "1.png",
+      images: ["1.png"],
       labels: [
         {
           text: "Выбор посетителей",
@@ -203,10 +204,15 @@ export const content = {
     {
       id: 2,
       name: "Мокрые кроссы",
-      pluses: ["Не промыкают", "А могут и промокать"],
+      pluses: [
+        "Не промыкают",
+        "А могут и промокать",
+        "Не промыкают",
+        "А могут и промокать",
+      ],
       price: 5400,
       subName: "Капают капают с неба",
-      image: "2.jpg",
+      images: ["1.png", "2.jpg"],
       labels: [
         {
           text: "Хит продаж",
@@ -225,11 +231,7 @@ export const content = {
       minuses: ["А вот этого в тарифе нема"],
       price: 5400,
       subName: "Капают капают с неба",
-      image: "3.jpg",
+      images: ["3.jpg", "1.png", "2.jpg"],
     },
   ] as ProductProps[],
-  productBuyBtn: {
-    text: "Заказать",
-    icon: "Cart",
-  },
 };

@@ -11,6 +11,8 @@ import {
   FeedbackFormContext,
   FeedbackFormProps,
 } from "../app/FeedbackForm";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Index: React.FC = () => {
   const { alert, openAlert } = useAlert();

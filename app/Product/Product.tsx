@@ -1,10 +1,9 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useMemo } from "react";
 import styled from "styled-components";
 import { content } from "../../content";
 import { formatPrice } from "../utils/formatPrice";
 import { Check, DashCircle } from "react-bootstrap-icons";
 import { SubmitButton } from "../Buttons/SubmitButton";
-import { FeedbackFormContext } from "../FeedbackForm";
 
 const ProductContainer = styled.div`
   position: relative;
@@ -81,10 +80,13 @@ const SubName = styled.div`
   opacity: 0.7;
   margin-top: 7px;
 `;
+
 const PlusesWrapper = styled.div`
   padding-top: 20px;
+  overflow: auto;
   padding-bottom: 20px;
 `;
+
 const Plus = styled.div`
   display: flex;
   align-items: center;
@@ -163,9 +165,18 @@ const Label = styled.div`
   }
 `;
 
+const fullViewContainerStyle = { display: "flex", height: "100%" };
+
+const fullViewWraperStyle = {
+  boxShadow: "none",
+  width: "100%",
+};
+
+const fullViewPlusesStyle = { flex: 1 };
+
 export interface ProductProps {
   id: number;
-  image?: string;
+  images?: string[];
   price: number;
   name: string;
   subName?: string;
@@ -176,6 +187,8 @@ export interface ProductProps {
     text: string;
     color: "warning" | "success" | "danger";
   }[];
+  onClick?: (id: number) => () => void;
+  fullView?: boolean;
 }
 
 export const Product: React.FC<ProductProps> = ({
@@ -183,41 +196,38 @@ export const Product: React.FC<ProductProps> = ({
   price,
   subName,
   name,
-  image,
+  images,
   pluses,
   labels,
   imageHeight,
   minuses,
+  fullView,
+  onClick,
 }) => {
-  const { toggleFeedback } = useContext(FeedbackFormContext);
-
-  const openFeedback = useCallback(
-    (name: string) => () =>
-      toggleFeedback({
-        defaultValues: {
-          product: name,
-        },
-        visible: true,
-      }),
-    []
-  );
-
   return (
-    <ProductContainer>
-      <Bg style={{ transform: "rotate(-5deg)", left: -5 }} />
-      <Bg style={{ transform: "rotate(5deg)", right: -5 }} />
-      <Wrapper>
-        <LabelsWrapper>
-          {labels &&
-            labels.map((label, i) => (
-              <Label className={`bg-product-label-${label.color}`} key={i}>
-                {label.text}
-              </Label>
-            ))}
-        </LabelsWrapper>
-        <Image style={{ height: imageHeight }}>
-          <img src={`/images/products/${id}/${image}${content.cash}`} />
-        </Image>
+    <ProductContainer style={fullView && fullViewContainerStyle}>
+      {!fullView && (
+        <>
+          <Bg style={{ transform: "rotate(-5deg)", left: -5 }} />
+          <Bg style={{ transform: "rotate(5deg)", right: -5 }} />
+        </>
+      )}
+      <Wrapper style={fullView && fullViewWraperStyle}>
+        {!fullView && (
+          <LabelsWrapper>
+            {labels &&
+              labels.map((label, i) => (
+                <Label className={`bg-product-label-${label.color}`} key={i}>
+                  {label.text}
+                </Label>
+              ))}
+          </LabelsWrapper>
+        )}
+        {!fullView && (
+          <Image style={{ height: imageHeight }}>
+            <img src={`/images/products/${id}/${images[0]}${content.cash}`} />
+          </Image>
+        )}
         <Name>
           <span dangerouslySetInnerHTML={{ __html: name }} />
           <SubName dangerouslySetInnerHTML={{ __html: subName }} />
@@ -225,9 +235,9 @@ export const Product: React.FC<ProductProps> = ({
         <Price className="bg-warning">
           {formatPrice(price)} {content.currency}
         </Price>
-        <PlusesWrapper>
+        <PlusesWrapper style={fullView && fullViewPlusesStyle}>
           <>
-            {pluses.map((plus, i) => (
+            {pluses.slice(0, !fullView ? 2 : pluses.length).map((plus, i) => (
               <Plus key={i}>
                 <Check className="text-success" />
                 <span dangerouslySetInnerHTML={{ __html: plus }} />
@@ -235,15 +245,17 @@ export const Product: React.FC<ProductProps> = ({
             ))}
             {minuses && (
               <>
-                {minuses.map((minus, i) => (
-                  <Minus key={i}>
-                    <DashCircle
-                      style={{ width: 25, height: 25 }}
-                      className="text-danger"
-                    />
-                    <span dangerouslySetInnerHTML={{ __html: minus }} />
-                  </Minus>
-                ))}
+                {minuses
+                  .slice(0, !fullView ? 2 : minuses.length)
+                  .map((minus, i) => (
+                    <Minus key={i}>
+                      <DashCircle
+                        style={{ width: 25, height: 25 }}
+                        className="text-danger"
+                      />
+                      <span dangerouslySetInnerHTML={{ __html: minus }} />
+                    </Minus>
+                  ))}
               </>
             )}
           </>
@@ -251,10 +263,10 @@ export const Product: React.FC<ProductProps> = ({
         <BtnWrapper>
           <SubmitButton
             gradient="primary-success"
-            icon={content.productBuyBtn.icon}
-            onClick={openFeedback(name)}
+            icon={fullView ? "Cart" : undefined}
+            onClick={onClick && onClick(id)}
           >
-            {content.productBuyBtn.text}
+            {fullView ? "Заказать" : "Подробнее"}
           </SubmitButton>
         </BtnWrapper>
       </Wrapper>

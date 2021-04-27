@@ -90,7 +90,12 @@ export const Navbar: React.FC = () => {
               <LogoWrapper />
               <MenuWrapper>
                 {content.navLinks.map((link, i) => (
-                  <NavbarLink white={true} href={link.to} active={i === 0}>
+                  <NavbarLink
+                    white={true}
+                    href={link.to}
+                    key={i}
+                    active={i === 0}
+                  >
                     {link.name}
                   </NavbarLink>
                 ))}
