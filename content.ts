@@ -1,5 +1,78 @@
-import { FieldType } from "./app/MainForm/interface";
+import { FieldInfo, FieldType } from "./app/MainForm/interface";
 import { ProductProps } from "./app/Product/Product";
+
+const products: ProductProps[] = [
+  {
+    id: 1,
+    name: "Мокрые кроссы",
+    options: [
+      {
+        plus: true,
+        title: "Не промыкают",
+      },
+      {
+        title: "Гавно",
+      },
+    ],
+    price: 2000,
+    subName: "Капают капают с неба",
+    images: ["1.png"],
+    labels: [
+      {
+        text: "Выбор посетителей",
+        color: "success",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Мокрые кроссы",
+    options: [
+      {
+        plus: true,
+        title: "1 Не промыкают",
+      },
+      {
+        plus: true,
+        title: "2 Не гавно",
+      },
+      {
+        plus: true,
+        title: "3 Не промыкают",
+      },
+      {
+        title: "4 Не гавно",
+      },
+      {
+        plus: true,
+        title: "5 Не промыкают",
+      },
+      {
+        title: "6 Не гавно",
+      },
+    ],
+    price: 5400,
+    subName: "Капают капают с неба",
+    images: ["1.png", "2.jpg"],
+    labels: [
+      {
+        text: "Хит продаж",
+        color: "warning",
+      },
+      {
+        text: "Скидка 10%",
+        color: "danger",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Мокрые кроссы",
+    price: 5400,
+    subName: "Капают капают с неба",
+    images: ["3.jpg", "1.png", "2.jpg"],
+  },
+];
 
 export const content = {
   cash: `?v=1`,
@@ -114,22 +187,7 @@ export const content = {
           label: "Тариф",
           name: "product",
           required: true,
-          options: ["Тариф 1", "Тариф 2", "Тариф 3"],
-          optionParams: {
-            "Тариф 1": {
-              price: 3000,
-              image: "1.jpg",
-            },
-            "Тариф 2": {
-              hit: true,
-              price: 2300,
-              image: "2.jpg",
-            },
-            "Тариф 3": {
-              price: 2300,
-              image: "3.jpg",
-            },
-          },
+          options: products,
         },
       ],
       [
@@ -140,7 +198,7 @@ export const content = {
           name: "phone",
         },
       ],
-    ],
+    ] as FieldInfo[][],
     defaultValues: {
       tariff: "Тариф 1",
       phone: "+7",
@@ -185,53 +243,5 @@ export const content = {
     ],
     artWidth: 450,
   },
-  products: [
-    {
-      id: 1,
-      name: "Мокрые кроссы",
-      pluses: ["Не промыкают", "А могут и промокать"],
-      minuses: ["Не промыкают", "А могут и промокать"],
-      price: 2000,
-      subName: "Капают капают с неба",
-      images: ["1.png"],
-      labels: [
-        {
-          text: "Выбор посетителей",
-          color: "success",
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "Мокрые кроссы",
-      pluses: [
-        "Не промыкают",
-        "А могут и промокать",
-        "Не промыкают",
-        "А могут и промокать",
-      ],
-      price: 5400,
-      subName: "Капают капают с неба",
-      images: ["1.png", "2.jpg"],
-      labels: [
-        {
-          text: "Хит продаж",
-          color: "warning",
-        },
-        {
-          text: "Скидка 10%",
-          color: "danger",
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: "Мокрые кроссы",
-      pluses: ["Не промыкают", "А могут и промокать"],
-      minuses: ["А вот этого в тарифе нема"],
-      price: 5400,
-      subName: "Капают капают с неба",
-      images: ["3.jpg", "1.png", "2.jpg"],
-    },
-  ] as ProductProps[],
+  products,
 };

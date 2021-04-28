@@ -197,7 +197,7 @@ export const MainForm: React.FC<MainFormConfig> = ({
             ))}
           </Form>
           <SubmitButton
-            icon="Bucket"
+            icon="Cart"
             onClick={onSubmit}
             gradient="primary-success"
           >

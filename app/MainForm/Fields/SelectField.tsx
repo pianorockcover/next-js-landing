@@ -1,14 +1,10 @@
 import React, { useCallback } from "react";
 import { Badge, Dropdown } from "react-bootstrap";
-import {
-  FieldInfo,
-  FieldProps,
-  FieldValue,
-  SelectFieldParams,
-} from "../interface";
+import { FieldInfo, FieldProps, FieldValue } from "../interface";
 import styled, { createGlobalStyle } from "styled-components";
 import { content } from "../../../content";
 import { formatPrice } from "../../utils/formatPrice";
+import { ProductProps } from "../../Product/Product";
 
 const SelectStyles = createGlobalStyle`
     .custom-select-btn,
@@ -24,6 +20,11 @@ const SelectStyles = createGlobalStyle`
         border-color: #ced4da;
 
         .custom-form-control;
+    }
+
+    .custom-badge {
+        margin-bottom: 5px;
+        display: block;
     }
 
     .custom-select-btn:hover {
@@ -46,7 +47,7 @@ const OptionContent = styled.div`
   flex: 1;
 `;
 
-const HitLabel = styled.div`
+const Labels = styled.div`
   position: absolute;
   right: 0px;
   top: 0px;
@@ -71,21 +72,12 @@ const Image = styled.img`
 
 const { Toggle, Menu, Item } = Dropdown;
 
-const getOptionParams = (
-  value?: FieldValue,
-  optionParams?: {
-    [key: string]: SelectFieldParams;
-  }
-) => ({
-  ...(value && optionParams && optionParams[String(value)]
-    ? optionParams[String(value)]
-    : {}),
-});
+const getOptionParams = (options: ProductProps[], value?: FieldValue) =>
+  options.find(({ id }) => id === value) || ({} as any);
 
 export const SelectField: React.FC<FieldInfo & FieldProps> = ({
   value,
   options,
-  optionParams,
   ...props
 }) => {
   const onChange = useCallback((v) => () => props.onChange(v), [
@@ -99,18 +91,16 @@ export const SelectField: React.FC<FieldInfo & FieldProps> = ({
           variant="default"
           className="custom-select-btn custom-form-control"
         >
-          <Option
-            text={String(value)}
-            {...getOptionParams(value, optionParams)}
-          />
+          <Option {...getOptionParams(options, value)} />
         </Toggle>
         <Menu className="custom-dropdown">
           {(options || []).map((option, i) => (
-            <Item key={i} onClick={onChange(option)} active={value === option}>
-              <Option
-                text={String(value)}
-                {...getOptionParams(option, optionParams)}
-              />
+            <Item
+              key={i}
+              onClick={onChange(option.id)}
+              active={value === option.id}
+            >
+              <Option {...getOptionParams(options, option.id)} />
             </Item>
           ))}
         </Menu>
@@ -119,25 +109,31 @@ export const SelectField: React.FC<FieldInfo & FieldProps> = ({
   );
 };
 
-type OptionProps = {
-  text?: string;
-} & SelectFieldParams;
-
-const Option: React.FC<OptionProps> = ({ text, price, hit, image }) => (
+const Option: React.FC<ProductProps> = ({
+  id,
+  images,
+  name,
+  price,
+  labels,
+}) => (
   <OptionWrapper>
-    {image && <Image src={`/images/tariffs/${image}`} />}
+    {images && (
+      <Image src={`/images/products/${id}/${images[0]}${content.cash}`} />
+    )}
     <OptionContent>
-      <Label>{text}</Label>
+      <Label>{name}</Label>
       <Price>
         {formatPrice(price)} {content.currency}
       </Price>
     </OptionContent>
-    {hit && (
-      <HitLabel>
-        <Badge pill variant="warning">
-          Хит
-        </Badge>
-      </HitLabel>
+    {labels && (
+      <Labels>
+        {labels.map(({ color, text }, i) => (
+          <Badge className="custom-badge" key={i} pill variant={color}>
+            {text}
+          </Badge>
+        ))}
+      </Labels>
     )}
   </OptionWrapper>
 );

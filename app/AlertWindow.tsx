@@ -19,6 +19,8 @@ const AlertStyles = createGlobalStyle`
 
 const Wrapper = styled.div`
   position: relative;
+  background: #ffffff;
+  box-shadow: 5px 5px 10px 1px #46434369;
 `;
 
 const Content = styled.div`

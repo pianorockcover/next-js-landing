@@ -1,3 +1,5 @@
+import { ProductProps } from "../Product/Product";
+
 export enum FieldType {
   text = "text",
   email = "email",
@@ -16,16 +18,7 @@ export type FieldInfo = {
 } & SelectFieldInfo;
 
 export interface SelectFieldInfo {
-  options?: string[];
-  optionParams?: {
-    [key: string]: SelectFieldParams;
-  };
-}
-
-export interface SelectFieldParams {
-  price?: number;
-  hit?: boolean;
-  image?: string;
+  options?: ProductProps[];
 }
 
 export type FieldValue = number | string | boolean;
