@@ -106,6 +106,31 @@ $enableHeaderShapeGradient: true;
             font-size: 30px;
         }
     }
+
+    &.products-slick {
+        .slick-list {
+            padding-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .slick-prev {
+            left: 0px;
+        }
+
+        .slick-next {
+            right: 30px;
+        }
+
+        .slick-next,
+        .slick-prev {
+            z-index: 2;
+
+            &:before {
+                color: $primary;
+                font-size: 50px;
+            }
+        }
+    }
 }
 
 @import "~bootstrap/scss/bootstrap.scss";

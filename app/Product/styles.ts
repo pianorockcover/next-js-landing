@@ -4,16 +4,31 @@ interface ProductStyleCommonProps {
   fullView?: boolean;
 }
 
+const ProductArea = styled.div<ProductStyleCommonProps>`
+  height: 100%;
+
+  ${({ fullView }) =>
+    !fullView &&
+    `
+        width: 370px;
+    `}
+`;
+
 const ProductContainer = styled.div<ProductStyleCommonProps>`
   position: relative;
   display: inline-flex;
   vertical-align: top;
 
   ${({ fullView }) =>
-    fullView &&
-    `
+    fullView
+      ? `
         display: flex;
         height: 100%;
+   `
+      : `
+        margin: 0 auto;
+        display: flex;
+        width: fit-content;
    `}
 `;
 
@@ -58,8 +73,9 @@ const Wrapper = styled.div<ProductStyleCommonProps>`
   ${({ fullView }) =>
     fullView &&
     `
-        boxShadow: none;
+        box-shadow: none;
         width: 100%;
+        border-radius: 0px;
     `}
 `;
 
@@ -212,4 +228,5 @@ export const ProductStyles = {
   BtnWrapper,
   LabelsWrapper,
   Label,
+  ProductArea,
 };

@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useMemo } from "react";
+import React from "react";
 import { ProductStyles } from "./styles";
 import { content } from "../../content";
 import { formatPrice } from "../utils/formatPrice";
 import { Check, DashCircle } from "react-bootstrap-icons";
 import { SubmitButton } from "../Buttons/SubmitButton";
+import { productInSliderClassName } from "./ProductsSection";
 
 const {
   ProductContainer,
@@ -17,6 +18,7 @@ const {
   Option,
   BtnWrapper,
   LabelsWrapper,
+  ProductArea,
   Label,
 } = ProductStyles;
 
@@ -54,60 +56,66 @@ export const Product: React.FC<ProductProps> = ({
   onClick,
 }) => {
   return (
-    <ProductContainer fullView={fullView}>
-      {!fullView && (
-        <>
-          <Bg left={true} />
-          <Bg />
-        </>
-      )}
-      <Wrapper fullView={fullView}>
+    <ProductArea fullView={fullView}>
+      <ProductContainer fullView={fullView}>
         {!fullView && (
-          <LabelsWrapper staticPos={!images}>
-            {labels &&
-              labels.map((label, i) => (
-                <Label className={`bg-product-label-${label.color}`} key={i}>
-                  {label.text}
-                </Label>
+          <>
+            <Bg left={true} />
+            <Bg />
+          </>
+        )}
+        <Wrapper
+          fullView={fullView}
+          className={!fullView && productInSliderClassName}
+        >
+          {!fullView && (
+            <LabelsWrapper staticPos={!images}>
+              {labels &&
+                labels.map((label, i) => (
+                  <Label className={`bg-product-label-${label.color}`} key={i}>
+                    {label.text}
+                  </Label>
+                ))}
+            </LabelsWrapper>
+          )}
+          {!fullView && images && (
+            <Image style={{ height: imageHeight }}>
+              <img src={`/images/products/${id}/${images[0]}${content.cash}`} />
+            </Image>
+          )}
+          <Name>
+            <span dangerouslySetInnerHTML={{ __html: name }} />
+            <SubName dangerouslySetInnerHTML={{ __html: subName }} />
+          </Name>
+          <Price className="bg-warning">{formatPrice(price)}</Price>
+          <OptionsWrapper>
+            {options
+              ?.slice(
+                0,
+                !fullView ? content.productPreviewOptionsAmount : options.length
+              )
+              .map(({ plus, title }, i) => (
+                <Option key={i} plus={plus}>
+                  {plus ? (
+                    <Check className="text-success" />
+                  ) : (
+                    <DashCircle className="text-danger" />
+                  )}
+                  <span dangerouslySetInnerHTML={{ __html: title }} />
+                </Option>
               ))}
-          </LabelsWrapper>
-        )}
-        {!fullView && images && (
-          <Image style={{ height: imageHeight }}>
-            <img src={`/images/products/${id}/${images[0]}${content.cash}`} />
-          </Image>
-        )}
-        <Name>
-          <span dangerouslySetInnerHTML={{ __html: name }} />
-          <SubName dangerouslySetInnerHTML={{ __html: subName }} />
-        </Name>
-        <Price className="bg-warning">
-          {formatPrice(price)} {content.currency}
-        </Price>
-        <OptionsWrapper>
-          {options
-            ?.slice(0, !fullView ? 4 : options.length)
-            .map(({ plus, title }, i) => (
-              <Option key={i} plus={plus}>
-                {plus ? (
-                  <Check className="text-success" />
-                ) : (
-                  <DashCircle className="text-danger" />
-                )}
-                <span dangerouslySetInnerHTML={{ __html: title }} />
-              </Option>
-            ))}
-        </OptionsWrapper>
-        <BtnWrapper>
-          <SubmitButton
-            gradient="primary-success"
-            icon={fullView || !images ? "Cart" : undefined}
-            onClick={onClick && onClick(id)}
-          >
-            {fullView || !images ? "Заказать" : "Подробнее"}
-          </SubmitButton>
-        </BtnWrapper>
-      </Wrapper>
-    </ProductContainer>
+          </OptionsWrapper>
+          <BtnWrapper>
+            <SubmitButton
+              gradient="primary-success"
+              icon={fullView || !images ? "Cart" : undefined}
+              onClick={onClick && onClick(id)}
+            >
+              {fullView || !images ? "Заказать" : "Подробнее"}
+            </SubmitButton>
+          </BtnWrapper>
+        </Wrapper>
+      </ProductContainer>
+    </ProductArea>
   );
 };

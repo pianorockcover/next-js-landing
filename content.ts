@@ -72,6 +72,13 @@ const products: ProductProps[] = [
     subName: "Капают капают с неба",
     images: ["3.jpg", "1.png", "2.jpg"],
   },
+  {
+    id: 4,
+    name: "Мокрые кроссы",
+    price: 5400,
+    subName: "Капают капают с неба",
+    images: ["3.jpg", "1.png", "2.jpg"],
+  },
 ];
 
 export const content = {
@@ -244,4 +251,10 @@ export const content = {
     artWidth: 450,
   },
   products,
+  productPreviewOptionsAmount: 3,
+  productsSection: {
+    title: "Тарифы",
+    subTitle:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sequi debitis aperiam totam eaque.",
+  },
 };

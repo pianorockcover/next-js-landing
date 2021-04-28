@@ -25,6 +25,10 @@ const SelectStyles = createGlobalStyle`
     .custom-badge {
         margin-bottom: 5px;
         display: block;
+
+        &:nth-child(1) {
+            margin-top: 3px;
+        }
     }
 
     .custom-select-btn:hover {
@@ -64,10 +68,13 @@ const Label = styled.div`
   padding-right: 20px;
 `;
 
-const Image = styled.img`
+const Image = styled.div`
   width: 40px;
-  max-height: 45px;
+  height: 45px;
   margin-right: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 const { Toggle, Menu, Item } = Dropdown;
@@ -118,13 +125,15 @@ const Option: React.FC<ProductProps> = ({
 }) => (
   <OptionWrapper>
     {images && (
-      <Image src={`/images/products/${id}/${images[0]}${content.cash}`} />
+      <Image
+        style={{
+          backgroundImage: `url(/images/products/${id}/${images[0]}${content.cash})`,
+        }}
+      />
     )}
     <OptionContent>
       <Label>{name}</Label>
-      <Price>
-        {formatPrice(price)} {content.currency}
-      </Price>
+      <Price>{formatPrice(price)}</Price>
     </OptionContent>
     {labels && (
       <Labels>
