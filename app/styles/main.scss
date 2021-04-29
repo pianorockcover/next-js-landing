@@ -80,6 +80,24 @@ $enableHeaderShapeGradient: true;
     box-shadow: 0 0 30px 3px rgba($primary, .3);
 }
 
+.before-bg-dark {
+    &:before {
+        background-color: $dark;
+    }
+}
+
+.before-bg-warning {
+    &:before {
+        background-color: $warning;
+    }
+}
+
+.before-bg-dark-lighten {
+    &:before {
+        background-color: lighten($dark, 2%);
+    }
+}
+
 .slick-slider {
     .slick-dots {
         bottom: 20px;

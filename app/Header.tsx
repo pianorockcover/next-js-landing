@@ -35,7 +35,6 @@ const SiteHeader = styled.div`
     top: 85%;
     left: 0px;
     width: 100%;
-    background: #ffffff;
     height: 100vh;
     transform: skewY(-3deg);
     box-shadow: 0px 3px 10px 0.5px #25252547;
@@ -127,7 +126,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <HeaderStyles />
-      <SiteHeader className="bg-header">
+      <SiteHeader className="bg-header before-bg-dark">
         <Container className="custom-header-container">
           <RandomShape />
           <HeaderContent>

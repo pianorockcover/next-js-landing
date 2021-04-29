@@ -1,4 +1,5 @@
 import { FieldInfo, FieldType } from "./app/MainForm/interface";
+import { OpportunityProps } from "./app/Opportunity/Opportunity";
 import { ProductProps } from "./app/Product/Product";
 
 const products: ProductProps[] = [
@@ -253,8 +254,39 @@ export const content = {
   products,
   productPreviewOptionsAmount: 3,
   productsSection: {
-    title: "Тарифы",
-    subTitle:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sequi debitis aperiam totam eaque.",
+    title: "Каталог товаров",
   },
+  mainOpportunity: {
+    title: `Почему стоит заказывать <span class="bg-warning text-dark">только у нас?</span>`,
+    text:
+      "<p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p><p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p>",
+  },
+  opportunities: [
+    [
+      {
+        icon: "Cart",
+        title: "Только качественная продукция",
+        text:
+          "Вся наша продукция прошла обязательную сертификацию и соответствует самым высоким стандартам.",
+      },
+      {
+        icon: "Asterisk",
+        title: "Rental Pay",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sequi debitis aperiam totam eaque.",
+      },
+    ],
+    [
+      {
+        icon: "CalendarDayFill",
+        title: "Оплата любым удобным способом",
+        text:
+          "Мы принимаем к оплате пластиковые карты Visa и MasterCard, Яндекс.Деньги и безналичные переводы",
+      },
+      {
+        icon: "Alarm",
+        title: "100% гарантия на возврат товаров",
+      },
+    ],
+  ] as OpportunityProps[][],
 };
