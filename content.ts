@@ -217,34 +217,39 @@ export const content = {
       "Вам надоело, что <b>много посетителей на сайте, но мало продаж?</b>",
     text:
       "Вы платите <span>за каждого посетителя,</span> но только <span>1 из 100 покупаету вас?</span>",
+    artAnimatedEyeIndex: 2,
     art: [
       {
-        path: "1.jpg",
+        url: "1.jpg",
         diameter: 200,
+        title: "Тест",
         top: 0,
         left: 0,
       },
       {
-        path: "2.png",
+        url: "2.png",
         diameter: 100,
+        title: "Тест",
         top: -40,
         left: 130,
       },
       {
-        path: "3.jpg",
+        url: "3.jpg",
         diameter: 200,
         top: 20,
         left: 150,
       },
       {
-        path: "4.jpg",
+        url: "4.jpg",
         diameter: 100,
+        title: "Тест",
         top: 100,
         left: 100,
       },
       {
-        path: "5.jpeg",
+        url: "5.jpeg",
         diameter: 150,
+        title: "Тест",
         top: 0,
         left: 300,
       },
@@ -260,6 +265,7 @@ export const content = {
     title: `Почему стоит заказывать <span class="bg-warning text-dark">только у нас?</span>`,
     text:
       "<p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p><p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p>",
+    bgText: "Лучше на рынке",
   },
   opportunities: [
     [

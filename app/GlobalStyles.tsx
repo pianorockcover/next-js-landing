@@ -139,7 +139,7 @@ export const GlobalStyles = createGlobalStyle`
 
         &.modal-open {
             #__next {
-                filter: blur(3px);
+                filter: blur(1px);
             }
         }
     }

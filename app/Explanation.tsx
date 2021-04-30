@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { content } from "../content";
+import Lightbox from "react-awesome-lightbox";
 
 const ExplanationWrapper = styled.div`
   margin-top: -400px;
@@ -51,6 +52,20 @@ const ImageContainer = styled.div`
   padding: 7px;
   background: #ffffff;
   border-radius: 100%;
+  cursor: pointer;
+
+  & > span {
+    position: absolute;
+    transition: background 0.2s ease-in-out;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+    background: transparent;
+  }
 `;
 
 const Image = styled.div`
@@ -64,48 +79,77 @@ const Image = styled.div`
   border-radius: 100%;
 `;
 
-export const Explanation: React.FC = () => (
-  <ExplanationWrapper>
-    <Container>
-      <ExplanationContent className="shadow-primary-tr">
-        <Row>
-          <Col md={6}>
-            <Title
-              dangerouslySetInnerHTML={{ __html: content.explanation.title }}
-            />
-            <Text
-              dangerouslySetInnerHTML={{ __html: content.explanation.text }}
-            />
-          </Col>
-          <Col md={6}>
-            {content.explanation.art && (
-              <ArtContainer>
-                <Art style={{ width: content.explanation.artWidth }}>
-                  {content.explanation.art.map(
-                    ({ path, diameter, ...style }, i) => (
-                      <ImageContainer
-                        key={i}
-                        style={{
-                          ...style,
-                          width: diameter,
-                          height: diameter,
-                          zIndex: i + 1,
-                        }}
-                      >
-                        <Image
-                          style={{
-                            backgroundImage: `url(/images/explanation/${path}${content.cash})`,
-                          }}
-                        />
-                      </ImageContainer>
-                    )
-                  )}
-                </Art>
-              </ArtContainer>
-            )}
-          </Col>
-        </Row>
-      </ExplanationContent>
-    </Container>
-  </ExplanationWrapper>
-);
+const galleryImages = content.explanation.art.map(({ url, title }) => ({
+  url: `/images/explanation/${url}${content.cash}`,
+  title: title || url,
+}));
+
+export const Explanation: React.FC = () => {
+  const [galleryImageIndex, setGalleryImageIndex] = useState<number>(0);
+
+  const closeGallery = useCallback(() => setGalleryImageIndex(0), []);
+
+  const onImageClick = useCallback(
+    (i: number) => () => setGalleryImageIndex(i),
+    []
+  );
+
+  return (
+    <>
+      {galleryImageIndex && (
+        <Lightbox
+          images={galleryImages}
+          startIndex={galleryImageIndex - 1}
+          onClose={closeGallery}
+        />
+      )}
+      <ExplanationWrapper>
+        <Container>
+          <ExplanationContent className="shadow-primary-tr">
+            <Row>
+              <Col md={6}>
+                <Title
+                  dangerouslySetInnerHTML={{
+                    __html: content.explanation.title,
+                  }}
+                />
+                <Text
+                  dangerouslySetInnerHTML={{ __html: content.explanation.text }}
+                />
+              </Col>
+              <Col md={6}>
+                {content.explanation.art && (
+                  <ArtContainer>
+                    <Art style={{ width: content.explanation.artWidth }}>
+                      {content.explanation.art.map(
+                        ({ url, diameter, ...style }, i) => (
+                          <ImageContainer
+                            key={i}
+                            style={{
+                              ...style,
+                              width: diameter,
+                              height: diameter,
+                              zIndex: i + 1,
+                            }}
+                            onClick={onImageClick(i + 1)}
+                          >
+                            <span className="hover-bg-primary"></span>
+                            <Image
+                              style={{
+                                backgroundImage: `url(/images/explanation/small-${url}${content.cash})`,
+                              }}
+                            />
+                          </ImageContainer>
+                        )
+                      )}
+                    </Art>
+                  </ArtContainer>
+                )}
+              </Col>
+            </Row>
+          </ExplanationContent>
+        </Container>
+      </ExplanationWrapper>
+    </>
+  );
+};

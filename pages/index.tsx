@@ -14,6 +14,7 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { OpportunitiesSection } from "../app/Opportunity/OpportunitiesSection";
+import "react-awesome-lightbox/build/style.css";
 
 const Index: React.FC = () => {
   const { alert, openAlert } = useAlert();

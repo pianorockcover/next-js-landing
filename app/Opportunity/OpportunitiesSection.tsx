@@ -7,6 +7,12 @@ import { Opportunity } from "./Opportunity";
 const GlobalStyles = createGlobalStyle`
   .opportunities-main-row {
     align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .opportunities-container {
+      position: relative;
   }
 `;
 
@@ -22,7 +28,7 @@ const OpportunitiesSectionWrapper = styled.div`
     top: 85%;
     left: 0px;
     width: 100%;
-    height: 100vh;
+    height: 200px;
     transform: skewY(-3deg);
     box-shadow: 0px 3px 10px 0.5px #25252547;
   }
@@ -30,7 +36,8 @@ const OpportunitiesSectionWrapper = styled.div`
 
 const Description = styled.div`
   color: #ffffff;
-  padding-right: 70px;
+  padding-right: 50px;
+  padding-left: 20px;
 `;
 
 const Title = styled.div`
@@ -45,12 +52,28 @@ const Text = styled.div`
   font-weight: 300;
 `;
 
+const BgText = styled.div`
+  position: absolute;
+  font-size: 140px;
+  top: -50px;
+  left: 0px;
+  color: #1d2023;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 1;
+`;
+
 export const OpportunitiesSection: React.FC = () => {
   return (
     <>
       <GlobalStyles />
       <OpportunitiesSectionWrapper className="bg-dark before-bg-dark-lighten">
-        <Container>
+        <Container className="opportunities-container">
+          <BgText
+            className="text-darken-dark"
+            dangerouslySetInnerHTML={{ __html: content.mainOpportunity.bgText }}
+          />
           <Row className="opportunities-main-row">
             <Col>
               <Description>
