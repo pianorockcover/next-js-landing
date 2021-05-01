@@ -23,7 +23,6 @@ import { validateForm } from "./validators";
 import styled, { createGlobalStyle } from "styled-components";
 import { Loader } from "../Loader";
 import { OfferField } from "./Fields/OfferField";
-import { clsx } from "../utils/clsx";
 import {
   AlertWindow,
   AlertWindowContext,
@@ -39,15 +38,9 @@ const MainFormStyle = createGlobalStyle`
         margin-bottom: 5px;
     }
 
-    .blured-form {
-        filter: blur(2px);
-    }
-
     .custom-form {
         margin-bottom: 10px;
     }
-
-    .custom-form-control {}
 `;
 
 const Wrapper = styled.div`
@@ -55,6 +48,14 @@ const Wrapper = styled.div`
   padding: 15px;
   padding-left: 30px;
   padding-right: 30px;
+`;
+
+interface ContentProps {
+  blured?: boolean;
+}
+
+const Content = styled.div<ContentProps>`
+  ${({ blured }) => blured && `filter: blur(2px);`}
 `;
 
 const { Label, Group } = Form;
@@ -157,7 +158,7 @@ export const MainForm: React.FC<MainFormConfig> = ({
       <MainFormStyle />
       <Wrapper>
         <Loader show={loader} />
-        <div className={clsx([["blured-form", loader]])}>
+        <Content blured={loader}>
           <Form className="custom-form">
             {fields.map((row, i) => (
               <Row key={i}>
@@ -203,7 +204,7 @@ export const MainForm: React.FC<MainFormConfig> = ({
           >
             Отправить
           </SubmitButton>
-        </div>
+        </Content>
       </Wrapper>
     </>
   );

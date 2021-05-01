@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { get } from "lodash";
 
 export const GlobalStyles = createGlobalStyle`
     @font-face {

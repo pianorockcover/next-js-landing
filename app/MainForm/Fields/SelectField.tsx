@@ -18,8 +18,6 @@ const SelectStyles = createGlobalStyle`
         justify-content: space-between;
         background: transparent;
         border-color: #ced4da;
-
-        .custom-form-control;
     }
 
     .custom-badge {
@@ -94,10 +92,7 @@ export const SelectField: React.FC<FieldInfo & FieldProps> = ({
     <>
       <SelectStyles />
       <Dropdown>
-        <Toggle
-          variant="default"
-          className="custom-select-btn custom-form-control"
-        >
+        <Toggle variant="default" className="custom-select-btn">
           <Option {...getOptionParams(options, value)} />
         </Toggle>
         <Menu className="custom-dropdown">

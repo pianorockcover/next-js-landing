@@ -1,9 +1,9 @@
 import React, { useCallback, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import styled, { createGlobalStyle } from "styled-components";
-import { content } from "../content";
+import { content, theme } from "../content";
 import { ActionButton } from "./Buttons/ActionButton";
-import { FeedbackForm, FeedbackFormContext } from "./FeedbackForm";
+import { FeedbackFormContext } from "./FeedbackForm";
 import { navbarHeight } from "./Navbar/Navbar";
 import { RandomShape } from "./RandomShape";
 
@@ -27,6 +27,8 @@ const SiteHeader = styled.div`
   padding-top: ${navbarHeight}px;
   padding-bottom: ${headerBottomPadding}px;
   position: relative;
+  background: ${() =>
+    `${theme.header.bg.gradientStyle}(${theme.header.bg.direction}, ${theme.header.bg.from}, ${theme.header.bg.to});`}
 
   &:before {
     content: " ";
@@ -126,7 +128,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <HeaderStyles />
-      <SiteHeader className="bg-header before-bg-dark">
+      <SiteHeader className="before-bg-dark">
         <Container className="custom-header-container">
           <RandomShape />
           <HeaderContent>

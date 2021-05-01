@@ -3,7 +3,7 @@ import { Anchor } from "../../Anchor";
 import { FieldInfo, FieldProps } from "../interface";
 import styled, { createGlobalStyle } from "styled-components";
 import { Check } from "react-bootstrap-icons";
-import { clsx } from "../../utils/clsx";
+import { theme } from "../../../content";
 
 const Label = styled.div`
   display: flex;
@@ -14,10 +14,15 @@ const Label = styled.div`
   padding-bottom: 7px;
 `;
 
-const CheckboxIcon = styled.div`
+interface CheckboxIconProps {
+  checked?: boolean;
+}
+
+const CheckboxIcon = styled.div<CheckboxIconProps>`
   width: 20px;
   height: 20px;
-  background: #cecece;
+  background: ${({ checked }) =>
+    checked ? theme.form.checkbox.filled : "#cecece"};
   margin-right: 10px;
   border-radius: 2px;
   position: relative;
@@ -49,7 +54,7 @@ export const OfferField: React.FC<FieldInfo & FieldProps> = ({
     <>
       <CheckboxStyles />
       <Label onClick={onChange}>
-        <CheckboxIcon className={clsx([["bg-primary", !!value]])}>
+        <CheckboxIcon checked={!!value}>
           <Check
             className="custom-checkbox-icon"
             style={{ opacity: !value ? 0 : 1 }}

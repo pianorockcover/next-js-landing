@@ -1,29 +1,24 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import styled, { createGlobalStyle } from "styled-components";
-import { content } from "../../content";
+import { content, theme } from "../../content";
 import { Social } from "../Socials/Social";
-import { clsx } from "../utils/clsx";
 import { NavbarLink } from "./NavbarLink";
 
 export const navbarHeight = 84;
 
 const NavbarGlobalStyle = createGlobalStyle`
     .custom-navbar-container {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid ${theme.navbar.borderBottomColor};
         height: 100%;
-    }
-
-    .nav-scrolled {
-        box-shadow: 0 0 30px 3px #444444;
-
-        .custom-navbar-container {
-            border-bottom: 0px;
-        }
     }
 `;
 
-const NavbarWrapper = styled.div`
+interface NavbarWrapperProps {
+  scrolled?: boolean;
+}
+
+const NavbarWrapper = styled.div<NavbarWrapperProps>`
   width: 100%;
   position: fixed;
   top: 0px;
@@ -31,6 +26,17 @@ const NavbarWrapper = styled.div`
   z-index: 10;
   height: ${navbarHeight}px;
   transition: background 0.2s linear;
+
+  ${({ scrolled }) =>
+    scrolled &&
+    `
+        box-shadow: 0 0 30px 3px ${theme.navbar.scrolledBoxShadow};
+        background-color: ${theme.navbar.scrolledBg};
+
+        .custom-navbar-container {
+            border-bottom-width: 0px;
+        }
+  `}
 `;
 
 const Content = styled.div`
@@ -82,9 +88,7 @@ export const Navbar: React.FC = () => {
     allowRender && (
       <>
         <NavbarGlobalStyle />
-        <NavbarWrapper
-          className={clsx([["nav-scrolled bg-primary-darken", scrolled]])}
-        >
+        <NavbarWrapper scrolled={scrolled}>
           <Container className="custom-navbar-container">
             <Content>
               <LogoWrapper />
@@ -95,6 +99,7 @@ export const Navbar: React.FC = () => {
                     href={link.to}
                     key={i}
                     active={i === 0}
+                    color={theme.navbar.linkColor}
                   >
                     {link.name}
                   </NavbarLink>
@@ -102,7 +107,14 @@ export const Navbar: React.FC = () => {
               </MenuWrapper>
               <SocialWrapper>
                 {content.headerSocials.map((social, i) => (
-                  <Social key={i} {...social} />
+                  <Social
+                    key={i}
+                    style={{
+                      color: theme.navbar.socialLink.color,
+                      background: theme.navbar.socialLink.bg,
+                    }}
+                    {...social}
+                  />
                 ))}
               </SocialWrapper>
             </Content>

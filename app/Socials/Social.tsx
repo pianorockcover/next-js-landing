@@ -11,11 +11,11 @@ const Link = styled.a`
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  transition: box-shadow .2s linear;
+  transition: transform 0.2s linear;
   margin-left: 10px;
 
   &:hover {
-      box-shadow: 0px 3px 10px 0.5px #25252547;
+    transform: scale(1.1);
   }
 
   & > svg {
@@ -27,12 +27,13 @@ const Link = styled.a`
 interface SocialProps {
   icon: string;
   link: string;
+  style?: React.CSSProperties;
 }
 
-export const Social: React.FC<SocialProps> = ({ icon, link }) => {
+export const Social: React.FC<SocialProps> = ({ icon, link, style }) => {
   const IconComponent = useMemo(() => socialIcons[icon], []);
   return (
-    <Link href={link} className="bg-warning" target="_blank">
+    <Link href={link} target="_blank" style={style}>
       <IconComponent />
     </Link>
   );

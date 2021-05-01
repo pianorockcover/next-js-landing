@@ -1,164 +1,163 @@
-@import "../../theme.scss";
+$primary: transparent;
+$secondary: transparent;
+$success: transparent;
+$info: transparent;
+$warning: transparent;
+$danger: transparent;
+$light: transparent;
+$dark: transparent;
 
-.bg-gradient-primary-success {
-    background: linear-gradient(to right, $primary, $success);
-}
+// .bg-gradient-primary-success {
+//     background: linear-gradient(to right, $primary, $success);
+// }
 
-.bg-header {
-    background: linear-gradient(-45deg, lighten($primary, 20%), darken($primary, 20%));
-}
+// $enableHeaderShapeGradient: true;
 
-$enableHeaderShapeGradient: true;
+// .bg-random-shape {
+//     @if $enableHeaderShapeGradient {
+//         background: linear-gradient(-45deg, rgba(#ffffff, .05), rgba($primary, .3));
+//     }
+// }
 
-.bg-random-shape {
-    @if $enableHeaderShapeGradient {
-        background: linear-gradient(-45deg, rgba(#ffffff, .05), rgba($primary, .3));
-    }
-}
+// .bg-gradient-primary-to-transparent {
+//     background: linear-gradient(to right, darken($primary, 10%), rgba($primary, .5));
+// }
 
-.bg-gradient-primary-to-transparent {
-    background: linear-gradient(to right, darken($primary, 10%), rgba($primary, .5));
-}
+// .bg-gradient-danger-warning {
+//     background: linear-gradient(to right, $danger, $warning);
+// }
 
-.bg-gradient-danger-warning {
-    background: linear-gradient(to right, $danger, $warning);
-}
+// .bg-gradient-warning-success {
+//     background: linear-gradient(to right, $success, $warning);
+// }
 
-.bg-gradient-warning-success {
-    background: linear-gradient(to right, $success, $warning);
-}
+// .bg-darken-tr {
+//     background: rgba($dark, .6);
+// }
 
-.bg-darken-tr {
-    background: rgba($dark, .6);
-}
+// .bg-product-label-warning {
+//     background: $warning;
 
-.bg-primary-darken {
-    background: darken($primary, 5%);
-}
+//     &:after {
+//         background: lighten($warning, 20%);
+//     }
+// }
 
-.bg-product-label-warning {
-    background: $warning;
+// .bg-product-label-success {
+//     background: $success;
 
-    &:after {
-        background: lighten($warning, 20%);
-    }
-}
+//     &:after {
+//         background: lighten($success, 20%);
+//     }
+// }
 
-.bg-product-label-success {
-    background: $success;
+// .bg-product-label-danger {
+//     background: $danger;
 
-    &:after {
-        background: lighten($success, 20%);
-    }
-}
+//     &:after {
+//         background: lighten($danger, 20%);
+//     }
+// }
 
-.bg-product-label-danger {
-    background: $danger;
+// .after-border-darken-tr:after {
+//     border-color: rgba($dark, .6);
+// }
 
-    &:after {
-        background: lighten($danger, 20%);
-    }
-}
+// .fill-bubble-1 {
+//     fill: lighten($primary, 10%);
+// }
 
-.after-border-darken-tr:after {
-    border-color: rgba($dark, .6);
-}
+// .fill-bubble-2 {
+//     fill: lighten($primary, 3%);
+// }
 
-.fill-bubble-1 {
-    fill: lighten($primary, 10%);
-}
+// .border-warning-tr {
+//     border-color: rgba($warning, .6);
+// }
 
-.fill-bubble-2 {
-    fill: lighten($primary, 3%);
-}
+// .shadow-primary-tr {
+//     box-shadow: 0 0 30px 3px rgba($primary, .3);
+// }
 
-.border-warning-tr {
-    border-color: rgba($warning, .6);
-}
+// .before-bg-dark {
+//     &:before {
+//         background-color: $dark;
+//     }
+// }
 
-.shadow-primary-tr {
-    box-shadow: 0 0 30px 3px rgba($primary, .3);
-}
+// .before-bg-warning {
+//     &:before {
+//         background-color: $warning;
+//     }
+// }
 
-.before-bg-dark {
-    &:before {
-        background-color: $dark;
-    }
-}
+// .text-darken-dark {
+//     color: darken($dark, 10%);
+// }
 
-.before-bg-warning {
-    &:before {
-        background-color: $warning;
-    }
-}
+// .before-bg-dark-lighten {
+//     &:before {
+//         background-color: lighten($dark, 2%);
+//     }
+// }
 
-.text-darken-dark {
-    color: darken($dark, 10%);
-}
+// .hover-bg-primary {
+//     &:hover {
+//         background: rgba($primary, 0.2);
+//     }
+// }
 
-.before-bg-dark-lighten {
-    &:before {
-        background-color: lighten($dark, 2%);
-    }
-}
+// .slick-slider {
+//     .slick-dots {
+//         bottom: 20px;
 
-.hover-bg-primary {
-    &:hover {
-        background: rgba($primary, 0.2);
-    }
-}
+//         li button:before {
+//             font-size: 10px;
+//         }
+//     }
 
-.slick-slider {
-    .slick-dots {
-        bottom: 20px;
+//     .slick-prev {
+//         left: 15px;
+//     }
 
-        li button:before {
-            font-size: 10px;
-        }
-    }
+//     .slick-next {
+//         right: 20px;
+//     }
 
-    .slick-prev {
-        left: 15px;
-    }
+//     .slick-next,
+//     .slick-prev {
+//         z-index: 2;
 
-    .slick-next {
-        right: 20px;
-    }
+//         &:before {
+//             color: $warning;
+//             font-size: 30px;
+//         }
+//     }
 
-    .slick-next,
-    .slick-prev {
-        z-index: 2;
+//     &.products-slick {
+//         .slick-list {
+//             padding-bottom: 30px;
+//             padding-top: 20px;
+//         }
 
-        &:before {
-            color: $warning;
-            font-size: 30px;
-        }
-    }
+//         .slick-prev {
+//             left: 0px;
+//         }
 
-    &.products-slick {
-        .slick-list {
-            padding-bottom: 30px;
-            padding-top: 20px;
-        }
+//         .slick-next {
+//             right: 30px;
+//         }
 
-        .slick-prev {
-            left: 0px;
-        }
+//         .slick-next,
+//         .slick-prev {
+//             z-index: 2;
 
-        .slick-next {
-            right: 30px;
-        }
-
-        .slick-next,
-        .slick-prev {
-            z-index: 2;
-
-            &:before {
-                color: $primary;
-                font-size: 50px;
-            }
-        }
-    }
-}
+//             &:before {
+//                 color: $primary;
+//                 font-size: 50px;
+//             }
+//         }
+//     }
+// }
 
 @import "~bootstrap/scss/bootstrap.scss";

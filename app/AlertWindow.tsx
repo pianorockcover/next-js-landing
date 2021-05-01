@@ -3,9 +3,9 @@ import { Modal } from "react-bootstrap";
 import { ModalStyles } from "./ModalWindow";
 import styled from "styled-components";
 import * as icons from "react-bootstrap-icons";
-import { clsx } from "./utils/clsx";
 import { SubmitButton } from "./Buttons/SubmitButton";
 import { createGlobalStyle } from "styled-components";
+import { theme } from "../content";
 
 const AlertStyles = createGlobalStyle`
     .custom-alert-modal-dialog {
@@ -30,7 +30,12 @@ const Content = styled.div`
   margin-bottom: 10px;
 `;
 
-const IconWrapper = styled.div`
+interface IconWrapperProps {
+  success?: boolean;
+  error?: boolean;
+}
+
+const IconWrapper = styled.div<IconWrapperProps>`
   color: #fff;
   width: 60px;
   border-radius: 100%;
@@ -42,6 +47,8 @@ const IconWrapper = styled.div`
   position: absolute;
   left: calc(50% - 30px);
   top: -30px;
+  background: ${({ success, error }) =>
+    success ? theme.success : error ? theme.danger : "transparent"};
 
   & > svg {
     width: 100%;
@@ -110,12 +117,7 @@ export const AlertWindow: React.FC<AlertWindowProps> = ({
         keyboard={false}
       >
         <Wrapper>
-          <IconWrapper
-            className={clsx([
-              ["bg-success", type === "success"],
-              ["bg-danger", type === "error"],
-            ])}
-          >
+          <IconWrapper success={type === "success"} error={type === "error"}>
             <Icon />
           </IconWrapper>
           <Content>

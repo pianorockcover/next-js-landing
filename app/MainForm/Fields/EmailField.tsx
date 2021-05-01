@@ -22,7 +22,6 @@ export const EmailField: React.FC<FieldInfo & FieldProps> = ({
       value={String(value || "")}
       type="email"
       placeholder={placeholder}
-      className="custom-form-control"
     />
   );
 };

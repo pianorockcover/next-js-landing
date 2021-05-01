@@ -1,8 +1,12 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import { clsx } from "../utils/clsx";
+import { theme } from "../../content";
 
-const Link = styled.a`
+interface LinkProps {
+  active?: boolean;
+}
+
+const Link = styled.a<LinkProps>`
   text-decoration: none !important;
   transition: border-bottom-color 0.2s linear;
   display: inline-block;
@@ -10,9 +14,8 @@ const Link = styled.a`
   margin-left: 15px;
   margin-right: 15px;
   cursor: pointer;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: transparent;
+  border-bottom: 2px solid
+    ${({ active }) => (active ? theme.navbar.linkBorder : "transparent")};
   letter-spacing: 0.6px;
 `;
 
@@ -20,6 +23,7 @@ interface NavbarLinkProps {
   href?: string;
   active?: boolean;
   white?: boolean;
+  color?: string;
 }
 
 export const NavbarLink: React.FC<NavbarLinkProps> = ({
@@ -27,6 +31,7 @@ export const NavbarLink: React.FC<NavbarLinkProps> = ({
   children,
   active,
   white,
+  color,
 }) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
@@ -38,8 +43,8 @@ export const NavbarLink: React.FC<NavbarLinkProps> = ({
       href={href}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={clsx([["border-warning", Boolean(active || hovered)]])}
-      style={{ color: white ? "#ffffff" : "#444444" }}
+      active={Boolean(active || hovered)}
+      style={{ color: color || "#444444" }}
     >
       {children}
     </Link>
