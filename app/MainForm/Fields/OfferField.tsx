@@ -3,7 +3,6 @@ import { Anchor } from "../../Anchor";
 import { FieldInfo, FieldProps } from "../interface";
 import styled, { createGlobalStyle } from "styled-components";
 import { Check } from "react-bootstrap-icons";
-import { theme } from "../../../content";
 
 const Label = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ interface CheckboxIconProps {
 const CheckboxIcon = styled.div<CheckboxIconProps>`
   width: 20px;
   height: 20px;
-  background: ${({ checked }) =>
+  background: ${({ checked, theme }) =>
     checked ? theme.form.checkbox.filled : "#cecece"};
   margin-right: 10px;
   border-radius: 2px;

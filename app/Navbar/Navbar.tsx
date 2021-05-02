@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import styled, { createGlobalStyle } from "styled-components";
-import { content, theme } from "../../content";
+import styled, { createGlobalStyle, useTheme } from "styled-components";
+import { content } from "../../content";
 import { Social } from "../Socials/Social";
 import { NavbarLink } from "./NavbarLink";
 
@@ -9,7 +9,8 @@ export const navbarHeight = 84;
 
 const NavbarGlobalStyle = createGlobalStyle`
     .custom-navbar-container {
-        border-bottom: 1px solid ${theme.navbar.borderBottomColor};
+        border-bottom: 1px solid ${({ theme }) =>
+          theme.navbar.borderBottomColor};
         height: 100%;
     }
 `;
@@ -27,7 +28,7 @@ const NavbarWrapper = styled.div<NavbarWrapperProps>`
   height: ${navbarHeight}px;
   transition: background 0.2s linear;
 
-  ${({ scrolled }) =>
+  ${({ scrolled, theme }) =>
     scrolled &&
     `
         box-shadow: 0 0 30px 3px ${theme.navbar.scrolledBoxShadow};
@@ -83,6 +84,8 @@ export const Navbar: React.FC = () => {
     setAllowRender(true);
     document.addEventListener("scroll", onScroll);
   }, []);
+
+  const theme = useTheme();
 
   return (
     allowRender && (

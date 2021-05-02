@@ -156,4 +156,68 @@ export const GlobalStyles = createGlobalStyle`
     *::-webkit-scrollbar-thumb {
         background-color: #c7c7c7;
     }
+
+    .text-primary {
+        color: ${({ theme }) => theme.primary} !important;
+    }
+    
+    .text-secondary {
+        color: ${({ theme }) => theme.secondary} !important;
+    }
+    
+    .text-success {
+        color: ${({ theme }) => theme.success} !important;
+    }
+    
+    .text-info {
+        color: ${({ theme }) => theme.info} !important;
+    }
+    
+    .text-warning {
+        color: ${({ theme }) => theme.warning} !important;
+    }
+    
+    .text-danger {
+        color: ${({ theme }) => theme.danger} !important;
+    }
+    
+    .text-light {
+        color: ${({ theme }) => theme.light} !important;
+    }
+    
+    .text-dark {
+        color: ${({ theme }) => theme.dark} !important;
+    }
+
+    .bg-primary {
+        background-color: ${({ theme }) => theme.primary} !important;
+    }
+    
+    .bg-secondary {
+        background-color: ${({ theme }) => theme.secondary} !important;
+    }
+    
+    .bg-success {
+        background-color: ${({ theme }) => theme.success} !important;
+    }
+    
+    .bg-info {
+        background-color: ${({ theme }) => theme.info} !important;
+    }
+    
+    .bg-warning {
+        background-color: ${({ theme }) => theme.warning} !important;
+    }
+    
+    .bg-danger {
+        background-color: ${({ theme }) => theme.danger} !important;
+    }
+    
+    .bg-light {
+        background-color: ${({ theme }) => theme.light} !important;
+    }
+    
+    .bg-dark {
+        background-color: ${({ theme }) => theme.dark} !important;
+    }
 `;

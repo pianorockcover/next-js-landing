@@ -1,11 +1,10 @@
-import React, { createContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useMemo } from "react";
 import { Modal } from "react-bootstrap";
 import { ModalStyles } from "./ModalWindow";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import * as icons from "react-bootstrap-icons";
 import { SubmitButton } from "./Buttons/SubmitButton";
 import { createGlobalStyle } from "styled-components";
-import { theme } from "../content";
 
 const AlertStyles = createGlobalStyle`
     .custom-alert-modal-dialog {
@@ -47,7 +46,7 @@ const IconWrapper = styled.div<IconWrapperProps>`
   position: absolute;
   left: calc(50% - 30px);
   top: -30px;
-  background: ${({ success, error }) =>
+  background: ${({ success, error, theme }) =>
     success ? theme.success : error ? theme.danger : "transparent"};
 
   & > svg {
@@ -102,6 +101,8 @@ export const AlertWindow: React.FC<AlertWindowProps> = ({
     type,
   ]);
 
+  const theme = useTheme();
+
   return (
     <>
       <AlertStyles />
@@ -128,8 +129,8 @@ export const AlertWindow: React.FC<AlertWindowProps> = ({
             <SubmitButton
               onClick={onClose}
               icon="HandThumbsUp"
-              gradient={
-                type === "success" ? "primary-success" : "danger-warning"
+              style={
+                type === "error" ? theme.submits.error : theme.submits.success
               }
             >
               Ок

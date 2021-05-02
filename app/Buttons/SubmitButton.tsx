@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import { Button } from "react-bootstrap";
 import { createGlobalStyle } from "styled-components";
 import * as icons from "react-bootstrap-icons";
@@ -13,7 +13,10 @@ const SubmitButtonStyles = createGlobalStyle`
         padding-right: 30px;
         padding-top: 10px;
         padding-bottom: 10px;
-        transition: box-shadow .2s linear;
+        color: ${({ theme }) => theme.white};
+        background: ${({ theme }) => theme.primary};
+        transition: transform 0.2s linear;
+        box-shadow: none !important;
 
         display: flex;
         align-items: center;
@@ -24,21 +27,21 @@ const SubmitButtonStyles = createGlobalStyle`
         }
 
         &:hover {
-            box-shadow: 0px 3px 10px 0.5px #2525253b;
+            transform: scale(1.05);
         }
     }
 `;
 
 interface SubmitButtonProps {
   onClick: () => void;
-  gradient?: string;
+  style?: CSSProperties;
   icon?: string;
 }
 
 export const SubmitButton: React.FC<SubmitButtonProps> = ({
   onClick,
-  gradient,
   children,
+  style,
   icon,
 }) => {
   const Icon = useMemo(() => (icon && icons[icon] ? icons[icon] : () => null), [
@@ -48,10 +51,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   return (
     <>
       <SubmitButtonStyles />
-      <Button
-        onClick={onClick}
-        className={`custom-submit-button bg-gradient-${gradient}`}
-      >
+      <Button onClick={onClick} className="custom-submit-button" style={style}>
         <Icon />
         {children}
       </Button>

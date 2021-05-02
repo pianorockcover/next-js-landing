@@ -39,6 +39,7 @@ const Gradient = styled.div`
   left: 0px;
   width: 100%;
   height: 100%;
+  background: ${({ theme }) => theme.header.shape.imageOverlay};
 `;
 
 const Mask = styled.svg`
@@ -53,6 +54,7 @@ const SvgOne = styled.svg`
   width: 100%;
   height: 100%;
   z-index: 1;
+  fill: ${({ theme }) => theme.header.shape.one.background};
 `;
 
 const SvgTwo = styled.svg`
@@ -63,6 +65,7 @@ const SvgTwo = styled.svg`
   width: 100%;
   height: 100%;
   z-index: 2;
+  fill: ${({ theme }) => theme.header.shape.two.background};
 `;
 
 const Icon = styled.div`
@@ -99,14 +102,14 @@ export const RandomShape: React.FC = () => {
           <path d={path}></path>
         </clipPath>
       </Mask>
-      <SvgOne className="fill-bubble-1">
+      <SvgOne>
         <path d={path}></path>
       </SvgOne>
-      <SvgTwo className="fill-bubble-2">
+      <SvgTwo>
         <path d={path}></path>
       </SvgTwo>
       <RandomShapeWrapper>
-        <Gradient className="bg-random-shape" />
+        <Gradient />
       </RandomShapeWrapper>
       {content.headerBlob.icons.map((icon, i) => {
         const IconComponent = useMemo(() => icons[icon.type], []);

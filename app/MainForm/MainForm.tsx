@@ -20,14 +20,10 @@ import {
   FieldValue,
 } from "./interface";
 import { validateForm } from "./validators";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, useTheme } from "styled-components";
 import { Loader } from "../Loader";
 import { OfferField } from "./Fields/OfferField";
-import {
-  AlertWindow,
-  AlertWindowContext,
-  AlertWindowProps,
-} from "../AlertWindow";
+import { AlertWindowContext } from "../AlertWindow";
 import { content } from "../../content";
 import { request } from "../service";
 
@@ -153,6 +149,8 @@ export const MainForm: React.FC<MainFormConfig> = ({
     }
   }, [values]);
 
+  const theme = useTheme();
+
   return (
     <>
       <MainFormStyle />
@@ -200,7 +198,7 @@ export const MainForm: React.FC<MainFormConfig> = ({
           <SubmitButton
             icon="Cart"
             onClick={onSubmit}
-            gradient="primary-success"
+            style={theme.mainform.submit}
           >
             Отправить
           </SubmitButton>

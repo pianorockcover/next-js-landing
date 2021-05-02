@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import styled, { createGlobalStyle } from "styled-components";
-import { content, theme } from "../content";
+import styled, { createGlobalStyle, useTheme } from "styled-components";
+import { content } from "../content";
 import { ActionButton } from "./Buttons/ActionButton";
 import { FeedbackFormContext } from "./FeedbackForm";
 import { navbarHeight } from "./Navbar/Navbar";
@@ -27,8 +27,7 @@ const SiteHeader = styled.div`
   padding-top: ${navbarHeight}px;
   padding-bottom: ${headerBottomPadding}px;
   position: relative;
-  background: ${() =>
-    `${theme.header.bg.gradientStyle}(${theme.header.bg.direction}, ${theme.header.bg.from}, ${theme.header.bg.to});`}
+  background: ${({ theme }) => theme.header.bg};
 
   &:before {
     content: " ";
@@ -39,7 +38,8 @@ const SiteHeader = styled.div`
     width: 100%;
     height: 100vh;
     transform: skewY(-3deg);
-    box-shadow: 0px 3px 10px 0.5px #25252547;
+    background: ${({ theme }) => theme.header.before.background};
+    box-shadow: 0px 3px 15px 0.5px ${({ theme }) => theme.header.before.shadow};
   }
 `;
 
@@ -53,6 +53,8 @@ const SubHeader = styled.div`
   margin-bottom: 30px;
   width: fit-content;
   max-width: 100%;
+  color: ${({ theme }) => theme.header.subTitle.color};
+  border-color: ${({ theme }) => theme.header.subTitle.border};
 `;
 
 const HeaderBubble = styled.div`
@@ -66,6 +68,7 @@ const HeaderBubble = styled.div`
   margin-bottom: 50px;
   line-height: 18px;
   font-weight: 300;
+  background: ${({ theme }) => theme.header.bubble.background};
 
   &:after {
     content: "";
@@ -77,6 +80,7 @@ const HeaderBubble = styled.div`
     border-top-width: 16px;
     border-top-style: solid;
     border-top-color: transparent;
+    border-left-color: ${({ theme }) => theme.header.bubble.background};
   }
 `;
 
@@ -86,7 +90,8 @@ const SiteTitle = styled.div`
   font-size: 45px;
   margin-bottom: 25px;
   margin-top: 25px;
-  text-shadow: 0 5px 7px rgb(0 0 0 / 38%);
+  color: ${({ theme }) => theme.header.title.color};
+  text-shadow: 0 5px 7px ${({ theme }) => theme.header.title.textShadow};
 `;
 
 const HeaderContent = styled.div`
@@ -103,6 +108,7 @@ const Plus = styled.div`
   font-size: 20px;
   margin-bottom: 5px;
   position: relative;
+  color: ${({ theme }) => theme.header.plus.color};
 
   &:nth-last-child(1) {
     margin-bottom: 0px;
@@ -117,7 +123,7 @@ const Plus = styled.div`
     top: calc(50% - 1px);
     left: auto;
     right: calc(100% + 10px);
-    background: rgba(255, 255, 255, 0.4);
+    background: ${({ theme }) => theme.header.plus.before};
   }
 `;
 
@@ -125,10 +131,12 @@ export const Header: React.FC = () => {
   const { toggleFeedback } = useContext(FeedbackFormContext);
   const openFeedback = useCallback(() => toggleFeedback({ visible: true }), []);
 
+  const theme = useTheme();
+
   return (
     <>
       <HeaderStyles />
-      <SiteHeader className="before-bg-dark">
+      <SiteHeader>
         <Container className="custom-header-container">
           <RandomShape />
           <HeaderContent>
@@ -139,11 +147,9 @@ export const Header: React.FC = () => {
                 />
                 <SubHeader
                   dangerouslySetInnerHTML={{ __html: content.subTitle }}
-                  className="text-warning border-warning-tr"
                 />
                 <HeaderBubble
                   dangerouslySetInnerHTML={{ __html: content.headerBubble }}
-                  className="bg-darken-tr after-border-darken-tr"
                 />
                 <PlusesWrapper>
                   {content.pluses.map((plus, i) => (
@@ -154,6 +160,7 @@ export const Header: React.FC = () => {
                 <ActionButton
                   onClick={openFeedback}
                   icon={content.actionButton.icon}
+                  style={theme.header.actionButton}
                 >
                   <span
                     dangerouslySetInnerHTML={{

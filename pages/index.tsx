@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { GlobalStyles } from "../app/GlobalStyles";
 import { AlertWindow, AlertWindowContext } from "../app/AlertWindow";
 import { useAlert } from "../app/utils/useAlert";
@@ -15,8 +15,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { OpportunitiesSection } from "../app/Opportunity/OpportunitiesSection";
 import "react-awesome-lightbox/build/style.css";
+import fs from "fs";
+import { parseScssVariables } from "../app/utils/parseScssVariables";
+import { ThemeProvider } from "styled-components";
+import { ThemeManager } from "../app/ThemeManager";
 
-const Index: React.FC = () => {
+interface IndexProps {
+  themeVariables: Record<string, string>;
+}
+
+const Index: React.FC<IndexProps> = ({ themeVariables }) => {
   const { alert, openAlert } = useAlert();
   const [feedback, setFeedback] = useState<FeedbackFormProps>();
   const toggleFeedback = useCallback(
@@ -25,20 +33,30 @@ const Index: React.FC = () => {
     []
   );
 
+  const theme = useMemo(() => new ThemeManager(themeVariables), []);
+
   return (
-    <AlertWindowContext.Provider value={{ openAlert }}>
-      <GlobalStyles />
-      <FeedbackFormContext.Provider value={{ toggleFeedback }}>
-        <Navbar />
-        <Header />
-        <FeedbackForm {...feedback} />
-        <Explanation />
-        <OpportunitiesSection />
-        <ProductsSection />
-        <AlertWindow {...alert} />
-      </FeedbackFormContext.Provider>
-    </AlertWindowContext.Provider>
+    <ThemeProvider theme={theme}>
+      <AlertWindowContext.Provider value={{ openAlert }}>
+        <GlobalStyles />
+        <FeedbackFormContext.Provider value={{ toggleFeedback }}>
+          <Navbar />
+          <Header />
+          <FeedbackForm {...feedback} />
+          <Explanation />
+          <OpportunitiesSection />
+          <ProductsSection />
+          <AlertWindow {...alert} />
+        </FeedbackFormContext.Provider>
+      </AlertWindowContext.Provider>
+    </ThemeProvider>
   );
 };
 
 export default Index;
+
+export async function getStaticProps() {
+  const scssThemeFile = fs.readFileSync("./theme.scss", "utf-8");
+
+  return { props: { themeVariables: parseScssVariables(scssThemeFile) } };
+}

@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import { theme } from "../../content";
 
 interface LinkProps {
   active?: boolean;
@@ -15,7 +14,7 @@ const Link = styled.a<LinkProps>`
   margin-right: 15px;
   cursor: pointer;
   border-bottom: 2px solid
-    ${({ active }) => (active ? theme.navbar.linkBorder : "transparent")};
+    ${({ active, theme }) => (active ? theme.navbar.linkBorder : "transparent")};
   letter-spacing: 0.6px;
 `;
 

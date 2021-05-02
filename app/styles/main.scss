@@ -1,22 +1,7 @@
-$primary: transparent;
-$secondary: transparent;
-$success: transparent;
-$info: transparent;
-$warning: transparent;
-$danger: transparent;
-$light: transparent;
-$dark: transparent;
+@import "../../theme.scss";
 
 // .bg-gradient-primary-success {
 //     background: linear-gradient(to right, $primary, $success);
-// }
-
-// $enableHeaderShapeGradient: true;
-
-// .bg-random-shape {
-//     @if $enableHeaderShapeGradient {
-//         background: linear-gradient(-45deg, rgba(#ffffff, .05), rgba($primary, .3));
-//     }
 // }
 
 // .bg-gradient-primary-to-transparent {
@@ -31,9 +16,6 @@ $dark: transparent;
 //     background: linear-gradient(to right, $success, $warning);
 // }
 
-// .bg-darken-tr {
-//     background: rgba($dark, .6);
-// }
 
 // .bg-product-label-warning {
 //     background: $warning;
@@ -57,22 +39,6 @@ $dark: transparent;
 //     &:after {
 //         background: lighten($danger, 20%);
 //     }
-// }
-
-// .after-border-darken-tr:after {
-//     border-color: rgba($dark, .6);
-// }
-
-// .fill-bubble-1 {
-//     fill: lighten($primary, 10%);
-// }
-
-// .fill-bubble-2 {
-//     fill: lighten($primary, 3%);
-// }
-
-// .border-warning-tr {
-//     border-color: rgba($warning, .6);
 // }
 
 // .shadow-primary-tr {

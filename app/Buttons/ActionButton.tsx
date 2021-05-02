@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import { Button } from "react-bootstrap";
 import { createGlobalStyle } from "styled-components";
 import * as icons from "react-bootstrap-icons";
@@ -12,7 +12,8 @@ const ActionButtonStyles = createGlobalStyle`
         padding-right: 30px;
         padding-top: 10px;
         padding-bottom: 10px;
-        transition: box-shadow .2s linear;
+        transition: transform .2s linear;
+        box-shadow: none !important;
 
         display: flex;
         align-items: center;
@@ -23,7 +24,7 @@ const ActionButtonStyles = createGlobalStyle`
         }
 
         &:hover {
-            box-shadow: 0px 3px 10px 0.5px #252525ab;
+            transform: scale(1.05);
         }
     }
 `;
@@ -31,12 +32,14 @@ const ActionButtonStyles = createGlobalStyle`
 interface ActionButtonProps {
   onClick: () => void;
   icon?: string;
+  style?: CSSProperties;
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = ({
   onClick,
   children,
   icon,
+  style,
 }) => {
   const Icon = useMemo(() => (icon && icons[icon] ? icons[icon] : () => null), [
     icon,
@@ -46,8 +49,8 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
     <>
       <ActionButtonStyles />
       <Button
-        variant="warning"
         size="lg"
+        style={style}
         onClick={onClick}
         className="custom-action-button"
       >

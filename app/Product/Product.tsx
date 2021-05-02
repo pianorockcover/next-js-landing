@@ -5,6 +5,7 @@ import { formatPrice } from "../utils/formatPrice";
 import { Check, DashCircle } from "react-bootstrap-icons";
 import { SubmitButton } from "../Buttons/SubmitButton";
 import { productInSliderClassName } from "./ProductsSection";
+import { useTheme } from "styled-components";
 
 const {
   ProductContainer,
@@ -55,6 +56,8 @@ export const Product: React.FC<ProductProps> = ({
   fullView,
   onClick,
 }) => {
+  const theme = useTheme();
+
   return (
     <ProductArea fullView={fullView}>
       <ProductContainer fullView={fullView}>
@@ -107,7 +110,7 @@ export const Product: React.FC<ProductProps> = ({
           </OptionsWrapper>
           <BtnWrapper>
             <SubmitButton
-              gradient="primary-success"
+              style={theme.product.submit}
               icon={fullView || !images ? "Cart" : undefined}
               onClick={onClick && onClick(id)}
             >
