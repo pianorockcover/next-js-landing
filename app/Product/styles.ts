@@ -197,6 +197,7 @@ const Label = styled.div<LabelProps>`
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   background: ${({ type, theme }) => theme[type]};
+  color: ${({ type, theme }) => theme.product.label.textColors[type]};
 
   &:before,
   &:after {

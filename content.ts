@@ -1,3 +1,4 @@
+import { ContentBlock } from "./app/ContentSection/ContentSection";
 import { FieldType, FieldInfo } from "./app/MainForm/interface";
 import { OpportunityProps } from "./app/Opportunity/Opportunity";
 import { ProductProps } from "./app/Product/Product";
@@ -33,7 +34,7 @@ class Info {
   pluses = ["Встраивается в любой сайт", "Без дизайнера и программиста"];
   actionButton = {
     text: "Оставить заявку",
-    icon: "BsCart",
+    icon: "Cart",
   };
   headerSocials = [
     {
@@ -206,10 +207,7 @@ class Info {
         },
       ],
     ] as FieldInfo[][],
-    defaultValues: {
-      tariff: "Тариф 1",
-      phone: "+7",
-    },
+    defaultValues: this.products[0],
   };
   explanation = {
     title:
@@ -268,7 +266,7 @@ class Info {
   opportunities: OpportunityProps[][] = [
     [
       {
-        icon: "BsCart",
+        icon: "Cart",
         title: "Только качественная продукция",
         text:
           "Вся наша продукция прошла обязательную сертификацию и соответствует самым высоким стандартам.",
@@ -290,6 +288,38 @@ class Info {
       {
         icon: "BsAlarm",
         title: "100% гарантия на возврат товаров",
+      },
+    ],
+  ];
+  contentSection: ContentBlock[][] = [
+    [
+      {
+        type: "H2",
+        text: "Секция с произвольным контентом",
+      },
+    ],
+    [
+      {
+        type: "P",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
+      },
+      {
+        type: "P",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
+      },
+    ],
+    [
+      {
+        type: "H3",
+        text: "Заголовок второго уровня",
+      },
+    ],
+    [
+      {
+        type: "P",
+        text: "Пустой <b>параграф</b>",
       },
     ],
   ];

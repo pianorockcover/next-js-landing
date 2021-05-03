@@ -94,6 +94,12 @@ export class ThemeManager {
     };
     label: {
       shadow: string;
+      textColors: {
+        warning: string;
+        primary: string;
+        danger: string;
+        success: string;
+      };
     };
     price: {
       color: string;
@@ -141,6 +147,12 @@ export class ThemeManager {
         shadow: string;
       };
     };
+  };
+
+  contentSection: {
+    bg: string;
+    color: string;
+    shadow: string;
   };
 
   buttonBorderRadius: string;
@@ -245,6 +257,12 @@ export class ThemeManager {
       },
       label: {
         shadow: `${Color(this.black).alpha(0.3).rgb()}`,
+        textColors: {
+          warning: this.text,
+          primary: this.text,
+          danger: this.white,
+          success: this.text,
+        },
       },
       price: {
         color: this.text,
@@ -294,6 +312,12 @@ export class ThemeManager {
       bg: "#f5f5f5",
       titleUnderline: this.warning,
       sliderArrows: this.primary,
+    };
+
+    this.contentSection = {
+      bg: this.white,
+      color: this.text,
+      shadow: "rgba(66, 66, 66, 0.1)",
     };
 
     this.apply(config);

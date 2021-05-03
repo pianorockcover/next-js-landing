@@ -43,7 +43,7 @@ const SiteHeader = styled.div`
   }
 `;
 
-const SubHeader = styled.div`
+const SubTitle = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   font-size: 21px;
@@ -84,7 +84,7 @@ const HeaderBubble = styled.div`
   }
 `;
 
-const SiteTitle = styled.div`
+const SiteTitle = styled.h1`
   line-height: 55px;
   font-weight: 600;
   font-size: 45px;
@@ -145,7 +145,7 @@ export const Header: React.FC = () => {
                 <SiteTitle
                   dangerouslySetInnerHTML={{ __html: content.siteTitle }}
                 />
-                <SubHeader
+                <SubTitle
                   dangerouslySetInnerHTML={{ __html: content.subTitle }}
                 />
                 <HeaderBubble

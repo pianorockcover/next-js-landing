@@ -111,7 +111,7 @@ export const Product: React.FC<ProductProps> = ({
           <BtnWrapper>
             <SubmitButton
               style={theme.product.submit}
-              icon={fullView || !images ? "BsCart" : undefined}
+              icon={fullView || !images ? "Cart" : undefined}
               onClick={onClick && onClick(id)}
             >
               {fullView || !images ? "Заказать" : "Подробнее"}

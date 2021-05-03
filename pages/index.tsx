@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { GlobalStyles } from "../app/GlobalStyles";
 import { AlertWindow, AlertWindowContext } from "../app/AlertWindow";
 import { useAlert } from "../app/utils/useAlert";
@@ -19,6 +19,7 @@ import fs from "fs";
 import { parseScssVariables } from "../app/utils/parseScssVariables";
 import { ThemeProvider } from "styled-components";
 import { ThemeManager } from "../app/ThemeManager";
+import { ContentSection } from "../app/ContentSection/ContentSection";
 
 interface IndexProps {
   themeVariables: Record<string, string>;
@@ -46,6 +47,7 @@ const Index: React.FC<IndexProps> = ({ themeVariables }) => {
           <Explanation />
           <OpportunitiesSection />
           <ProductsSection />
+          <ContentSection />
           <AlertWindow {...alert} />
         </FeedbackFormContext.Provider>
       </AlertWindowContext.Provider>

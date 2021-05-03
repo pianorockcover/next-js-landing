@@ -21,6 +21,7 @@ import * as si from "react-icons/si";
 import * as ti from "react-icons/ti";
 import * as vsc from "react-icons/vsc";
 import * as wi from "react-icons/wi";
+import * as moreBs from "react-bootstrap-icons";
 
 const icons = {
   ...ai,
@@ -45,6 +46,7 @@ const icons = {
   ...ti,
   ...vsc,
   ...wi,
+  ...moreBs,
 };
 
 export const useIcon = (icon: string) => {
