@@ -85,6 +85,26 @@ export class ThemeManager {
       color: string;
       background: string;
     };
+    sliderArrows: string;
+    bg: string;
+    shadow: string;
+    shadows: {
+      color: string;
+      shadow: string;
+    };
+    label: {
+      shadow: string;
+    };
+    price: {
+      color: string;
+      bg: string;
+    };
+  };
+
+  productsSection: {
+    bg: string;
+    titleUnderline: string;
+    sliderArrows: string;
   };
 
   form: {
@@ -92,6 +112,51 @@ export class ThemeManager {
       filled: string;
     };
   };
+
+  explanation: {
+    background: string;
+    shadow: string;
+    text: string;
+    image: {
+      border: string;
+      bg: string;
+      shadow: string;
+    };
+  };
+
+  opportunities: {
+    background: string;
+    before: {
+      bg: string;
+      shadow: string;
+    };
+    text: string;
+    bgText: string;
+    item: {
+      color: string;
+      icon: {
+        bg: string;
+        padding: string;
+        color: string;
+        shadow: string;
+      };
+    };
+  };
+
+  buttonBorderRadius: string;
+
+  hoverEffect = (
+    transition: number = 0.2,
+    scale: number = 1.1,
+    zIndex?: number
+  ) => `
+    transition: transform ${transition}s linear;
+    &:hover {
+        transform: scale(${scale});
+
+        ${zIndex && `z-index: ${zIndex};`}
+    }
+  `;
 
   constructor(config?: Record<string, string | number>) {
     this.apply(config);
@@ -167,9 +232,23 @@ export class ThemeManager {
     };
 
     this.product = {
+      sliderArrows: this.warning,
+      bg: this.white,
+      shadow: "rgb(156 156 156 / 17%)",
+      shadows: {
+        color: "#f7f7f7",
+        shadow: "rgb(156 156 156 / 17%)",
+      },
       submit: {
         color: this.white,
         background: `linear-gradient(to right, ${this.primary}, ${this.success})`,
+      },
+      label: {
+        shadow: `${Color(this.black).alpha(0.3).rgb()}`,
+      },
+      price: {
+        color: this.text,
+        bg: this.warning,
       },
     };
 
@@ -177,6 +256,44 @@ export class ThemeManager {
       checkbox: {
         filled: this.primary,
       },
+    };
+
+    this.explanation = {
+      background: this.white,
+      shadow: `${Color(this.primary).alpha(0.3).rgb()}`,
+      text: this.text,
+      image: {
+        border: "#ececec",
+        bg: this.white,
+        shadow: "rgba(66, 66, 66, 0.1)",
+      },
+    };
+
+    this.opportunities = {
+      background: this.dark,
+      before: {
+        bg: Color(this.dark).lighten(0.2).hex(),
+        shadow: this.dark,
+      },
+      text: this.white,
+      bgText: Color(this.dark).darken(0.2).hex(),
+      item: {
+        color: this.white,
+        icon: {
+          bg: `linear-gradient(to right, ${this.danger}, ${this.warning})`,
+          color: this.white,
+          padding: "12px",
+          shadow: Color(this.dark).darken(0.4).hex(),
+        },
+      },
+    };
+
+    this.buttonBorderRadius = "50px";
+
+    this.productsSection = {
+      bg: "#f5f5f5",
+      titleUnderline: this.warning,
+      sliderArrows: this.primary,
     };
 
     this.apply(config);

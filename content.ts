@@ -33,7 +33,7 @@ class Info {
   pluses = ["Встраивается в любой сайт", "Без дизайнера и программиста"];
   actionButton = {
     text: "Оставить заявку",
-    icon: "Cart",
+    icon: "BsCart",
   };
   headerSocials = [
     {
@@ -70,17 +70,17 @@ class Info {
     },
     icons: [
       {
-        type: "Box",
+        type: "FiBox",
       },
       {
-        type: "Box",
+        type: "FiBox",
         style: {
           top: 50,
           left: -20,
         },
       },
       {
-        type: "Box",
+        type: "FiBox",
         style: {
           top: 100,
           left: 20,
@@ -268,13 +268,13 @@ class Info {
   opportunities: OpportunityProps[][] = [
     [
       {
-        icon: "Cart",
+        icon: "BsCart",
         title: "Только качественная продукция",
         text:
           "Вся наша продукция прошла обязательную сертификацию и соответствует самым высоким стандартам.",
       },
       {
-        icon: "Asterisk",
+        icon: "FaAsterisk",
         title: "Rental Pay",
         text:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est sequi debitis aperiam totam eaque.",
@@ -282,13 +282,13 @@ class Info {
     ],
     [
       {
-        icon: "CalendarDayFill",
+        icon: "AiTwotoneCalendar",
         title: "Оплата любым удобным способом",
         text:
           "Мы принимаем к оплате пластиковые карты Visa и MasterCard, Яндекс.Деньги и безналичные переводы",
       },
       {
-        icon: "Alarm",
+        icon: "BsAlarm",
         title: "100% гарантия на возврат товаров",
       },
     ],

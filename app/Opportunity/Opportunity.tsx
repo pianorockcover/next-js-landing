@@ -1,13 +1,13 @@
-import React, { useMemo } from "react";
-import * as icons from "react-bootstrap-icons";
+import React from "react";
 import styled from "styled-components";
+import { useIcon } from "../utils/getIcon";
 
 interface OpportunityWrapperProps {
   lastRow?: boolean;
 }
 
 const OpportunityWrapper = styled.div<OpportunityWrapperProps>`
-  color: #ffffff;
+  color: ${({ theme }) => theme.opportunities.item.color};
 
   ${({ lastRow }) =>
     !lastRow &&
@@ -22,11 +22,13 @@ const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
-  color: #fff;
+  padding: ${({ theme }) => theme.opportunities.item.icon.padding};
+  color: ${({ theme }) => theme.opportunities.item.icon.color};
   border-radius: 100%;
-  box-shadow: 2px 2px 8px 0.5px #0000002e;
+  box-shadow: ${({ theme }) =>
+    `2px 2px 8px 0.5px ${theme.opportunities.item.icon.shadow}`};
   margin-bottom: 10px;
+  background: ${({ theme }) => theme.opportunities.item.icon.bg};
 
   & > svg {
     width: 100%;
@@ -57,14 +59,11 @@ export const Opportunity: React.FC<OpportunityProps> = ({
   lastRow,
   text,
 }) => {
-  const IconComponent = useMemo(
-    () => (icon && icons[icon] ? icons[icon] : () => null),
-    [icon]
-  );
+  const IconComponent = useIcon(icon);
 
   return (
     <OpportunityWrapper lastRow={lastRow}>
-      <Icon className="bg-gradient-danger-warning">
+      <Icon>
         <IconComponent />
       </Icon>
       {title && <Title>{title}</Title>}

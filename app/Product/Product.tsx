@@ -38,7 +38,7 @@ export interface ProductProps {
   subName?: string;
   labels?: {
     text: string;
-    color: "warning" | "success" | "danger";
+    color: "warning" | "success" | "danger" | "primary";
   }[];
   onClick?: (id: number) => () => void;
   fullView?: boolean;
@@ -75,7 +75,7 @@ export const Product: React.FC<ProductProps> = ({
             <LabelsWrapper staticPos={!images}>
               {labels &&
                 labels.map((label, i) => (
-                  <Label className={`bg-product-label-${label.color}`} key={i}>
+                  <Label type={label.color} key={i}>
                     {label.text}
                   </Label>
                 ))}
@@ -90,7 +90,7 @@ export const Product: React.FC<ProductProps> = ({
             <span dangerouslySetInnerHTML={{ __html: name }} />
             <SubName dangerouslySetInnerHTML={{ __html: subName }} />
           </Name>
-          <Price className="bg-warning">{formatPrice(price)}</Price>
+          <Price>{formatPrice(price)}</Price>
           <OptionsWrapper>
             {options
               ?.slice(
@@ -111,7 +111,7 @@ export const Product: React.FC<ProductProps> = ({
           <BtnWrapper>
             <SubmitButton
               style={theme.product.submit}
-              icon={fullView || !images ? "Cart" : undefined}
+              icon={fullView || !images ? "BsCart" : undefined}
               onClick={onClick && onClick(id)}
             >
               {fullView || !images ? "Заказать" : "Подробнее"}

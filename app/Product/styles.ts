@@ -1,3 +1,4 @@
+import Color from "color";
 import styled from "styled-components";
 
 interface ProductStyleCommonProps {
@@ -37,9 +38,9 @@ interface BgProps {
 }
 
 const Bg = styled.div<BgProps>`
-  box-shadow: 0 0 10px 3px rgb(156 156 156 / 17%);
+  box-shadow: ${({ theme }) => `0 0 10px 3px ${theme.product.shadows.shadow}`};
   border-radius: 10px;
-  background: #f7f7f7;
+  background: ${({ theme }) => theme.product.shadows.color};
   width: 300px;
   height: 100%;
   position: absolute;
@@ -60,12 +61,12 @@ const Bg = styled.div<BgProps>`
 `;
 
 const Wrapper = styled.div<ProductStyleCommonProps>`
-  box-shadow: 0 0 10px 3px rgb(156 156 156 / 17%);
+  box-shadow: ${({ theme }) => `0 0 10px 3px ${theme.product.shadow}`};
   border-radius: 10px;
   width: 300px;
   max-width: 100%;
   display: flex;
-  background: #ffffff;
+  background: ${({ theme }) => theme.product.bg};
   flex-direction: column;
   position: relative;
   z-index: 2;
@@ -107,6 +108,8 @@ const Price = styled.div`
   border: 0px;
   transform: rotate(-3deg);
   font-size: 25px;
+  background: ${({ theme }) => theme.product.price.bg};
+  color: ${({ theme }) => theme.product.price.color};
 `;
 
 const Name = styled.div`
@@ -181,19 +184,25 @@ const LabelsWrapper = styled.div<LabelsWrapperProps>`
   `}
 `;
 
-const Label = styled.div`
+interface LabelProps {
+  type: "danger" | "warning" | "success" | "primary";
+}
+
+const Label = styled.div<LabelProps>`
   position: relative;
   margin-bottom: 10px;
   padding: 8px 10px;
-  box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: ${({ theme }) => `-1px 2px 3px ${theme.product.label.shadow}`};
   font-weight: 600;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  background: ${({ type, theme }) => theme[type]};
 
   &:before,
   &:after {
     content: "";
     position: absolute;
+    background: ${({ type, theme }) => Color(theme[type]).lighten(0.2).hex()};
   }
 
   &:before {

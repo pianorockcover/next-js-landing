@@ -2,7 +2,7 @@ import React, { createContext, useMemo } from "react";
 import { Modal } from "react-bootstrap";
 import { ModalStyles } from "./ModalWindow";
 import styled, { useTheme } from "styled-components";
-import * as icons from "react-bootstrap-icons";
+import { X, Check } from "react-bootstrap-icons";
 import { SubmitButton } from "./Buttons/SubmitButton";
 import { createGlobalStyle } from "styled-components";
 
@@ -97,9 +97,7 @@ export const AlertWindow: React.FC<AlertWindowProps> = ({
   text,
   type,
 }) => {
-  const Icon = useMemo(() => (type === "error" ? icons["X"] : icons["Check"]), [
-    type,
-  ]);
+  const Icon = useMemo(() => (type === "error" ? X : Check), [type]);
 
   const theme = useTheme();
 

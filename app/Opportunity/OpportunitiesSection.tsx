@@ -1,25 +1,25 @@
 import React from "react";
 import { content } from "../../content";
-import styled, { createGlobalStyle } from "styled-components";
-import { Col, Container, Row } from "react-bootstrap";
+import styled from "styled-components";
+import { Col, Container as BsContainer, Row as BsRow } from "react-bootstrap";
 import { Opportunity } from "./Opportunity";
 
-const GlobalStyles = createGlobalStyle`
-  .opportunities-main-row {
-    align-items: center;
-    position: relative;
-    z-index: 2;
-  }
+const Container = styled(BsContainer)`
+  position: relative;
+`;
 
-  .opportunities-container {
-      position: relative;
-  }
+const Row = styled(BsRow)`
+  align-items: center;
+  position: relative;
+  z-index: 2;
 `;
 
 const OpportunitiesSectionWrapper = styled.div`
   padding-top: 90px;
   padding-bottom: 90px;
   position: relative;
+  background: ${({ theme }) => theme.opportunities.background};
+  color: ${({ theme }) => theme.opportunities.text};
 
   &:before {
     content: " ";
@@ -30,12 +30,13 @@ const OpportunitiesSectionWrapper = styled.div`
     width: 100%;
     height: 200px;
     transform: skewY(-3deg);
-    box-shadow: 0px 3px 10px 0.5px #25252547;
+    background: ${({ theme }) => theme.opportunities.before.bg};
+    box-shadow: ${({ theme }) =>
+      `0px 3px 10px 0.5px ${theme.opportunities.before.shadow}`};
   }
 `;
 
 const Description = styled.div`
-  color: #ffffff;
   padding-right: 50px;
   padding-left: 20px;
 `;
@@ -57,7 +58,7 @@ const BgText = styled.div`
   font-size: 140px;
   top: -50px;
   left: 0px;
-  color: #1d2023;
+  color: ${({ theme }) => theme.opportunities.bgText};
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -66,46 +67,42 @@ const BgText = styled.div`
 
 export const OpportunitiesSection: React.FC = () => {
   return (
-    <>
-      <GlobalStyles />
-      <OpportunitiesSectionWrapper className="bg-dark before-bg-dark-lighten">
-        <Container className="opportunities-container">
-          <BgText
-            className="text-darken-dark"
-            dangerouslySetInnerHTML={{ __html: content.mainOpportunity.bgText }}
-          />
-          <Row className="opportunities-main-row">
-            <Col>
-              <Description>
-                <Title
-                  dangerouslySetInnerHTML={{
-                    __html: content.mainOpportunity.title,
-                  }}
-                />
-                <Text
-                  dangerouslySetInnerHTML={{
-                    __html: content.mainOpportunity.text,
-                  }}
-                />
-              </Description>
-            </Col>
-            <Col>
-              {content.opportunities.map((row, i) => (
-                <Row key={i}>
-                  {row.map((col, j) => (
-                    <Col key={j}>
-                      <Opportunity
-                        {...col}
-                        lastRow={i + 1 === content.opportunities.length}
-                      />
-                    </Col>
-                  ))}
-                </Row>
-              ))}
-            </Col>
-          </Row>
-        </Container>
-      </OpportunitiesSectionWrapper>
-    </>
+    <OpportunitiesSectionWrapper>
+      <Container>
+        <BgText
+          dangerouslySetInnerHTML={{ __html: content.mainOpportunity.bgText }}
+        />
+        <Row>
+          <Col>
+            <Description>
+              <Title
+                dangerouslySetInnerHTML={{
+                  __html: content.mainOpportunity.title,
+                }}
+              />
+              <Text
+                dangerouslySetInnerHTML={{
+                  __html: content.mainOpportunity.text,
+                }}
+              />
+            </Description>
+          </Col>
+          <Col>
+            {content.opportunities.map((row, i) => (
+              <BsRow key={i}>
+                {row.map((col, j) => (
+                  <Col key={j}>
+                    <Opportunity
+                      {...col}
+                      lastRow={i + 1 === content.opportunities.length}
+                    />
+                  </Col>
+                ))}
+              </BsRow>
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </OpportunitiesSectionWrapper>
   );
 };

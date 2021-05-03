@@ -3,7 +3,7 @@ import { svgPath } from "blobs/v2";
 import styled from "styled-components";
 import { content } from "../content";
 import { navbarHeight } from "./Navbar/Navbar";
-import * as icons from "react-bootstrap-icons";
+import { useIcon } from "./utils/getIcon";
 
 const RandomShapeArea = styled.div`
   position: absolute;
@@ -112,7 +112,8 @@ export const RandomShape: React.FC = () => {
         <Gradient />
       </RandomShapeWrapper>
       {content.headerBlob.icons.map((icon, i) => {
-        const IconComponent = useMemo(() => icons[icon.type], []);
+        const IconComponent = useIcon(icon.type);
+
         return (
           <Icon style={icon["style"]} key={i}>
             <IconComponent />

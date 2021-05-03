@@ -4,11 +4,12 @@ import styled from "styled-components";
 import { content } from "../../content";
 import { ProductElement } from "./ProductElement";
 import Slick from "react-slick";
+import { SlickSliderStyles } from "./SlickSliderStyles";
 
 export const productInSliderClassName = "product-in-slider";
 
 const ProductsSectionWrapper = styled.div`
-  background: #f5f5f5;
+  background: ${({ theme }) => theme.productsSection.bg};
   padding-top: 70px;
   padding-bottom: 50px;
   position: relative;
@@ -44,6 +45,7 @@ const Title = styled.div`
     z-index: 1;
     transform: rotate(-2deg);
     left: -10%;
+    background: ${({ theme }) => theme.productsSection.titleUnderline};
   }
 `;
 
@@ -60,28 +62,35 @@ export const ProductsSection: React.FC = () => {
   }, []);
 
   return (
-    <ProductsSectionWrapper>
-      <ProductContent>
-        <style>
-          {`
+    <>
+      <SlickSliderStyles />
+      <ProductsSectionWrapper>
+        <ProductContent>
+          <style>
+            {`
             .${productInSliderClassName} {
                 min-height: ${productHeight}px;
             }
         `}
-        </style>
-        <Container>
-          <Title className="before-bg-warning">
-            <span>{content.productsSection.title}</span>
-          </Title>
-          <Slick slidesToShow={3} className="products-slick" touchMove={false}>
-            {content.products.map((product, i) => (
-              <div key={i}>
-                <ProductElement {...product} />
-              </div>
-            ))}
-          </Slick>
-        </Container>
-      </ProductContent>
-    </ProductsSectionWrapper>
+          </style>
+          <Container>
+            <Title className="before-bg-warning">
+              <span>{content.productsSection.title}</span>
+            </Title>
+            <Slick
+              slidesToShow={3}
+              className="products-slick"
+              touchMove={false}
+            >
+              {content.products.map((product, i) => (
+                <div key={i}>
+                  <ProductElement {...product} />
+                </div>
+              ))}
+            </Slick>
+          </Container>
+        </ProductContent>
+      </ProductsSectionWrapper>
+    </>
   );
 };

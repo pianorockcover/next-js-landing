@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { content } from "../content";
 import Lightbox from "react-awesome-lightbox";
 
@@ -16,22 +16,25 @@ const ExplanationContent = styled.div`
   min-height: 300px;
   border-radius: 10px;
   margin-top: 20px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.explanation.background};
   padding: 30px;
   padding-left: 40px;
   padding-right: 40px;
   display: flex;
   align-items: center;
+  box-shadow: 0 0 30px 3px ${({ theme }) => theme.explanation.shadow};
 `;
 
 const Title = styled.div`
   font-size: 28px;
   line-height: 31px;
   margin-bottom: 50px;
+  color: ${({ theme }) => theme.explanation.text};
 `;
 
 const Text = styled.div`
   font-size: 22px;
+  color: ${({ theme }) => theme.explanation.text};
 `;
 
 const ArtContainer = styled.div`
@@ -47,25 +50,13 @@ const Art = styled.div`
 
 const ImageContainer = styled.div`
   position: absolute;
-  border: 1px solid #ececec;
-  box-shadow: 5px 10px 30px 3px rgb(66 66 66 / 10%);
+  border: 1px solid ${({ theme }) => theme.explanation.image.border};
+  box-shadow: 5px 10px 30px 3px ${({ theme }) => theme.explanation.image.shadow};
   padding: 7px;
-  background: #ffffff;
+  background: ${({ theme }) => theme.explanation.image.bg};
   border-radius: 100%;
   cursor: pointer;
-
-  & > span {
-    position: absolute;
-    transition: background 0.2s ease-in-out;
-    z-index: 2;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 100%;
-    background: transparent;
-  }
+  ${({ theme }) => theme.hoverEffect()}
 `;
 
 const Image = styled.div`
@@ -133,7 +124,6 @@ export const Explanation: React.FC = () => {
                             }}
                             onClick={onImageClick(i + 1)}
                           >
-                            <span className="hover-bg-primary"></span>
                             <Image
                               style={{
                                 backgroundImage: `url(/images/explanation/small-${url}${content.cash})`,

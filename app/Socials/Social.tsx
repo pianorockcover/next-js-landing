@@ -11,12 +11,9 @@ const Link = styled.a`
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  transition: transform 0.2s linear;
   margin-left: 10px;
 
-  &:hover {
-    transform: scale(1.1);
-  }
+  ${({ theme }) => theme.hoverEffect()}
 
   & > svg {
     width: 100%;
