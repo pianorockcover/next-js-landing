@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IconBlock } from "./IconBlock";
 
 const H2 = styled.h2`
   text-align: center;
@@ -13,10 +14,6 @@ const H2 = styled.h2`
 const H3 = styled.h2``;
 const P = styled.p``;
 
-// TODO: доделать остальные элементы:
-
-const List = styled.ul``;
-
 const Hr = styled.hr``;
 
 const Blockquote = styled.blockquote``;
@@ -27,8 +24,8 @@ export const ContentBlocks = {
   H2,
   H3,
   P,
-  List,
   Hr,
   Blockquote,
   Image,
+  IconBlock,
 };

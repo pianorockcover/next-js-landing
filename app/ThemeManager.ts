@@ -155,6 +155,14 @@ export class ThemeManager {
     shadow: string;
   };
 
+  iconBlock: {
+    bg: string;
+    color: string;
+    icon: {
+      bg: string;
+    };
+  };
+
   buttonBorderRadius: string;
 
   hoverEffect = (
@@ -318,6 +326,14 @@ export class ThemeManager {
       bg: this.white,
       color: this.text,
       shadow: "rgba(66, 66, 66, 0.1)",
+    };
+
+    this.iconBlock = {
+      bg: "#ececec",
+      color: this.text,
+      icon: {
+        bg: "#f9f9f9",
+      },
     };
 
     this.apply(config);

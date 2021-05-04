@@ -312,6 +312,41 @@ class Info {
     ],
     [
       {
+        type: "IconBlock",
+        text: "Оплати подписку любым удобным для тебя способом",
+        props: {
+          title: "1 ШАГ. Тест",
+          icon: "FcPaid",
+        },
+      },
+      {
+        type: "IconBlock",
+        text: "Оплати подписку любым удобным для тебя способом",
+        props: {
+          icon: "FcPicture",
+          title: "2 ШАГ. Тест",
+        },
+      },
+      {
+        type: "IconBlock",
+        text: "Оплати подписку любым удобным для тебя способом",
+        props: {
+          title: "1 ШАГ. Тест",
+          icon: "FcPaid",
+        },
+      },
+
+      {
+        type: "IconBlock",
+        text: "Оплати подписку любым удобным для тебя способом",
+        props: {
+          title: "1 ШАГ. Тест",
+          icon: "FcPaid",
+        },
+      },
+    ],
+    [
+      {
         type: "H3",
         text: "Заголовок второго уровня",
       },

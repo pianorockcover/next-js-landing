@@ -23,14 +23,17 @@ export interface ContentBlock {
 export const ContentSection: React.FC = () => (
   <ContentSectionWrapper>
     <Container>
-      {content.contentSection.map((row) => (
-        <Row>
-          {row.map(({ type, props, text }) => {
+      {content.contentSection.map((row, i) => (
+        <Row key={i}>
+          {row.map(({ type, props, text }, j) => {
             const Block = useMemo(() => ContentBlocks[type], []);
 
             return (
-              <Col>
-                <Block dangerouslySetInnerHTML={{ __html: text }} {...props} />
+              <Col key={j}>
+                <Block
+                  dangerouslySetInnerHTML={{ __html: text }}
+                  {...{ ...props, text }}
+                />
               </Col>
             );
           })}
