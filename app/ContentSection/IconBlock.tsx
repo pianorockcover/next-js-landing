@@ -22,11 +22,23 @@ const IconWrapper = styled.div<IconWrapperProps>`
   width: 50px;
   height: 50px;
   margin-bottom: 15px;
+  position: relative;
 
   & > svg {
     width: 100%;
     height: 100%;
   }
+`;
+
+const Digit = styled.span`
+  color: ${({ theme }) => theme.iconBlock.digit};
+  position: absolute;
+  bottom: -9px;
+  right: 0px;
+  display: block;
+  font-weight: 800;
+  line-height: 1;
+  font-size: 50px;
 `;
 
 const Title = styled.div`
@@ -40,10 +52,11 @@ const Text = styled.div`
 `;
 
 interface IconBlockProps {
-  icon: string;
+  icon?: string;
   iconColor?: string;
   title?: string;
   text: string;
+  digit?: number;
 }
 
 export const IconBlock: React.FC<IconBlockProps> = ({
@@ -51,13 +64,14 @@ export const IconBlock: React.FC<IconBlockProps> = ({
   title,
   text,
   iconColor,
+  digit,
 }) => {
   const Icon = useIcon(icon);
 
   return (
     <Wrapper>
       <IconWrapper iconColor={iconColor}>
-        <Icon />
+        {digit ? <Digit>{digit}</Digit> : <Icon />}
       </IconWrapper>
       <Title dangerouslySetInnerHTML={{ __html: title }} />
       <Text dangerouslySetInnerHTML={{ __html: text }} />

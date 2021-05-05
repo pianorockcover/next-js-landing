@@ -153,10 +153,30 @@ export class ThemeManager {
     bg: string;
     color: string;
     shadow: string;
+    image: {
+      text: {
+        color: string;
+        bg: string;
+      };
+    };
+    blockquote: {
+      color: string;
+      bg: string;
+      border: string;
+      quotes: string;
+    };
+    accordeon: {
+      color: string;
+      title: {
+        bg: string;
+        color: string;
+      };
+    };
   };
 
   iconBlock: {
     bg: string;
+    digit: string;
     color: string;
     icon: {
       bg: string;
@@ -164,6 +184,8 @@ export class ThemeManager {
   };
 
   buttonBorderRadius: string;
+
+  hr: string;
 
   hoverEffect = (
     transition: number = 0.2,
@@ -326,15 +348,37 @@ export class ThemeManager {
       bg: this.white,
       color: this.text,
       shadow: "rgba(66, 66, 66, 0.1)",
+      image: {
+        text: {
+          color: this.white,
+          bg: `${Color(this.black).alpha(0.75).rgb()}`,
+        },
+      },
+      blockquote: {
+        color: this.text,
+        bg: "#ececec",
+        border: this.warning,
+        quotes: `${Color(this.warning).alpha(0.9).rgb()}`,
+      },
+      accordeon: {
+        color: this.text,
+        title: {
+          bg: "#ececec",
+          color: this.text,
+        },
+      },
     };
 
     this.iconBlock = {
       bg: "#ececec",
       color: this.text,
+      digit: this.warning,
       icon: {
         bg: "#f9f9f9",
       },
     };
+
+    this.hr = "#ececec";
 
     this.apply(config);
   }

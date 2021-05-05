@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { IconBlock } from "./IconBlock";
+import { Image } from "./Image";
+import { Anchor } from "../Anchor";
+import { Blockquote } from "./Blockquote";
+import { Accordion } from "./Accordion";
 
 const H2 = styled.h2`
   text-align: center;
@@ -14,11 +18,12 @@ const H2 = styled.h2`
 const H3 = styled.h2``;
 const P = styled.p``;
 
-const Hr = styled.hr``;
-
-const Blockquote = styled.blockquote``;
-
-const Image = styled.img``;
+const Hr = styled.div`
+  margin-bottom: 40px;
+  width: 100%;
+  height: 1px;
+  background: ${({ theme }) => theme.hr};
+`;
 
 export const ContentBlocks = {
   H2,
@@ -26,6 +31,8 @@ export const ContentBlocks = {
   P,
   Hr,
   Blockquote,
-  Image,
   IconBlock,
+  Image,
+  Anchor,
+  Accordion,
 };

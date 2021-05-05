@@ -155,4 +155,14 @@ export const GlobalStyles = createGlobalStyle`
     *::-webkit-scrollbar-thumb {
         background-color: #c7c7c7;
     }
+
+    a.anchor {
+        border-bottom: 1px solid;
+        text-decoration: none !important;
+        transition: border-bottom 0.2s linear;
+
+        &:hover {
+            border-bottom: 1px solid transparent;
+        }
+    }
 `;

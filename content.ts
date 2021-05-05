@@ -307,7 +307,7 @@ class Info {
       {
         type: "P",
         text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
+          "Lorem ipsum dolor sit <a href='#' class='anchor'>второго уровня</a> amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
       },
     ],
     [
@@ -331,8 +331,7 @@ class Info {
         type: "IconBlock",
         text: "Оплати подписку любым удобным для тебя способом",
         props: {
-          title: "1 ШАГ. Тест",
-          icon: "FcPaid",
+          digit: 1,
         },
       },
 
@@ -355,6 +354,67 @@ class Info {
       {
         type: "P",
         text: "Пустой <b>параграф</b>",
+      },
+    ],
+    [
+      {
+        type: "Image",
+        text: "Оплати подписку любым удобным для тебя способом",
+        props: {
+          src: "1.jpg",
+        },
+      },
+      {
+        type: "Image",
+        props: {
+          src: "3.jpg",
+        },
+      },
+      {
+        type: "Image",
+        props: {
+          src: "4.jpg",
+        },
+      },
+    ],
+    [{ type: "Hr" }],
+    [
+      {
+        type: "Blockquote",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
+        props: {
+          author: "John Doe",
+        },
+      },
+      {
+        type: "P",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
+      },
+    ],
+    [
+      {
+        type: "H2",
+        text: "Часто задаваемые вопросы",
+      },
+    ],
+    [
+      {
+        type: "Accordion",
+        props: {
+          items: [
+            {
+              title: "А как какать?",
+              text:
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
+            },
+            {
+              title: "А как скачать фильм без регистрации и смс?",
+              text: "Content 2",
+            },
+          ],
+        },
       },
     ],
   ];

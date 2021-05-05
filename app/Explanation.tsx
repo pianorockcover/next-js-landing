@@ -87,13 +87,14 @@ export const Explanation: React.FC = () => {
 
   return (
     <>
-      {galleryImageIndex && (
+      {galleryImageIndex > 0 ? (
         <Lightbox
-          images={galleryImages}
+          image={galleryImages.length === 1 ? galleryImages[0] : undefined}
+          images={galleryImages.length > 1 ? galleryImages : undefined}
           startIndex={galleryImageIndex - 1}
           onClose={closeGallery}
         />
-      )}
+      ) : null}
       <ExplanationWrapper>
         <Container>
           <ExplanationContent className="shadow-primary-tr">

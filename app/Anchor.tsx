@@ -13,8 +13,9 @@ const Link = styled.a`
 
 interface AnchorProps {
   href?: string;
+  text?: string;
 }
 
-export const Anchor: React.FC<AnchorProps> = ({ href, children }) => (
-  <Link href={href}>{children}</Link>
+export const Anchor: React.FC<AnchorProps> = ({ href, children, text }) => (
+  <Link href={href}>{text || children}</Link>
 );

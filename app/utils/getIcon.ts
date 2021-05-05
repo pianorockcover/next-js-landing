@@ -49,12 +49,16 @@ const icons = {
   ...moreBs,
 };
 
-export const useIcon = (icon: string) => {
+export const useIcon = (icon?: string) => {
   const [iconComponent, setIconComponent] = useState<{ element: React.FC }>({
     element: () => null,
   });
 
   useEffect(() => {
+    if (!icon) {
+      return;
+    }
+
     try {
       if (!icons[icon]) {
         throw new Error("No icon found");
