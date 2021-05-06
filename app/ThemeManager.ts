@@ -171,15 +171,18 @@ export class ThemeManager {
       quotes: string;
     };
     accordeon: {
+      shadow: string;
+      border: string;
+      arrow: {
+        up: string;
+        down: string;
+      };
       title: {
-        bg: string;
         color: string;
-        border: string;
       };
       content: {
         bg: string;
         color: string;
-        border: string;
       };
     };
   };
@@ -190,6 +193,18 @@ export class ThemeManager {
     color: string;
     icon: {
       bg: string;
+    };
+  };
+
+  testimonials: {
+    title: string;
+    bg: string;
+    sliderArrows: string;
+    item: {
+      bg: string;
+      color: string;
+      shadow: string;
+      rating: string;
     };
   };
 
@@ -371,20 +386,23 @@ export class ThemeManager {
       },
       blockquote: {
         color: this.text,
-        bg: "#ececec",
+        bg: this.white,
         border: this.warning,
         quotes: `${Color(this.warning).alpha(0.9).rgb()}`,
       },
       accordeon: {
+        shadow: "#e0e0e0",
+        border: "#e6e6e6",
+        arrow: {
+          up: this.danger,
+          down: this.success,
+        },
         title: {
-          bg: "#ececec",
           color: this.text,
-          border: "#dddddd",
         },
         content: {
-          bg: "#ececec",
+          bg: this.white,
           color: this.text,
-          border: "#dddddd",
         },
       },
     };
@@ -395,6 +413,20 @@ export class ThemeManager {
       digit: this.warning,
       icon: {
         bg: "#f9f9f9",
+      },
+    };
+
+    this.testimonials = {
+      title: this.white,
+      sliderArrows: this.danger,
+      bg: `linear-gradient(to right, ${Color(this.warning).darken(
+        0.1
+      )}, ${Color(this.warning).lighten(0.1).hex()})`,
+      item: {
+        bg: this.white,
+        shadow: `${Color(this.black).alpha(0.1).rgb()}`,
+        color: this.text,
+        rating: this.danger,
       },
     };
 

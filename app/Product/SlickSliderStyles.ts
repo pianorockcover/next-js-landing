@@ -52,5 +52,31 @@ export const SlickSliderStyles = createGlobalStyle`
                 }
             }
         }
+
+        &.testimonials-slick {
+            .slick-prev {
+                left: 0px;
+            }
+
+            .slick-next {
+                right: 30px;
+            }
+
+            .slick-next,
+            .slick-prev {
+                z-index: 2;
+
+                &:before {
+                    color: ${({ theme }) => theme.testimonials.sliderArrows};
+                    font-size: 50px;
+                }
+            }
+
+            .slick-slide {
+                padding: 20px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
     }
 `;

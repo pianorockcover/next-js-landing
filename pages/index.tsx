@@ -20,6 +20,7 @@ import { parseScssVariables } from "../app/utils/parseScssVariables";
 import { ThemeProvider } from "styled-components";
 import { ThemeManager } from "../app/ThemeManager";
 import { ContentSection } from "../app/ContentSection/ContentSection";
+import { TestimonialsSection } from "../app/Testimonials/TestimonialsSection";
 
 interface IndexProps {
   themeVariables: Record<string, string>;
@@ -48,6 +49,7 @@ const Index: React.FC<IndexProps> = ({ themeVariables }) => {
           <OpportunitiesSection />
           <ProductsSection />
           <ContentSection />
+          <TestimonialsSection />
           <AlertWindow {...alert} />
         </FeedbackFormContext.Provider>
       </AlertWindowContext.Provider>

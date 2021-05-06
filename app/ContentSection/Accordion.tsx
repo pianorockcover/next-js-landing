@@ -5,17 +5,17 @@ import { ChevronDown } from "react-bootstrap-icons";
 
 const GlobalStyle = createGlobalStyle`
     .custom-card {
-        border-radius: 0px !important;
-        border-color: ${({ theme }) =>
-          theme.contentSection.accordeon.content.border};
+        margin-bottom: 10px;
+        border-radius: 5px !important;
+        box-shadow: ${({ theme }) =>
+          `3px 5px 10px 1px ${theme.contentSection.accordeon.shadow}`};
     }
 
     .custom-card-header {
-        border-color: ${({ theme }) =>
-          theme.contentSection.accordeon.title.border};
-        color: ${({ theme }) => theme.contentSection.accordeon.title.color};
-        background: ${({ theme }) => theme.contentSection.accordeon.title.bg};
+        border: 0px !important;
         cursor: pointer;
+        background: transparent;
+        font-weight: 500;
     }
 
     .custom-card-body {
@@ -37,6 +37,7 @@ const Toggle = styled.div`
 
 const Title = styled.div`
   flex: 1;
+  color: ${({ theme }) => theme.contentSection.accordeon.title.color};
   padding-right: 15px;
 `;
 
@@ -47,7 +48,12 @@ interface IconProps {
 const Icon = styled.div<IconProps>`
   transition: transform 0.2s ease-in-out;
   flex: none !important;
-  ${({ isActive }) => isActive && `
+  color: ${({ theme }) => theme.contentSection.accordeon.arrow.down};
+
+  ${({ isActive, theme }) =>
+    isActive &&
+    `
+    color: ${theme.contentSection.accordeon.arrow.up};
     transform: rotate(180deg);
   `}
 `;
@@ -92,7 +98,7 @@ export const Accordion: React.FC<AccordionProps> = ({
                 </Toggle>
               </BSAccordion.Toggle>
               <BSAccordion.Collapse eventKey={`${i}`}>
-                <Card.Body>
+                <Card.Body className="custom-card-body">
                   <div dangerouslySetInnerHTML={{ __html: text }} />
                 </Card.Body>
               </BSAccordion.Collapse>

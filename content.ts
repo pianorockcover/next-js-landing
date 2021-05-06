@@ -2,6 +2,7 @@ import { ContentBlock } from "./app/ContentSection/ContentSection";
 import { FieldType, FieldInfo } from "./app/MainForm/interface";
 import { OpportunityProps } from "./app/Opportunity/Opportunity";
 import { ProductProps } from "./app/Product/Product";
+import { TestimonialProps } from "./app/Testimonials/Testimonial";
 
 class Info {
   cash = `?v=1`;
@@ -435,6 +436,43 @@ class Info {
       randomness: 7,
       size: 1000,
     },
+  };
+  testimonials = {
+    title: "Отзывы",
+    items: [
+      {
+        ava: "1.jpg",
+        name: "Lorem Ipsum",
+        rating: 5,
+        text:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint.",
+        title: "Lorem ipsum dolor",
+      },
+      {
+        ava: "1.jpg",
+        name: "Lorem Ipsum",
+        rating: 2,
+        text:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint.",
+        title: "Lorem ipsum dolor",
+      },
+      {
+        ava: "1.jpg",
+        name: "Lorem Ipsum",
+        rating: 3,
+        text:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint.",
+        title: "Lorem ipsum dolor",
+      },
+      {
+        ava: "1.jpg",
+        name: "Ipsum Loserm",
+        rating: 3,
+        text:
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint. Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint.",
+        title: "Lorem ipsum dolor",
+      },
+    ] as TestimonialProps[],
   };
 }
 

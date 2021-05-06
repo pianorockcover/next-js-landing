@@ -68,13 +68,13 @@ export const ProductsSection: React.FC = () => {
         <ProductContent>
           <style>
             {`
-            .${productInSliderClassName} {
-                min-height: ${productHeight}px;
-            }
-        `}
+                .${productInSliderClassName} {
+                    min-height: ${productHeight}px;
+                }
+            `}
           </style>
           <Container>
-            <Title className="before-bg-warning">
+            <Title>
               <span>{content.productsSection.title}</span>
             </Title>
             <Slick
