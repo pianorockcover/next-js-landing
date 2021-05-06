@@ -1,11 +1,12 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { Container as BsContainer, Row, Col } from "react-bootstrap";
 import { content } from "../../content";
 import { ContentBlocks } from "./styles";
 import styled from "styled-components";
 import Lightbox from "react-awesome-lightbox";
 import { noop } from "lodash";
 import { contentImagePath } from "./Image";
+import { svgPath } from "blobs/v2";
 
 const ContentSectionWrapper = styled.div`
   background: ${({ theme }) => theme.contentSection.bg};
@@ -15,6 +16,40 @@ const ContentSectionWrapper = styled.div`
   padding-top: 70px;
   padding-bottom: 50px;
   position: relative;
+  overflow: hidden;
+`;
+
+const Container = styled(BsContainer)`
+  position: relative;
+  z-index: 3;
+`;
+
+interface SvgProps {
+  size: number;
+}
+
+const SvgOne = styled.svg<SvgProps>`
+  z-index: 1;
+  top: 0;
+  left: auto;
+  bottom: auto;
+  position: absolute;
+  right: ${({ size }) => `calc(35% - ${size / 2}px)`};
+  height: ${({ size }) => `${size}px`};
+  width: ${({ size }) => `${size}px`};
+  fill: ${({ theme }) => theme.contentSection.blobs.one};
+`;
+
+const SvgTwo = styled.svg<SvgProps>`
+  z-index: 2;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  position: absolute;
+  height: ${({ size }) => `${size}px`};
+  width: ${({ size }) => `${size}px`};
+  left: ${({ size }) => `calc(35% - ${size / 2}px)`};
+  fill: ${({ theme }) => theme.contentSection.blobs.two};
 `;
 
 interface ContentSectionContextProps {
@@ -59,6 +94,14 @@ export const ContentSection: React.FC = () => {
     []
   );
 
+  const [svgOnePatn, setSvgOnePath] = useState<string>();
+  const [svgTwoPatn, setSvgTwoPath] = useState<string>();
+
+  useEffect(() => {
+    setSvgOnePath(svgPath(content.contentSectionBlobs.one));
+    setSvgTwoPath(svgPath(content.contentSectionBlobs.two));
+  }, []);
+
   return (
     <>
       {galleryImageIndex > 0 ? (
@@ -72,6 +115,12 @@ export const ContentSection: React.FC = () => {
       ) : null}
       <ContentSectionContext.Provider value={providerValue}>
         <ContentSectionWrapper>
+          <SvgOne size={content.contentSectionBlobs.one.size}>
+            <path d={svgOnePatn} />
+          </SvgOne>
+          <SvgTwo size={content.contentSectionBlobs.two.size}>
+            <path d={svgTwoPatn} />
+          </SvgTwo>
           <Container>
             {content.contentSection.map((row, i) => (
               <Row key={i}>

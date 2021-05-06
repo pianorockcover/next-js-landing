@@ -153,7 +153,12 @@ export class ThemeManager {
     bg: string;
     color: string;
     shadow: string;
+    blobs: {
+      one: string;
+      two: string;
+    };
     image: {
+      zoomIcom: string;
       text: {
         color: string;
         bg: string;
@@ -166,10 +171,15 @@ export class ThemeManager {
       quotes: string;
     };
     accordeon: {
-      color: string;
       title: {
         bg: string;
         color: string;
+        border: string;
+      };
+      content: {
+        bg: string;
+        color: string;
+        border: string;
       };
     };
   };
@@ -348,7 +358,12 @@ export class ThemeManager {
       bg: this.white,
       color: this.text,
       shadow: "rgba(66, 66, 66, 0.1)",
+      blobs: {
+        one: `${Color(this.primary).alpha(0.03).rgb()}`,
+        two: `${Color(this.warning).alpha(0.1).rgb()}`,
+      },
       image: {
+        zoomIcom: `${Color(this.white).alpha(0.8).rgb()}`,
         text: {
           color: this.white,
           bg: `${Color(this.black).alpha(0.75).rgb()}`,
@@ -361,10 +376,15 @@ export class ThemeManager {
         quotes: `${Color(this.warning).alpha(0.9).rgb()}`,
       },
       accordeon: {
-        color: this.text,
         title: {
           bg: "#ececec",
           color: this.text,
+          border: "#dddddd",
+        },
+        content: {
+          bg: "#ececec",
+          color: this.text,
+          border: "#dddddd",
         },
       },
     };

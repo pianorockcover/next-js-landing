@@ -5,33 +5,39 @@ import { ChevronDown } from "react-bootstrap-icons";
 
 const GlobalStyle = createGlobalStyle`
     .custom-card {
-        border: 0px !important;
         border-radius: 0px !important;
+        border-color: ${({ theme }) =>
+          theme.contentSection.accordeon.content.border};
     }
 
     .custom-card-header {
-        border-color: transparent !important;
+        border-color: ${({ theme }) =>
+          theme.contentSection.accordeon.title.border};
         color: ${({ theme }) => theme.contentSection.accordeon.title.color};
         background: ${({ theme }) => theme.contentSection.accordeon.title.bg};
+        cursor: pointer;
+    }
+
+    .custom-card-body {
+        color: ${({ theme }) => theme.contentSection.accordeon.content.color};
+        background: ${({ theme }) => theme.contentSection.accordeon.content.bg};
     }
 `;
 
 const Wrapper = styled.div`
   margin-bottom: 25px;
-  cursor: pointer;
-  color: ${({ theme }) => theme.contentSection.accordeon.color};
 `;
 
 const Toggle = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+`;
 
-  & > div {
-    flex: 1;
-    padding-right: 15px;
-  }
+const Title = styled.div`
+  flex: 1;
+  padding-right: 15px;
 `;
 
 interface IconProps {
@@ -41,9 +47,9 @@ interface IconProps {
 const Icon = styled.div<IconProps>`
   transition: transform 0.2s ease-in-out;
   flex: none !important;
-  width: 16px;
-  height: 16px;
-  ${({ isActive }) => isActive && `transform: rotate(180deg);`}
+  ${({ isActive }) => isActive && `
+    transform: rotate(180deg);
+  `}
 `;
 
 interface AccordionItem {
@@ -79,7 +85,7 @@ export const Accordion: React.FC<AccordionProps> = ({
                 className="custom-card-header"
               >
                 <Toggle>
-                  <div>{title}</div>
+                  <Title dangerouslySetInnerHTML={{ __html: title }} />
                   <Icon isActive={String(i) === active}>
                     <ChevronDown />
                   </Icon>

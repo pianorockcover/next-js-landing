@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo } from "react";
 import styled from "styled-components";
 import { content } from "../../content";
 import { ContentSectionContext } from "./ContentSection";
+import { ZoomIn } from "react-bootstrap-icons";
 
 export const contentImagePath = "/images/content";
 
@@ -27,6 +28,10 @@ const Wrapper = styled.div`
       transform: scale(1.1);
       filter: blur(1px);
     }
+
+    & > svg {
+      opacity: 1;
+    }
   }
 `;
 
@@ -43,13 +48,26 @@ const Img = styled.img`
 const Text = styled.div`
   position: absolute;
   border-radius: 10px;
-  background: #000000bf;
-  color: #fff;
+  background: ${({ theme }) => theme.contentSection.image.text.bg};
+  color: ${({ theme }) => theme.contentSection.image.text.color};
   padding: 10px;
   bottom: 10px;
   left: 10px;
   width: calc(100% - 20px);
   font-weight: 300;
+  z-index: 3;
+`;
+
+const ZoomIcon = styled(ZoomIn)`
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  width: 30px;
+  position: absolute;
+  height: 30px;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+  z-index: 2;
+  color: ${({ theme }) => theme.contentSection.image.zoomIcom};
 `;
 
 interface ImageProps {
@@ -69,6 +87,7 @@ export const Image: React.FC<ImageProps> = ({ src, text, height }) => {
 
   return (
     <Wrapper style={{ height }} onClick={onClick}>
+      <ZoomIcon />
       <Img src={`${contentImagePath}/small-${src}${content.cash}`} alt={text} />
       {text && <Text dangerouslySetInnerHTML={{ __html: text }} />}
     </Wrapper>

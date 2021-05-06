@@ -16,7 +16,22 @@ const H2 = styled.h2`
 `;
 
 const H3 = styled.h2``;
-const P = styled.p``;
+
+interface ParagraphProps {
+  background?: string;
+  color?: string;
+}
+
+const P = styled.p<ParagraphProps>`
+  background: ${({ background }) => background};
+  color: ${({ color }) => color};
+
+  ${({ background }) =>
+    background &&
+    `
+        padding: 15px;
+    `}
+`;
 
 const Hr = styled.div`
   margin-bottom: 40px;

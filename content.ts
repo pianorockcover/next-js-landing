@@ -301,6 +301,10 @@ class Info {
     [
       {
         type: "P",
+        props: {
+          color: "#444444",
+          background: "#fdcb6e",
+        },
         text:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
       },
@@ -418,6 +422,20 @@ class Info {
       },
     ],
   ];
+  contentSectionBlobs = {
+    one: {
+      seed: 1212,
+      extraPoints: 5,
+      randomness: 4,
+      size: 800,
+    },
+    two: {
+      seed: 774.838,
+      extraPoints: 7,
+      randomness: 7,
+      size: 1000,
+    },
+  };
 }
 
 export const content = new Info();
