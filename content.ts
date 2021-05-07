@@ -320,32 +320,39 @@ class Info {
         type: "IconBlock",
         text: "Оплати подписку любым удобным для тебя способом",
         props: {
-          title: "1 ШАГ. Тест",
-          icon: "FcPaid",
-        },
-      },
-      {
-        type: "IconBlock",
-        text: "Оплати подписку любым удобным для тебя способом",
-        props: {
-          icon: "FcPicture",
-          title: "2 ШАГ. Тест",
-        },
-      },
-      {
-        type: "IconBlock",
-        text: "Оплати подписку любым удобным для тебя способом",
-        props: {
           digit: 1,
+          icon: "FcBullish",
+          title: "Заказ",
         },
       },
-
       {
         type: "IconBlock",
         text: "Оплати подписку любым удобным для тебя способом",
         props: {
-          title: "1 ШАГ. Тест",
-          icon: "FcPaid",
+          digit: 2,
+          icon: "FcFeedback",
+          title: "Доставка",
+          bg: "linear-gradient(to top, #4caf50, #b6f371)",
+        },
+      },
+      {
+        type: "IconBlock",
+        text: "Оплати подписку любым удобным для тебя способом",
+        props: {
+          digit: 3,
+          icon: "FcFullTrash",
+          title: "Оплата",
+          bg: "linear-gradient(to top,#e91e63,#f97fa9)",
+        },
+      },
+      {
+        type: "IconBlock",
+        text: "Оплати подписку любым удобным для тебя способом",
+        props: {
+          digit: 4,
+          icon: "FcCurrencyExchange",
+          title: "Отзыв",
+          bg: "linear-gradient(to top,#ff5722,#ffba55)",
         },
       },
     ],

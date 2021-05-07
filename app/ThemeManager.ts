@@ -188,10 +188,11 @@ export class ThemeManager {
   };
 
   iconBlock: {
-    bg: string;
-    digit: string;
     color: string;
-    icon: {
+    bg: string;
+    shadow: string;
+    digit: {
+      color: string;
       bg: string;
     };
   };
@@ -408,11 +409,14 @@ export class ThemeManager {
     };
 
     this.iconBlock = {
-      bg: "#ececec",
-      color: this.text,
-      digit: this.warning,
-      icon: {
-        bg: "#f9f9f9",
+      bg: `linear-gradient(to bottom, ${this.primary}, ${Color(this.primary)
+        .lighten(0.1)
+        .hex()})`,
+      color: this.white,
+      shadow: "#0000002e",
+      digit: {
+        color: this.warning,
+        bg: this.white,
       },
     };
 
