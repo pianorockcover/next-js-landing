@@ -30,11 +30,11 @@ interface SvgProps {
 
 const SvgOne = styled.svg<SvgProps>`
   z-index: 1;
-  top: 0;
+  top: -100px;
   left: auto;
   bottom: auto;
   position: absolute;
-  right: ${({ size }) => `calc(35% - ${size / 2}px)`};
+  right: ${({ size }) => `calc(25% - ${size / 2}px)`};
   height: ${({ size }) => `${size}px`};
   width: ${({ size }) => `${size}px`};
   fill: ${({ theme }) => theme.contentSection.blobs.one};
@@ -42,13 +42,13 @@ const SvgOne = styled.svg<SvgProps>`
 
 const SvgTwo = styled.svg<SvgProps>`
   z-index: 2;
-  bottom: 0;
+  bottom: -100px;
   right: auto;
   top: auto;
   position: absolute;
   height: ${({ size }) => `${size}px`};
   width: ${({ size }) => `${size}px`};
-  left: ${({ size }) => `calc(35% - ${size / 2}px)`};
+  left: ${({ size }) => `calc(25% - ${size / 2}px)`};
   fill: ${({ theme }) => theme.contentSection.blobs.two};
 `;
 

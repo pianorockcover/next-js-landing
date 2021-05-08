@@ -6,8 +6,8 @@ import { Testimonial, testimonialInSliderClassName } from "./Testimonial";
 import { Container } from "react-bootstrap";
 
 const Wrapper = styled.div`
-  padding-top: 70px;
-  padding-bottom: 50px;
+  padding-top: 90px;
+  padding-bottom: 70px;
   background: ${({ theme }) => theme.testimonials.bg};
 `;
 
@@ -47,7 +47,7 @@ export const TestimonialsSection: React.FC = () => {
         <Container>
           <Title>{content.testimonials.title}</Title>
           <Slick
-            slidesToShow={2}
+            slidesToShow={3}
             className="testimonials-slick"
             touchMove={false}
           >

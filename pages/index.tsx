@@ -19,8 +19,9 @@ import fs from "fs";
 import { parseScssVariables } from "../app/utils/parseScssVariables";
 import { ThemeProvider } from "styled-components";
 import { ThemeManager } from "../app/ThemeManager";
-import { ContentSection } from "../app/ContentSection/ContentSection";
 import { TestimonialsSection } from "../app/Testimonials/TestimonialsSection";
+import { StepsSection } from "../app/StepsSection/StepsSection";
+import { AboutSection } from "../app/AboutSection/AboutSection";
 
 interface IndexProps {
   themeVariables: Record<string, string>;
@@ -48,7 +49,9 @@ const Index: React.FC<IndexProps> = ({ themeVariables }) => {
           <Explanation />
           <OpportunitiesSection />
           <ProductsSection />
-          <ContentSection />
+          <StepsSection />
+          <AboutSection />
+          {/* <ContentSection /> */}
           <TestimonialsSection />
           <AlertWindow {...alert} />
         </FeedbackFormContext.Provider>

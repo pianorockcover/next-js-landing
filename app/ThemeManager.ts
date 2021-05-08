@@ -149,6 +149,25 @@ export class ThemeManager {
     };
   };
 
+  stepsSection: {
+    icon: {
+      from: string;
+      to: string;
+    };
+    title: {
+      color: string;
+      bg: string;
+    };
+    item: {
+      digit: {
+        color: string;
+        circle: string;
+      };
+      title: string;
+      text: string;
+    };
+  };
+
   contentSection: {
     bg: string;
     color: string;
@@ -191,6 +210,11 @@ export class ThemeManager {
     color: string;
     bg: string;
     shadow: string;
+    border: string;
+    icon: {
+      from: string;
+      to: string;
+    };
     digit: {
       color: string;
       bg: string;
@@ -207,6 +231,20 @@ export class ThemeManager {
       shadow: string;
       rating: string;
     };
+  };
+
+  aboutSection: {
+    title: {
+      bg: string;
+      color: string;
+    };
+    text: {
+      color: string;
+      bg: string;
+    };
+    bg: string;
+    imageShadow: string;
+    digits: string;
   };
 
   buttonBorderRadius: string;
@@ -370,13 +408,32 @@ export class ThemeManager {
       sliderArrows: this.primary,
     };
 
+    this.stepsSection = {
+      icon: {
+        from: `${Color(this.secondary).alpha(0.3).rgb()}`,
+        to: `${Color(this.primary).lighten(0.4).alpha(0.3).rgb()}`,
+      },
+      title: {
+        color: this.text,
+        bg: this.warning,
+      },
+      item: {
+        digit: {
+          color: this.text,
+          circle: this.warning,
+        },
+        title: this.text,
+        text: this.text,
+      },
+    };
+
     this.contentSection = {
       bg: this.white,
       color: this.text,
       shadow: "rgba(66, 66, 66, 0.1)",
       blobs: {
         one: `${Color(this.primary).alpha(0.03).rgb()}`,
-        two: `${Color(this.warning).alpha(0.1).rgb()}`,
+        two: `${Color(this.primary).alpha(0.03).rgb()}`,
       },
       image: {
         zoomIcom: `${Color(this.white).alpha(0.8).rgb()}`,
@@ -409,28 +466,43 @@ export class ThemeManager {
     };
 
     this.iconBlock = {
-      bg: `linear-gradient(to bottom, ${this.primary}, ${Color(this.primary)
-        .lighten(0.1)
-        .hex()})`,
-      color: this.white,
-      shadow: "#0000002e",
+      bg: this.white,
+      color: this.text,
+      shadow: "#a7a6a62e",
+      border: "#eee",
+      icon: {
+        from: this.primary,
+        to: this.success,
+      },
       digit: {
-        color: this.warning,
-        bg: this.white,
+        color: this.primary,
+        bg: "#eeec",
       },
     };
 
+    this.aboutSection = {
+      title: {
+        bg: this.warning,
+        color: this.dark,
+      },
+      text: {
+        color: this.white,
+        bg: `rgb(105 105 105)`,
+      },
+      bg: this.dark,
+      imageShadow: "#1212138a",
+      digits: this.white,
+    };
+
     this.testimonials = {
-      title: this.white,
-      sliderArrows: this.danger,
-      bg: `linear-gradient(to right, ${Color(this.warning).darken(
-        0.1
-      )}, ${Color(this.warning).lighten(0.1).hex()})`,
+      title: this.text,
+      sliderArrows: this.primary,
+      bg: `#f5f5f5`,
       item: {
         bg: this.white,
         shadow: `${Color(this.black).alpha(0.1).rgb()}`,
         color: this.text,
-        rating: this.danger,
+        rating: this.warning,
       },
     };
 

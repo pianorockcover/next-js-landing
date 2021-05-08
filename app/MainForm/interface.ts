@@ -21,7 +21,7 @@ export interface SelectFieldInfo {
   options?: ProductProps[];
 }
 
-export type FieldValue = number | string | boolean;
+export type FieldValue = number | string | boolean | any;
 
 export interface FieldProps {
   error?: FieldError;

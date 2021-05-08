@@ -2,6 +2,7 @@ import { ContentBlock } from "./app/ContentSection/ContentSection";
 import { FieldType, FieldInfo } from "./app/MainForm/interface";
 import { OpportunityProps } from "./app/Opportunity/Opportunity";
 import { ProductProps } from "./app/Product/Product";
+import { StepProps } from "./app/StepsSection/Step";
 import { TestimonialProps } from "./app/Testimonials/Testimonial";
 
 class Info {
@@ -259,7 +260,7 @@ class Info {
     title: "Каталог товаров",
   };
   mainOpportunity = {
-    title: `Почему стоит заказывать <span class="bg-warning text-dark">только у нас?</span>`,
+    title: `Почему стоит заказывать <br><span class="bg-warning text-dark">только у нас?</span>`,
     text:
       "<p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p><p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p>",
     bgText: "Лучше на рынке",
@@ -292,6 +293,62 @@ class Info {
       },
     ],
   ];
+  stepsSection = {
+    title: "Этапы нашей работы",
+    items: [
+      [
+        {
+          digit: 1,
+          title: "Выберите подходящий товар в каталоге",
+          text:
+            "Наш ассортимент обширен! Вы обязательно найдете то что искали по лучшей цене",
+        },
+        {
+          digit: 2,
+          title: "Заполните и отправьте форму заказа",
+          text:
+            "Наш ассортимент обширен! Вы обязательно найдете то что искали по лучшей цене",
+        },
+      ],
+      [
+        {
+          digit: 3,
+          title: "Выберите подходящий товар в каталоге",
+          text:
+            "Наш ассортимент обширен! Вы обязательно найдете то что искали по лучшей цене",
+        },
+        {
+          digit: 4,
+          title: "Заполните и отправьте форму заказа",
+          text:
+            "Наш ассортимент обширен! Вы обязательно найдете то что искали по лучшей цене",
+        },
+      ],
+    ] as StepProps[][],
+    icon: "IoRocketOutline",
+    iconSize: 540,
+  };
+  aboutSection = {
+    title: "О компании",
+    text:
+      "<p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p><p>Познакомьтесь с нашими преимуществами! Мы уверены, что покупка у нас оставит только положительные эмоции.</p>",
+    textColWidth: 6,
+    imgWidth: 800,
+    digits: [
+      {
+        value: 20,
+        exp: "Довольных <br> пользователей",
+      },
+      {
+        value: 344,
+        exp: "Заказов",
+      },
+      {
+        value: 1000,
+        exp: "Поставок",
+      },
+    ],
+  };
   contentSection: ContentBlock[][] = [
     [
       {
@@ -301,58 +358,31 @@ class Info {
     ],
     [
       {
-        type: "P",
-        props: {
-          color: "#444444",
-          background: "#fdcb6e",
-        },
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-      },
-      {
-        type: "P",
-        text:
-          "Lorem ipsum dolor sit <a href='#' class='anchor'>второго уровня</a> amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-      },
-    ],
-    [
-      {
         type: "IconBlock",
         text: "Оплати подписку любым удобным для тебя способом",
         props: {
-          digit: 1,
-          icon: "FcBullish",
-          title: "Заказ",
+          icon: "IoRocketOutline",
+          title: "Шаг 1. Заказ",
+          direction: "vertical",
         },
       },
       {
         type: "IconBlock",
         text: "Оплати подписку любым удобным для тебя способом",
         props: {
-          digit: 2,
-          icon: "FcFeedback",
-          title: "Доставка",
-          bg: "linear-gradient(to top, #4caf50, #b6f371)",
+          icon: "IoRocketOutline",
+          title: "Шаг 2. Доставка",
+          direction: "vertical",
         },
       },
       {
         type: "IconBlock",
         text: "Оплати подписку любым удобным для тебя способом",
         props: {
-          digit: 3,
-          icon: "FcFullTrash",
-          title: "Оплата",
-          bg: "linear-gradient(to top,#e91e63,#f97fa9)",
-        },
-      },
-      {
-        type: "IconBlock",
-        text: "Оплати подписку любым удобным для тебя способом",
-        props: {
-          digit: 4,
-          icon: "FcCurrencyExchange",
-          title: "Отзыв",
-          bg: "linear-gradient(to top,#ff5722,#ffba55)",
+          icon: "FaCreditCard",
+          title: "Шаг 3. Оплата",
+          direction: "vertical",
+          coloring: "fill",
         },
       },
     ],
@@ -365,7 +395,13 @@ class Info {
     [
       {
         type: "P",
-        text: "Пустой <b>параграф</b>",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
+      },
+      {
+        type: "P",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
       },
     ],
     [
@@ -392,12 +428,9 @@ class Info {
     [{ type: "Hr" }],
     [
       {
-        type: "Blockquote",
+        type: "P",
         text:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-        props: {
-          author: "John Doe",
-        },
       },
       {
         type: "P",
@@ -466,17 +499,17 @@ class Info {
       {
         ava: "1.jpg",
         name: "Lorem Ipsum",
-        rating: 3,
+        rating: 2,
         text:
           "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint.",
         title: "Lorem ipsum dolor",
       },
       {
         ava: "1.jpg",
-        name: "Ipsum Loserm",
+        name: "Lorem Ipsum",
         rating: 3,
         text:
-          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint. Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint.",
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At corrupti eius ipsa, tenetur et possimus sit incidunt nesciunt iste fugit illum error provident explicabo nam ex, voluptatem impedit aliquid! Sint.",
         title: "Lorem ipsum dolor",
       },
     ] as TestimonialProps[],

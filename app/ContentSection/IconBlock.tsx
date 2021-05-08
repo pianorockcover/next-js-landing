@@ -1,25 +1,33 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useMemo } from "react";
+import styled, { useTheme } from "styled-components";
 import { useIcon } from "../utils/getIcon";
-import { fadeIn } from "react-animations";
 
 interface WrapperProps {
   bg?: string;
   color?: string;
   shadow?: string;
+  direction?: "vertical" | "horizontal";
 }
-
-const fadeInAnimation = keyframes`${fadeIn}`;
 
 const Wrapper = styled.div<WrapperProps>`
   margin-bottom: 25px;
   color: ${({ theme, color }) => color || theme.iconBlock.color};
   background: ${({ theme, bg }) => bg || theme.iconBlock.bg};
   box-shadow: ${({ theme, shadow }) =>
-    `5px 5px 10px 1px ${shadow || theme.iconBlock.shadow}`};
-  border-radius: 10px;
+    `2px 3px 10px 1px ${shadow || theme.iconBlock.shadow}`};
+  border: ${({ theme }) => `1px solid ${theme.iconBlock.border}`};
   padding: 15px;
-  animation: 1s ${fadeInAnimation};
+
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+
+  ${({ direction }) =>
+    direction === "vertical" &&
+    `
+        flex-direction: column;
+        align-items: center;
+    `}
 `;
 
 interface DigitWrapperProps {
@@ -41,6 +49,7 @@ const DigitWrapper = styled.div<DigitWrapperProps>`
   height: 50px;
   margin-bottom: 15px;
   position: relative;
+  margin-right: 15px;
 `;
 
 const Digit = styled.span`
@@ -65,24 +74,25 @@ const Text = styled.div`
 
 interface IconWrapperProps {
   iconColor?: string;
+  coloring: "stroke" | "fill";
 }
 
 const IconWrapper = styled.div<IconWrapperProps>`
   width: 100px;
   margin: 0 auto;
-  margin-top: 15px;
-
-  ${({ iconColor }) => iconColor && `color: ${iconColor};`}
+  margin-bottom: 15px;
 
   & > svg {
     width: 100%;
     height: 100%;
+    ${({ coloring, iconColor }) => `${coloring}: url(#${iconColor})`};
   }
 `;
 
 interface IconBlockProps {
   icon?: string;
-  iconColor?: string;
+  iconColorFrom?: string;
+  iconColorTo?: string;
   digit?: number;
   digitColor?: string;
   digitBg?: string;
@@ -91,36 +101,61 @@ interface IconBlockProps {
   bg?: string;
   color?: string;
   shadow?: string;
+  direction?: "vertical" | "horizontal";
+  coloring: "stroke" | "fill";
 }
 
 export const IconBlock: React.FC<IconBlockProps> = ({
   icon,
-  iconColor,
   digit,
   digitColor,
   digitBg,
+  iconColorFrom,
+  iconColorTo,
   title,
   text,
   bg,
   color,
+  coloring,
   shadow,
+  direction,
 }) => {
   const Icon = useIcon(icon);
+  const theme = useTheme();
+  const gradId = useMemo(() => `${+new Date()}-grad`, []);
 
   return (
-    <Wrapper bg={bg} color={color} shadow={shadow}>
-      {digit && (
-        <DigitWrapper digitColor={digitColor} digitBg={digitBg}>
-          <Digit>{digit}</Digit>
-        </DigitWrapper>
-      )}
-      <Title dangerouslySetInnerHTML={{ __html: title }} />
-      <Text dangerouslySetInnerHTML={{ __html: text }} />
-      {icon && (
-        <IconWrapper iconColor={iconColor}>
-          <Icon />
-        </IconWrapper>
-      )}
-    </Wrapper>
+    <>
+      <svg style={{ width: 0, height: 0 }}>
+        <linearGradient id={gradId} x1="0" y1="0%">
+          <stop
+            offset="0%"
+            stop-color={theme.iconBlock.icon.from || iconColorFrom}
+          />
+          <stop
+            offset="100%"
+            stop-color={theme.iconBlock.icon.to || iconColorTo}
+          />
+        </linearGradient>
+      </svg>
+      <Wrapper bg={bg} color={color} shadow={shadow} direction={direction}>
+        <div>
+          {icon && (
+            <IconWrapper iconColor={gradId} coloring={coloring || "stroke"}>
+              <Icon />
+            </IconWrapper>
+          )}
+          {digit && (
+            <DigitWrapper digitColor={digitColor} digitBg={digitBg}>
+              <Digit>{digit}</Digit>
+            </DigitWrapper>
+          )}
+        </div>
+        <div>
+          <Title dangerouslySetInnerHTML={{ __html: title }} />
+          <Text dangerouslySetInnerHTML={{ __html: text }} />
+        </div>
+      </Wrapper>
+    </>
   );
 };
