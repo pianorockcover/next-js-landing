@@ -2,7 +2,11 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { socialIcons } from "./icons";
 
-const Link = styled.a`
+interface LinkProps {
+  iconColor?: string;
+}
+
+const Link = styled.a<LinkProps>`
   width: 40px;
   height: 40px;
   display: inline-flex;
@@ -18,19 +22,28 @@ const Link = styled.a`
   & > svg {
     width: 100%;
     height: 100%;
+    fill: ${({ iconColor }) => iconColor};
   }
 `;
 
 interface SocialProps {
   icon: string;
   link: string;
-  style?: React.CSSProperties;
+  style: {
+    color: string;
+    bg: string;
+  };
 }
 
 export const Social: React.FC<SocialProps> = ({ icon, link, style }) => {
   const IconComponent = useMemo(() => socialIcons[icon], []);
   return (
-    <Link href={link} target="_blank" style={style}>
+    <Link
+      href={link}
+      target="_blank"
+      style={{ background: style.bg }}
+      iconColor={style.color}
+    >
       <IconComponent />
     </Link>
   );

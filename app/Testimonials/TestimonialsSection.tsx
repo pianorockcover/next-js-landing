@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 
 const Wrapper = styled.div`
   padding-top: 90px;
-  padding-bottom: 70px;
+  padding-bottom: 90px;
   background: ${({ theme }) => theme.testimonials.bg};
 `;
 

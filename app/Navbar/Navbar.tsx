@@ -110,14 +110,7 @@ export const Navbar: React.FC = () => {
               </MenuWrapper>
               <SocialWrapper>
                 {content.headerSocials.map((social, i) => (
-                  <Social
-                    key={i}
-                    style={{
-                      color: theme.navbar.socialLink.color,
-                      background: theme.navbar.socialLink.bg,
-                    }}
-                    {...social}
-                  />
+                  <Social key={i} style={theme.navbar.socialLink} {...social} />
                 ))}
               </SocialWrapper>
             </Content>

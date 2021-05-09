@@ -22,6 +22,8 @@ import { ThemeManager } from "../app/ThemeManager";
 import { TestimonialsSection } from "../app/Testimonials/TestimonialsSection";
 import { StepsSection } from "../app/StepsSection/StepsSection";
 import { AboutSection } from "../app/AboutSection/AboutSection";
+import { ApplySection } from "../app/ApplySection/ApplySection";
+import { Footer } from "../app/Footer";
 
 interface IndexProps {
   themeVariables: Record<string, string>;
@@ -51,8 +53,9 @@ const Index: React.FC<IndexProps> = ({ themeVariables }) => {
           <ProductsSection />
           <StepsSection />
           <AboutSection />
-          {/* <ContentSection /> */}
           <TestimonialsSection />
+          <ApplySection />
+          <Footer />
           <AlertWindow {...alert} />
         </FeedbackFormContext.Provider>
       </AlertWindowContext.Provider>

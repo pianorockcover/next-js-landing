@@ -209,7 +209,9 @@ class Info {
         },
       ],
     ] as FieldInfo[][],
-    defaultValues: this.products[0],
+    defaultValues: {
+      product: this.products[0],
+    },
   };
   explanation = {
     title:
@@ -513,6 +515,30 @@ class Info {
         title: "Lorem ipsum dolor",
       },
     ] as TestimonialProps[],
+  };
+  applySection = {
+    icon: "CgFileDocument",
+    title: "Закажи прямо сейчас",
+    text: "Оставьте заявку, пока действуют скидки",
+    button: {
+      title: "Оставить заявку",
+      icon: "FaTelegramPlane",
+    },
+  };
+  footer = {
+    socials: this.headerSocials,
+    contacts: [
+      {
+        type: "email",
+        value: "mail@mail.com",
+      },
+      {
+        type: "phone",
+        value: "+7 900 098 98 98",
+      },
+    ],
+    copyrightBy: "ООО ИП Вазген",
+    address: "Улица Пушкина, д. Колотушкина, кв. 119",
   };
 }
 

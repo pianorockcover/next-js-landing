@@ -247,6 +247,35 @@ export class ThemeManager {
     digits: string;
   };
 
+  applySection: {
+    bg: string;
+    icon: string;
+    title: string;
+    text: string;
+    button: {
+      color: string;
+      background: string;
+    };
+  };
+
+  footer: {
+    bg: string;
+    color: string;
+    leaf: {
+      bg: string;
+      color: string;
+    };
+    socialLink: {
+      color: string;
+      bg: string;
+    };
+    contactLink: {
+      color: string;
+      bg: string;
+      textColor: string;
+    };
+  };
+
   buttonBorderRadius: string;
 
   hr: string;
@@ -400,6 +429,19 @@ export class ThemeManager {
       },
     };
 
+    this.applySection = {
+      bg: `linear-gradient(270deg, ${this.primary}, ${Color(this.danger)
+        .darken(0.2)
+        .hex()})`,
+      button: {
+        background: this.warning,
+        color: this.text,
+      },
+      icon: this.warning,
+      text: this.white,
+      title: this.white,
+    };
+
     this.buttonBorderRadius = "50px";
 
     this.productsSection = {
@@ -507,6 +549,24 @@ export class ThemeManager {
     };
 
     this.hr = "#ececec";
+
+    this.footer = {
+      bg: this.dark,
+      color: this.white,
+      leaf: {
+        bg: Color(this.dark).lighten(0.5).hex(),
+        color: "#d0d0d0",
+      },
+      socialLink: {
+        color: this.dark,
+        bg: "#9e9e9e",
+      },
+      contactLink: {
+        color: this.white,
+        bg: this.primary,
+        textColor: this.white,
+      },
+    };
 
     this.apply(config);
   }

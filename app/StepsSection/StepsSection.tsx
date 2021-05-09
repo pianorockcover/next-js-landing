@@ -57,8 +57,8 @@ export const StepsSection: React.FC = () => {
     <>
       <svg style={{ width: 0, height: 0 }}>
         <linearGradient id={gradId} x1="0" y1="0%">
-          <stop offset="0%" stop-color={theme.stepsSection.icon.from} />
-          <stop offset="100%" stop-color={theme.stepsSection.icon.to} />
+          <stop offset="0%" stopColor={theme.stepsSection.icon.from} />
+          <stop offset="100%" stopColor={theme.stepsSection.icon.to} />
         </linearGradient>
       </svg>
       <Wrapper>
