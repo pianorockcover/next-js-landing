@@ -1,6 +1,8 @@
 import Color from "color";
 import { set } from "lodash";
 
+export const THEME_FILE = "./theme.scss";
+
 export class ThemeManager {
   primary!: string;
   secondary!: string;
@@ -28,6 +30,7 @@ export class ThemeManager {
 
   header!: {
     bg: string;
+    bgIcon: string;
     before: {
       background: string;
       shadow: string;
@@ -51,6 +54,7 @@ export class ThemeManager {
     };
     bubble: {
       background: string;
+      color: string;
     };
     plus: {
       color: string;
@@ -312,6 +316,7 @@ export class ThemeManager {
       bg: `linear-gradient(-45deg, ${Color(this.primary)
         .lighten(0.5)
         .hex()}, ${Color(this.primary).darken(0.2).hex()})`,
+      bgIcon: this.white,
       before: {
         background: this.dark,
         shadow: `${Color(this.black).alpha(0.5).rgb()}`,
@@ -337,6 +342,7 @@ export class ThemeManager {
       },
       bubble: {
         background: `${Color(this.dark).alpha(0.6).rgb()}`,
+        color: this.white,
       },
       plus: {
         color: this.white,
@@ -430,9 +436,9 @@ export class ThemeManager {
     };
 
     this.applySection = {
-      bg: `linear-gradient(270deg, ${this.primary}, ${Color(this.danger)
-        .darken(0.2)
-        .hex()})`,
+      bg: `linear-gradient(270deg, ${Color(this.primary).lighten(0.3).hex()}, ${
+        this.primary
+      }, ${Color(this.primary).darken(0.2).hex()})`,
       button: {
         background: this.warning,
         color: this.text,

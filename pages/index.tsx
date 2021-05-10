@@ -18,7 +18,7 @@ import "react-awesome-lightbox/build/style.css";
 import fs from "fs";
 import { parseScssVariables } from "../app/utils/parseScssVariables";
 import { ThemeProvider } from "styled-components";
-import { ThemeManager } from "../app/ThemeManager";
+import { ThemeManager, THEME_FILE } from "../app/ThemeManager";
 import { TestimonialsSection } from "../app/Testimonials/TestimonialsSection";
 import { StepsSection } from "../app/StepsSection/StepsSection";
 import { AboutSection } from "../app/AboutSection/AboutSection";
@@ -66,7 +66,7 @@ const Index: React.FC<IndexProps> = ({ themeVariables }) => {
 export default Index;
 
 export async function getStaticProps() {
-  const scssThemeFile = fs.readFileSync("./theme.scss", "utf-8");
+  const scssThemeFile = fs.readFileSync(THEME_FILE, "utf-8");
 
   return { props: { themeVariables: parseScssVariables(scssThemeFile) } };
 }

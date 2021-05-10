@@ -59,15 +59,15 @@ const SubTitle = styled.div`
 
 const HeaderBubble = styled.div`
   position: relative;
-  color: white;
-  border-radius: 24px;
+  border-radius: 10px;
   font-size: 15px;
   padding: 10px 15px 10px;
   width: fit-content;
   max-width: 100%;
   margin-bottom: 50px;
-  line-height: 18px;
+  line-height: 20px;
   font-weight: 300;
+  color: ${({ theme }) => theme.header.bubble.color};
   background: ${({ theme }) => theme.header.bubble.background};
 
   &:after {

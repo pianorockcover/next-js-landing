@@ -71,7 +71,7 @@ const SvgTwo = styled.svg`
 const Icon = styled.div`
   position: absolute;
   z-index: 4;
-  color: #ffffff;
+  color: ${({ theme }) => theme.header.bgIcon};
   opacity: 0.4;
   margin-top: 60%;
   margin-left: -30px;

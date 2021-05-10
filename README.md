@@ -5,4 +5,10 @@
 $navbar-scrolledBg: red;
 ```
 
+Сбросить переменные темы:
+
+```bash
+    ./utp.bat
+```
+
 - ./content.ts - Наполнение контентом

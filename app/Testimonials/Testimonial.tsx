@@ -30,6 +30,8 @@ const Ava = styled.div`
   border-radius: 100%;
   background-position: center;
   background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-right: 15px;
 `;
 
