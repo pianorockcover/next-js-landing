@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { GlobalStyles } from "../app/GlobalStyles";
 import { AlertWindow, AlertWindowContext } from "../app/AlertWindow";
 import { useAlert } from "../app/utils/useAlert";
@@ -18,12 +18,14 @@ import "react-awesome-lightbox/build/style.css";
 import fs from "fs";
 import { parseScssVariables } from "../app/utils/parseScssVariables";
 import { ThemeProvider } from "styled-components";
-import { ThemeManager, THEME_FILE } from "../app/ThemeManager";
+import { breakpoints, ThemeManager, THEME_FILE } from "../app/ThemeManager";
 import { TestimonialsSection } from "../app/Testimonials/TestimonialsSection";
 import { StepsSection } from "../app/StepsSection/StepsSection";
 import { AboutSection } from "../app/AboutSection/AboutSection";
 import { ApplySection } from "../app/ApplySection/ApplySection";
 import { Footer } from "../app/Footer";
+import { Loader } from "../app/Loader";
+import "animate.css/animate.min.css";
 
 interface IndexProps {
   themeVariables: Record<string, string>;
@@ -38,9 +40,20 @@ const Index: React.FC<IndexProps> = ({ themeVariables }) => {
     []
   );
 
-  const theme = useMemo(() => new ThemeManager(themeVariables), []);
+  const [theme, setTheme] = useState<ThemeManager>();
 
-  return (
+  useEffect(() => {
+    setTheme(
+      new ThemeManager(
+        { isMobile: window.innerWidth <= breakpoints.mobile },
+        themeVariables
+      )
+    );
+  }, []);
+
+  return !theme ? (
+    <Loader show={true} />
+  ) : (
     <ThemeProvider theme={theme}>
       <AlertWindowContext.Provider value={{ openAlert }}>
         <GlobalStyles />

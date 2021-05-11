@@ -3,6 +3,14 @@ import { set } from "lodash";
 
 export const THEME_FILE = "./theme.scss";
 
+export const breakpoints = {
+  mobile: 768,
+};
+
+export interface Adaptivity {
+  isMobile: boolean;
+}
+
 export class ThemeManager {
   primary!: string;
   secondary!: string;
@@ -15,6 +23,8 @@ export class ThemeManager {
   text!: string;
   white!: string;
   black!: string;
+
+  dropdownActiveColor: string;
 
   navbar!: {
     borderBottomColor: string;
@@ -284,6 +294,8 @@ export class ThemeManager {
 
   hr: string;
 
+  adaptivity: Adaptivity;
+
   hoverEffect = (
     transition: number = 0.2,
     scale: number = 1.1,
@@ -297,8 +309,13 @@ export class ThemeManager {
     }
   `;
 
-  constructor(config?: Record<string, string | number>) {
+  constructor(
+    adaptivity: Adaptivity,
+    config?: Record<string, string | number>
+  ) {
     this.apply(config);
+
+    this.adaptivity = adaptivity;
 
     this.navbar = {
       borderBottomColor: `${Color(this.white).alpha(0.5).rgb()}`,
@@ -404,6 +421,8 @@ export class ThemeManager {
         filled: this.primary,
       },
     };
+
+    this.dropdownActiveColor = this.white;
 
     this.explanation = {
       background: this.white,

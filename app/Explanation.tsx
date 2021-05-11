@@ -27,7 +27,7 @@ const ExplanationContent = styled.div`
 
 const Title = styled.div`
   font-size: 28px;
-  line-height: 31px;
+  line-height: 35px;
   margin-bottom: 50px;
   color: ${({ theme }) => theme.explanation.text};
 `;

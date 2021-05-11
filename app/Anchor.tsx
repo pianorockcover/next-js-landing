@@ -5,6 +5,7 @@ const Link = styled.a`
   border-bottom: 1px solid;
   text-decoration: none !important;
   transition: border-bottom 0.2s linear;
+  color: ${({ theme }) => theme.primary} !important;
 
   &:hover {
     border-bottom: 1px solid transparent;

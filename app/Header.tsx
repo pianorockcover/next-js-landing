@@ -6,6 +6,7 @@ import { ActionButton } from "./Buttons/ActionButton";
 import { FeedbackFormContext } from "./FeedbackForm";
 import { navbarHeight } from "./Navbar/Navbar";
 import { RandomShape } from "./RandomShape";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const headerBottomPadding = 500;
 
@@ -153,7 +154,9 @@ export const Header: React.FC = () => {
                 />
                 <PlusesWrapper>
                   {content.pluses.map((plus, i) => (
-                    <Plus key={i}>{plus}</Plus>
+                    <ScrollAnimation key={i} animateIn="bounceInLeft">
+                      <Plus>{plus}</Plus>
+                    </ScrollAnimation>
                   ))}
                 </PlusesWrapper>
 

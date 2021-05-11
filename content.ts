@@ -1,4 +1,3 @@
-import { ContentBlock } from "./app/ContentSection/ContentSection";
 import { FieldType, FieldInfo } from "./app/MainForm/interface";
 import { OpportunityProps } from "./app/Opportunity/Opportunity";
 import { ProductProps } from "./app/Product/Product";
@@ -7,6 +6,7 @@ import { TestimonialProps } from "./app/Testimonials/Testimonial";
 
 class Info {
   cash = `?v=1`;
+  price = "4 500";
   navLinks = [
     {
       name: "Тарифы",
@@ -28,12 +28,13 @@ class Info {
   currency = "руб.";
   headerHeight = 700;
   headerContentWidth = 7;
-  siteTitle = "Подключите виджет вовлекающих квиз-опросов за 10 минут";
-  subTitle = "И увеличьте количество <br>заявок с сайта до 1.5 раз";
+  siteTitle = `Сделаем продающий сайт за ${this.price} руб и 24 часа!`;
+  subTitle =
+    "Идеально подойдёт для продажи курса,<br>марафона, чеклиста, тренинга или вебинара";
   headerBubble =
-    "* Увеличение заявок <b>в 4 раза</b> было в <br> нише <span class='text-warning'>«продажа сувенирных товаров»</span>";
+    "* А так же для продажи <span class='text-warning'>любых инфо-продуктов,<br>проведения конкурсов или промо акций!</span>";
   modalTitle = "Оставьте заявку";
-  pluses = ["Встраивается в любой сайт", "Без дизайнера и программиста"];
+  pluses = ["Самое дешевое предложение в рунете", "Самые быстрые сроки"];
   actionButton = {
     text: "Оставить заявку",
     icon: "Cart",
@@ -215,9 +216,9 @@ class Info {
   };
   explanation = {
     title:
-      "Вам надоело, что <b>много посетителей на сайте, но мало продаж?</b>",
+      "Нет желания <b>переплачивать программистам</b> или разбираться в <b>сложных конструкторах</b>?",
     text:
-      "Вы платите <span>за каждого посетителя,</span> но только <span>1 из 100 покупаету вас?</span>",
+      "<b>Решение есть!</b> Мы предлагаем готовый сайт с профессиональным дизайном на самых современных технологиях.",
     artAnimatedEyeIndex: 2,
     art: [
       {
@@ -259,7 +260,7 @@ class Info {
   };
   productPreviewOptionsAmount = 3;
   productsSection = {
-    title: "Каталог товаров",
+    title: "Заказать сайт",
   };
   mainOpportunity = {
     title: `Почему стоит заказывать <br><span class="bg-warning text-dark">только у нас?</span>`,
@@ -350,134 +351,6 @@ class Info {
         exp: "Поставок",
       },
     ],
-  };
-  contentSection: ContentBlock[][] = [
-    [
-      {
-        type: "H2",
-        text: "Секция с произвольным контентом",
-      },
-    ],
-    [
-      {
-        type: "IconBlock",
-        text: "Оплати подписку любым удобным для тебя способом",
-        props: {
-          icon: "IoRocketOutline",
-          title: "Шаг 1. Заказ",
-          direction: "vertical",
-        },
-      },
-      {
-        type: "IconBlock",
-        text: "Оплати подписку любым удобным для тебя способом",
-        props: {
-          icon: "IoRocketOutline",
-          title: "Шаг 2. Доставка",
-          direction: "vertical",
-        },
-      },
-      {
-        type: "IconBlock",
-        text: "Оплати подписку любым удобным для тебя способом",
-        props: {
-          icon: "FaCreditCard",
-          title: "Шаг 3. Оплата",
-          direction: "vertical",
-          coloring: "fill",
-        },
-      },
-    ],
-    [
-      {
-        type: "H3",
-        text: "Заголовок второго уровня",
-      },
-    ],
-    [
-      {
-        type: "P",
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-      },
-      {
-        type: "P",
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-      },
-    ],
-    [
-      {
-        type: "Image",
-        text: "Оплати подписку любым удобным для тебя способом",
-        props: {
-          src: "1.jpg",
-        },
-      },
-      {
-        type: "Image",
-        props: {
-          src: "3.jpg",
-        },
-      },
-      {
-        type: "Image",
-        props: {
-          src: "4.jpg",
-        },
-      },
-    ],
-    [{ type: "Hr" }],
-    [
-      {
-        type: "P",
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-      },
-      {
-        type: "P",
-        text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-      },
-    ],
-    [
-      {
-        type: "H2",
-        text: "Часто задаваемые вопросы",
-      },
-    ],
-    [
-      {
-        type: "Accordion",
-        props: {
-          items: [
-            {
-              title: "А как какать?",
-              text:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus fuga cupiditate quam quo doloremque totam error non beatae architecto. Voluptas eius cum quis sunt voluptatibus repellat dignissimos porro, placeat excepturi.",
-            },
-            {
-              title: "А как скачать фильм без регистрации и смс?",
-              text: "Content 2",
-            },
-          ],
-        },
-      },
-    ],
-  ];
-  contentSectionBlobs = {
-    one: {
-      seed: 1212,
-      extraPoints: 5,
-      randomness: 4,
-      size: 800,
-    },
-    two: {
-      seed: 774.838,
-      extraPoints: 7,
-      randomness: 7,
-      size: 1000,
-    },
   };
   testimonials = {
     title: "Отзывы",

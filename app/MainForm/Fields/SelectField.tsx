@@ -36,6 +36,10 @@ const SelectStyles = createGlobalStyle`
     .custom-dropdown {
         width: 100%;
     }
+
+    .dropdown-item.active {
+        color: ${({ theme }) => theme.dropdownActiveColor};
+    }
 `;
 
 const OptionWrapper = styled.div`
