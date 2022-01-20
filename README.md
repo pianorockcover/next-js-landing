@@ -1,4 +1,4 @@
-Landing Page build via React, styled-components and Next.js
+## Landing Page build via React, styled-components and Next.js
 
 
 - ./theme.scss - Color Scheme
