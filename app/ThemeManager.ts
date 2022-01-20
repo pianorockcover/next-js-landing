@@ -310,7 +310,7 @@ export class ThemeManager {
   `;
 
   constructor(
-    adaptivity: Adaptivity,
+    adaptivity: Adaptivity = { isMobile: false },
     config?: Record<string, string | number>
   ) {
     this.apply(config);
